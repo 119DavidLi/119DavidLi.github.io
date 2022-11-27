@@ -1,0 +1,2013 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>《飞机总体设计》学习笔记 | 戴威的Blog</title><meta name="keywords" content="学习,研究生知识积累"><meta name="author" content="David.Li"><meta name="copyright" content="David.Li"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="该笔记是学习顾诵芬老师《飞机总体设计》一书后，对书中内容重点、记忆深刻之处的总结。其中，包括飞机设计工作的简介，飞机各模块的设计要求与设计方法，与设计后总体方案的分析等内容。该笔记以概览全书，摘取基本设计观点和基本概念为出发点，多以表格形式对书中内容进行梳理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《飞机总体设计》学习笔记">
+<meta property="og:url" content="http://example.com/2022/10/29/%E9%A1%BE%E8%AF%B5%E8%8A%AC%E2%80%94%E9%A3%9E%E6%9C%BA%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E4%B8%83%E8%87%B3%E5%8D%81%E4%BA%8C%E7%AB%A0%EF%BC%89/index.html">
+<meta property="og:site_name" content="戴威的Blog">
+<meta property="og:description" content="该笔记是学习顾诵芬老师《飞机总体设计》一书后，对书中内容重点、记忆深刻之处的总结。其中，包括飞机设计工作的简介，飞机各模块的设计要求与设计方法，与设计后总体方案的分析等内容。该笔记以概览全书，摘取基本设计观点和基本概念为出发点，多以表格形式对书中内容进行梳理。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/1.jpg">
+<meta property="article:published_time" content="2022-10-29T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-11-27T06:53:20.855Z">
+<meta property="article:author" content="David.Li">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="研究生知识积累">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/1.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/10/29/%E9%A1%BE%E8%AF%B5%E8%8A%AC%E2%80%94%E9%A3%9E%E6%9C%BA%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E4%B8%83%E8%87%B3%E5%8D%81%E4%BA%8C%E7%AB%A0%EF%BC%89/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"S8VXMWI0SN","apiKey":"53f1a244da26e96e8249b78dbad4a7e7","indexName":"David","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: David.Li","link":"链接: ","source":"来源: 戴威的Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '《飞机总体设计》学习笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-27 14:53:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="referrer" content="no-referrer" /><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.postimg.cc/yNgHD8Yp/k-L4co-QHVj-A.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/5.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">戴威的Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">《飞机总体设计》学习笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-29T00:00:00.000Z" title="发表于 2022-10-29 08:00:00">2022-10-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-27T06:53:20.855Z" title="更新于 2022-11-27 14:53:20">2022-11-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%88%AA%E5%A4%A9%E8%88%AA%E7%A9%BA/">航天航空</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%88%AA%E5%A4%A9%E8%88%AA%E7%A9%BA/%E8%88%AA%E5%A4%A9%E8%88%AA%E7%A9%BA%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/">航天航空基本知识学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%88%AA%E5%A4%A9%E8%88%AA%E7%A9%BA/%E8%88%AA%E5%A4%A9%E8%88%AA%E7%A9%BA%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/%E9%A3%9E%E6%9C%BA%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/">飞机总体设计笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">26.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>79分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="《飞机总体设计》学习笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="第七章-动力装置及燃油系统">第七章 动力装置及燃油系统</h2>
+<h3 id="7-1飞机的高技术性和复杂性">7.1飞机的高技术性和复杂性</h3>
+<p><strong>动力装置的作用组成：</strong></p>
+<p>动力装置一方面用于<u>产生推力</u>，使飞机满足战术作战的性能要求；另一方面可以为机上环控系统和防冰装置<u>提供气源</u>。</p>
+<p>动力装置由：发动机、螺旋桨、安装支架、进排气装置、灭火装备、冷却装置等组成。</p>
+<p><strong>发动机的类型及其在机上的布置形式：</strong></p>
+<table>
+<thead>
+<tr>
+<th>飞机类型及其对应速度</th>
+<th>发动机类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>教练机<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>300</mn><mo>∼</mo><mn>400</mn><mi>k</mi><mi>m</mi><mi mathvariant="normal">/</mi><mi>h</mi></mrow><annotation encoding="application/x-tex">300\sim 400km/h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">300</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">400</span><span class="mord mathnormal">km</span><span class="mord">/</span><span class="mord mathnormal">h</span></span></span></span></td>
+<td>活塞式发动机</td>
+</tr>
+<tr>
+<td>飞行速度在<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>700</mn><mo>∼</mo><mn>800</mn><mi>k</mi><mi>m</mi><mi mathvariant="normal">/</mi><mi>h</mi></mrow><annotation encoding="application/x-tex">700\sim 800km/h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">700</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">800</span><span class="mord mathnormal">km</span><span class="mord">/</span><span class="mord mathnormal">h</span></span></span></span></td>
+<td>涡轮螺旋桨；涡轮轮风扇、涡轮桨扇发动机</td>
+</tr>
+<tr>
+<td>亚声速客、货机和超声速机动飞机</td>
+<td>带加力燃烧室或不带加力燃烧室的涡扇发动机</td>
+</tr>
+<tr>
+<td>飞行速度超过<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3000</mn><mi>m</mi><mi mathvariant="normal">/</mi><mi>h</mi></mrow><annotation encoding="application/x-tex">3000m/h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3000</span><span class="mord mathnormal">m</span><span class="mord">/</span><span class="mord mathnormal">h</span></span></span></span></td>
+<td>冲压喷气发动机、液体火箭发动机及其他类型的喷气式发动机。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>发动机的性能评价指标：</strong></p>
+<p>发动机的<u>单位重力$\gamma_{fdj} <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>（</mtext></mrow><annotation encoding="application/x-tex">（</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">（</span></span></span></span>\gamma_{fdj} =G/F_0<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>）</mtext><mo>&lt;</mo><mi mathvariant="normal">/</mi><mi>u</mi><mo>&gt;</mo><mo separator="true">,</mo><mo>&lt;</mo><mi>u</mi><mo>&gt;</mo><mtext>单位油耗率</mtext></mrow><annotation encoding="application/x-tex">）&lt;/u&gt;,&lt;u&gt;单位油耗率</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord cjk_fallback">）</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathnormal">u</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">u</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">单位油耗率</span></span></span></span>C_e<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&lt;</mo><mi mathvariant="normal">/</mi><mi>u</mi><mo>&gt;</mo><mtext>，</mtext><mo>&lt;</mo><mi>u</mi><mo>&gt;</mo><mtext>单位推力</mtext></mrow><annotation encoding="application/x-tex">&lt;/u&gt;，&lt;u&gt;单位推力</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathnormal">u</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord cjk_fallback">，</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">u</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">单位推力</span></span></span></span>F_s<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&lt;</mo><mi mathvariant="normal">/</mi><mi>u</mi><mo>&gt;</mo><mtext>，</mtext><mo>&lt;</mo><mi>u</mi><mo>&gt;</mo><mtext>涵道比</mtext></mrow><annotation encoding="application/x-tex">&lt;/u&gt;，&lt;u&gt;涵道比</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathnormal">u</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord cjk_fallback">，</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">u</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">涵道比</span></span></span></span>B$</u>，和<u>发动机高度速度特性</u>是评价发动机的常用指标。</p>
+<p><strong>对动力装置的要求：</strong></p>
+<table>
+<thead>
+<tr>
+<th>动力装置要求</th>
+<th>要求的具体描述</th>
+<th>设计图例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>引起的附加阻力最小</td>
+<td>为减小附加阻力，动力装置最好安装在机身内部<br>安装在机翼上时，发动机短舱应采用前伸的挂梁</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211032147399.png" alt="飞机动力装置布局" style="zoom:50%;"></td>
+</tr>
+<tr>
+<td>进气及排气系统能力释放充分</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>发动机推力轴线位置应尽量减少对飞机操纵安定特性的影响</td>
+<td>较理想的是推力F轴线通过飞机重心</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211032150968.png" alt="飞机动力装置布局" style="zoom:50%;"></td>
+</tr>
+<tr>
+<td>保证发动机的使用维护方便</td>
+<td>机舱区域对应口盖布置，且易拆卸接近发动机。<br>同时，发动机的离地高度应给予特别注意</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211032152270.png" alt="飞机动力装置布局" style="zoom: 50%;"></td>
+</tr>
+<tr>
+<td>应防止跑道上的砂粒吸入</td>
+<td>发动机布置的位置高，机身和机翼起了遮挡作用。<br>发动机位置低的则应装进气道防护网装置。</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211032154319.png" alt="飞机动力装置布局" style="zoom: 50%;"></td>
+</tr>
+<tr>
+<td>应保证安全防火</td>
+<td>发动机发生火情只涉及到后机身。<br>在布置不可理时，可以在发动机和机身间设有很强的防护隔墙。<br>发动机舱应有火警和灭火系统，在油箱中充有中性气体和填充聚氨酯泡沫塑料。</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211032154319.png" alt="飞机动力装置布局" style="zoom: 50%;"></td>
+</tr>
+<tr>
+<td>发动机固定接头应简单可靠</td>
+<td>固定发动机的接头应重量轻，且有足够的强度。<br>此外，还应由阻尼组件吸收发动机的振动能量，有消除发动机热变形和初装变形的能力。</td>
+<td></td>
+</tr>
+<tr>
+<td>保证发动机易于拆装</td>
+<td>布置时结构间的安装形式<br>发动机设计时的离地距离</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="7-2进气系统设计">7.2进气系统设计</h3>
+<h4 id="7-2-1总体介绍与基本设计要求">7.2.1总体介绍与基本设计要求</h4>
+<p><strong>总体介绍：</strong></p>
+<p>进气和排气系统是组成推进系统的重要部分。</p>
+<p>进气系统是要以高的效率向发动机提供足够量的空气；排气系统则是使发动机燃烧后的高温燃气能高效地、通畅地排出机外。</p>
+<p>在超音速飞行中，进排气系统产生的推力占总推力的绝大部分。</p>
+<p><strong>进气道设计要求：</strong></p>
+<p>进气系统的主要用途就是把进来的空气在能量损失最小的情况下减速到压气机要求的进口速度。<br>
+进气道设计的基本要求是：总压恢复高，出口畸变小，阻力低，足够的稳定性裕度（防止进气道喘振）。</p>
+<table>
+<thead>
+<tr>
+<th>衡量进气道工作效率的参数</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>进气道出口总压恢复</td>
+<td>进气道出口气流平均总压与自由流总压之比。<br>大体上进气道总压恢复减少（或增加）1%，将使发动机净推力减少(或增加)1.3%。</td>
+</tr>
+<tr>
+<td>进气道出口流场畸变</td>
+<td>进气道出口流场中最低总压值与最高总压值（或平均总压值）之间的相对差别。<br>进气道出口流场畸变会减小发动机的喘振裕度，畸变过大会使发动机的喘振裕度全部丧失而失去稳定性。</td>
+</tr>
+<tr>
+<td>阻力</td>
+<td>包括外罩阻力、附加阻力、放气阻力和排除附面层产生的阻力等。在初步设计时，只需考虑外罩阻力和附加阻力。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="7-2-2进气道的四种基本形式介绍">7.2.2进气道的四种基本形式介绍</h4>
+<table>
+<thead>
+<tr>
+<th>进气道形式</th>
+<th>特征介绍</th>
+<th>图例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NACA平贴式进气道</td>
+<td>也称埋人式进气道。总压恢复值优化空间有限，只有90%左右。应用于对总压恢复不太重视的场合。</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211032241817.png" alt="NACA平贴式进气道" style="zoom: 67%;"></td>
+</tr>
+<tr>
+<td>皮托管式进气道</td>
+<td>一种口朝前开的孔道。在亚声速下它工作得非常好，可以达到接近100%的总压恢复值。</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211032242275.png" alt="皮托管式进气道" style="zoom:67%;"></td>
+</tr>
+<tr>
+<td>锥形进气道</td>
+<td>也称中心体进气道或轴对称进气道，是利用超声速流流过锥体周围产生激波系。特点是比较轻，其总压恢复稍高于二维斜板式进气道（约高1.5%）</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211032242780.png" alt="锥形进气道" style="zoom:67%;"></td>
+</tr>
+<tr>
+<td>二维斜板式进气道</td>
+<td>二维斜板式进气道则利用超声速流流过楔体产生激波系，这种激波视为平面激波。</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211032243687.png" alt="二维斜板式进气道" style="zoom:67%;"></td>
+</tr>
+</tbody>
+</table>
+<p>**【正激波进气道】：**在超声速飞行时进气道前总带有一道脱体正激波，因此常称为“正激波进气道”。正激波进气道在较高超声速时总压损失剧增，因此这种正激波进气道常被<u>置于机身侧面或腹部</u>，利用机身和（或）机翼边条的屏蔽作用，以提高正激波进气道的超声速性能。正激波进气道置于机身侧面或腹部时，一般都采用矩形或扁圆形进口形状。</p>
+<p><strong>超声速进气道按超声速压缩特点分类：</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>特点介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>外压式进气道</td>
+<td>压缩过程在进口以外进行，进口以内只进行亚声速扩散压缩。<br>一道斜激波加一道正激波的压缩称为二波系进气道。采用的斜激波数量越多，其总压恢复越大。</td>
+</tr>
+<tr>
+<td>内压式进气道</td>
+<td>是一种不会引起外侧气流转折的进气道形式。<br>在这种进气道内，一对内部斜板产生一组斜激波，并在末尾正激波前相交，使进气道总压恢复高，阻力很小（或者为零）。<br>但是，这个内压式进气道必须是“启动好的”，否则将无法发挥应有的作用。内压式进气道的这种<u>启动问题</u>和<u>不稳定性</u>使其在飞机上的应用受到很大限制。</td>
+</tr>
+<tr>
+<td>混合压缩式进气道</td>
+<td>既采用外压缩又采用内压缩，可以在一个较宽的马赫数范围内提供高的总压恢复和低的外部阻力，并具有一个可接受的外部气流转折量。<br>“不启动”仍然是这种进气道的一个问题，可采用自动打开的放气门来控制启动。<br>混合压缩进气道的设计和调节都是非常复杂的，只有通过详细的分析计算才能确定。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="7-2-3进气道主要参数的确定">7.2.3进气道主要参数的确定</h4>
+<table>
+<thead>
+<tr>
+<th>主要参数</th>
+<th>确定方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>进气道进口面积</td>
+<td>进气道进口面积也称捕获面积，是进气道进口的迎面投影面积。<br>可以采用统计方：基于设计马赫数和发动机质量流量估算得到的进口面积A。<br>在布局设计过程中，应该根据实际的发动机质量流量来准确计算。<br>进气道进口面积初步设计时还应考虑为冷却发动机舱和环境控制提供二次空气流，以及为防止附面层增长从进气道压缩面和喉道吸除的空气。对于亚声速和超声速的进气道进口面积的确定原则是不一致的。</td>
+</tr>
+<tr>
+<td>外罩和唇缘设计</td>
+<td>外罩进口前端面方位取决于进气道进口位置和飞机的迎角范围。<br>外罩唇缘半径对发动机性能和飞机阻力具有较大的影响。<br>在亚声速进气道上，为了把畸变减至最小，其内侧唇缘半径往往大于外侧唇缘半径。</td>
+</tr>
+<tr>
+<td>喉道面积和内管道参数设计</td>
+<td>进气道喉道面积设计：既要考虑获得较高的总压恢复；又要避免在高声速时出现“堵塞”现象。在初步设计时，喉道面积可按发动机前端面面积的70%80%确定。<br>内管道参数设置：包括内管道长度，横截面面积增幅情况，</td>
+</tr>
+<tr>
+<td>附面层抽吸及隔道</td>
+<td>附面层抽吸：超声速进气道为了防止压缩面上发生激波一附面层干扰分离，在压缩面上采取的措施。一般多采用交错排列形式的小圆孔。<br>附面层隔除：对于机身侧面进气的进气道，进口前的机身部分产生的附面层必须隔除。台阶式隔道；附面层旁路管道；抽吸型附面层隔道；沟槽式附面层隔道。</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211041619354.png" alt="机身附面层隔除措施" style="zoom:50%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211041620953.png" alt="沟槽式附面层隔道" style="zoom:45%;"></p>
+<p><strong>进气道非设计状态时的调节：</strong></p>
+<p>当飞行马赫数减小，质量流量和激波形式将发生改变，使进气道处于非设计条件下。<br>
+使正激波移回到唇口处理办法：通过在扩压段打开放气门，可以把过剩的空气吸入进气道并在到达发动机之前从放气门放出去。向下转动外罩唇口，以减小进口面积。转动斜板改变压缩角或者前后移动中心体，以便在各种不同马赫数下保持斜激波搭唇口。</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211041641042.png" alt="发动机在机体内部的进气道布局" style="zoom: 27%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211041642252.png" alt="外挂式发动机进气道的布局形式" style="zoom:35%;"></p>
+<p><strong>进气道在飞机上的布置：</strong></p>
+<ul>
+<li>充分利用机身和机翼（包括机翼边条）的屏蔽作用，改善进气道的性能（特别是大迎角性能）</li>
+<li>防止机身或机翼边条脱出的涡和分离流进入进气道，影响进气道的性能和稳定性。</li>
+<li>减小雷达散射截面，更须要利用机体对进气口的遮挡，把进气口与机体高度融合一体。</li>
+</ul>
+<h3 id="7-3排气系统设计">7.3排气系统设计</h3>
+<p>**总述：**喷管设计不仅影响喷管的内推力，还影响到机身后体的构形，从而影响机身的后体阻力一一尾阻和底阻。</p>
+<p>**排气系统设计性能的评价指标：**推力减阻力参数。显然，推力减阻力（指后体阻力）参数越大越好。</p>
+<p><strong>排气喷管的形式：</strong></p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211041648667.png" alt="典型的喷管形式" style="zoom: 40%;">
+<table>
+<thead>
+<tr>
+<th>喷管类型</th>
+<th>具体介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>固定不变收敛喷管</td>
+<td>亚声速民用涡轮喷气发动机和祸轮风扇发动机几乎普遍采用固定不变的收敛喷管。<br>出口面积不变，低速具有理论性能损失。<br>固定喷管的简易性和重量轻所获得的收益大于性能损失代价。</td>
+</tr>
+<tr>
+<td>可变面积收敛喷管</td>
+<td>对于偶然在高亚声速到低超声速下飞行的飞机，采用可变面积的收敛喷管<br>能够在低速、部分推力工作状态和最大速度、最大推力工作状态之间得到较好的匹配。</td>
+</tr>
+<tr>
+<td>引射喷管</td>
+<td>超声速战斗机上常用的一种排气喷管，特别是对于需要大量冷却空气的加力式涡轮喷气发动机。<br>可以把冷却加力燃烧室外壁的发动机旁路空气引射到引射喷管外罩内，形成一层“气垫”<br>借助引射喷管，可同时实现增幅推力和冷却喷管的目的。</td>
+</tr>
+<tr>
+<td>可调收敛-扩散喷管</td>
+<td>近代一些马赫数为2一级的超声速先进的战斗机多采用。<br>这种C一D喷管的面积比可以随着飞行速度和高度的变化。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>尾部设计：</strong></p>
+<p>为了把尾部阻力减小到可接受的水平，后机身的收缩角应该保持在15°以下，而喷管的外侧角度在喷管关闭位置时应该保持在20°以下。</p>
+<p>并排安装的两台喷气发动机之间会产生干扰影响，使净推力减少。为了把这种干扰影响减到最小程度，喷管之间最好离开大约1~2倍的喷管最大出口直径。</p>
+<p><strong>推力矢量技术的应用：</strong></p>
+<p>【矢量喷管】原先仅依靠热力循环产生推力的排气喷管，改变为控制喷流方向（推力矢量)直接参与飞机机动运动的矢量喷管。由于推力矢量作用快，与飞行控制系统相结合，可以大大提高飞机的机动性和敏捷性。</p>
+<h3 id="7-4动力装置的安装">7.4动力装置的安装</h3>
+<p><strong>作用在发动机安装点上的载荷：</strong></p>
+<p>载荷的大小与发动机类型，发动机布局位置，飞机机动特性、计算时的飞行情况有关。</p>
+<table>
+<thead>
+<tr>
+<th>载荷类别</th>
+<th>计算特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>发动机推力<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">F_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td>
+<td>现代涡轮喷气发动机的起飞推力F。可以达到250~300kN。</td>
+</tr>
+<tr>
+<td>发动机重力</td>
+<td>发动机重力 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">d</mi><mi mathvariant="normal">j</mi></mrow></msub><mo>=</mo><msub><mi>m</mi><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">d</mi><mi mathvariant="normal">j</mi></mrow></msub><mi>g</mi></mrow><annotation encoding="application/x-tex">G_{\mathrm{Idj}}=m_{\mathrm{Idj}} g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">Idj</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">Idj</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span></span>;<br>惯性力 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mrow><mi mathvariant="normal">f</mi><mi mathvariant="normal">d</mi><mi mathvariant="normal">j</mi></mrow></msub><mo stretchy="false">(</mo><mi mathvariant="normal">d</mi><mi>v</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">d</mi><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">m_{\mathrm{fdj}}(\mathrm{d} v / \mathrm{d} t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">fdj</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathrm">d</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord">/</span><span class="mord mathrm">d</span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mrow><mi mathvariant="normal">f</mi><mi mathvariant="normal">d</mi><mi mathvariant="normal">j</mi></mrow></msub><mrow><mo fence="true">(</mo><msup><mi>v</mi><mn>2</mn></msup><mi mathvariant="normal">/</mi><mi>R</mi><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">m_{\mathrm{fdj}}\left(v^2 / R\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">fdj</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span></span></span></span>;<br>飞机机动引起的陀螺力矩 (相对飞机的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mtext>、</mtext><mi>x</mi><mtext>、</mtext><mi>y</mi></mrow><annotation encoding="application/x-tex">z 、 x 、 y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mord cjk_fallback">、</span><span class="mord mathnormal">x</span><span class="mord cjk_fallback">、</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> 轴旋转时)。</td>
+</tr>
+<tr>
+<td>反作用扭转力矩<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">M_x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi>x</mi></msub><mo>=</mo><mn>5.1</mn><mo>×</mo><mn>103</mn><mi>P</mi><mi mathvariant="normal">/</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">M_x=5.1×103P/n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5.1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">103</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord">/</span><span class="mord mathnormal">n</span></span></span></span>(单位：J)；<br>P为发动机对螺旋桨轴输出的功率，kW<br>n为螺旋桨旋转频率，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>s</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">s^{-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>。</td>
+</tr>
+<tr>
+<td>作用在发动机短舱上的气动载荷</td>
+<td>对短舱、挂梁、进气道和口盖进行局部强度计算时应考虑气动载荷。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>固定发动机的接头结构：</strong></p>
+<p>【接头】采用特殊的框或者空间焊接桁架连接发动机和飞机机体并传递载荷。与发动机类型和布置位置有关。</p>
+<p>为限制发动机空间位置，一般采用超静定结构进行固定。</p>
+<h3 id="7-5燃油系统">7.5燃油系统</h3>
+<p><strong>燃油系统的功用与组成：</strong></p>
+<p>存储，各种飞行状态下连续、可靠地供油，冷却其他设备。</p>
+<p>一般由：燃油箱，供油、输油系统，通气增压系统等组成。</p>
+<p><strong>燃油系统设计的一般要求：</strong></p>
+<table>
+<thead>
+<tr>
+<th>系统</th>
+<th>基本介绍</th>
+<th>设计要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>燃油箱系统</td>
+<td>燃油箱的三种类型包括：整体油箱（机翼或机身的）、软油箱和独立油箱（机翼或机身副油箱）。</td>
+<td>(1)油箱的布置和输油顺序，在工作过程中应当满足重心变化要求<br>(2停机状态下的膨胀空间，一般不小于油箱总容积的3%;对舰载飞机则应不小于4%。<br>(3)每个油箱均应有一个集液槽和排放沉淀装置，以便放出沉淀物和水份。</td>
+</tr>
+<tr>
+<td>供油、输油系统</td>
+<td>供油和输油分系统由油泵、管路、控制阀、信号器等组成。<br>供输油泵的压力流量特性，满足发动机所需的燃油流量和压力或输油流量要求。<br>油泵的功率根据供输油的流量和压力及泵的效率经计算确定。</td>
+<td>(1)供油的不间断性。<br>(2)超声速飞机在长距离超声速飞行中，燃油还可以用来冷却设备。<br>(3)供油系统应提供发动机在最大燃油消耗率下的流量。<br>(4)供油系统在丧失动力（泵或增压动力）的情况下，要考虑抽吸供油能力。<br>(5)设置低油面警告，同时警报时的燃油依旧可以保证20min飞行和起降需要。<br>(6)输油流量应等于或大于发动机的耗油量。<br>(7)应具有零和负过载下的供油能力<br>(9)为了地面维护和飞行中应急切断发动机的供油，在供油管路上应设关断开关。</td>
+</tr>
+<tr>
+<td>地面加油和放油系统</td>
+<td>由加油口、控制阀、通气阀、信号器和管路组成。</td>
+<td>(1)机上重力加油口的位置应根据油箱的连通情况，选择合理的位置。<br>(2)加油车的性能，通常加油压力为0.343MPa士0.034MPa。<br>(3)具有向任何一个（或一组）油箱加油或不加油的能力。满足单点向全机输油的能力。<br>(4)设置两套独立的自动切断加油的加油控制装置；失灵时可替代。<br>(5)加油管路流速应不大于9m/s，流入油箱入口处的流速不大于3m/s。<br>(6)飞机的放油一般利用机上的供油泵、输油泵与地面放油设备结合进行。</td>
+</tr>
+<tr>
+<td>空重加油系统</td>
+<td>由加油装置、控制阀、通气阀、信号器、管路等组成。</td>
+<td>(1)缩短时间，受油机的受油流量可比加油机的加油流量大。<br>(2)空中加油的工作压力取决于加油机提供的压力。<br>(3)油面控制阀的位置应防止燃油由通气系统喷出机外。<br>(4)受油插头装置的位置应考虑飞行员的视线以及对进气道和发动机的影响。</td>
+</tr>
+<tr>
+<td>应急放油系统</td>
+<td>由放油泵、放油阀、信号器、管路等组成。</td>
+<td>(5)应急放油分系统应具有启动和中止的能力；启动后保证迅速放油。<br>(6)应急放油控制装置应防止无意中将油量放至小于低油面警告油量。<br>(7)放油时飞机的重心不应对飞机的操纵性产生任何不利影响。<br>(8)放出的燃油和燃油蒸汽不应喷溅或进入飞机任何部位。</td>
+</tr>
+<tr>
+<td>油量测量分系统</td>
+<td>由传感器、信号器、控制盒、指示器、电缆等组成。</td>
+<td>(1)所有机内和外挂副油箱均应进行计量。<br>(2)显示总燃油量和供油箱的燃油量。<br>(3)测量误差随飞机姿态变化应小。</td>
+</tr>
+<tr>
+<td>散热器燃油的输送及回油</td>
+<td>由油泵、散热器、回油阀、管路等组成。</td>
+<td>(1)应满足散热器工作中散热量的要求。<br>(2)用燃油散热应保证发动机燃油入口温度及燃油箱的温度要求。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>米格一21飞机燃油系统简介：</strong></p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211050016438.png" alt="飞机燃油系统原理图" style="zoom: 33%;">
+<p><strong>燃油消耗自动控制系统：</strong></p>
+<p>通过压力控制管路的开闭实现燃油消耗过程中飞机的重心控制。自动控制系统通常包括供油箱和各油箱中的燃油消耗监控部件。</p>
+<p><strong>燃油系统中的安全措施：</strong></p>
+<ul>
+<li>燃油系统的防火安全措施为机载灭火设备、限制火势的防火栅，惰性气体发生器和紧急放油装置。</li>
+<li>将惰性气体充满油箱中燃油上面的空间，以阻让燃油蒸汽的形成和被点燃（在油箱被击穿时）。</li>
+<li>或油箱中使用聚氨酯泡沫塑料，防止爆炸和减少油箱损坏程度。</li>
+</ul>
+<p><strong>飞机的防火保障系统：</strong></p>
+<ul>
+<li>在发动机舱内设有失火预警及灭火系统。该系统包括失火预瞥设备和机载灭火设备。</li>
+<li>在现代飞机上，发动机舱内装有失火报警的电离传感器。</li>
+<li>机载灭火设备包括带有薄膜型接头的气瓶，瓶内装有灭火剂用于灭火。</li>
+</ul>
+<h2 id="第八章-起落装置及机电系统">第八章 起落装置及机电系统</h2>
+<h3 id="8-1起落装置设计">8.1起落装置设计</h3>
+<h4 id="8-1-1起落装置介绍与设计总体要求">8.1.1起落装置介绍与设计总体要求</h4>
+<p><strong>起落装置的功用与组成：</strong></p>
+<p>供飞机在地面停放、滑行、飞行和着陆用，保证起降过程中安全性及良好的操控性、稳定性。</p>
+<p>由前、主起落架（包括机轮、刹车系统、轮胎）及其收放、锁闭指示机构，前、主起落架舱门及其收放机构和减速伞以及拦阻钩（如要求装置时）组成。</p>
+<p><strong>设计要求：</strong></p>
+<ul>
+<li>
+<p>地面运动时具有良好的稳定性、操纵性和适应性</p>
+<p>在飞机起降过程中能够吸收水平、垂直方向的力，并能够应对非正常的着陆情况（最大刹车、侧风着陆、高速滑行）</p>
+</li>
+<li>
+<p>适合于机场承载能力</p>
+<p>根据机场对应跑道长度、道面承载能力对机场进行等级划分。飞机的机轮数量、大小和轮胎压力均需要与机场情况匹配。</p>
+</li>
+<li>
+<p>满足起降性能的使用要求</p>
+<p>满足不同起降重量、速度、距离时的要求。</p>
+</li>
+</ul>
+<h4 id="8-1-2起落装置的布置">8.1.2起落装置的布置</h4>
+<p><strong>起落架的布置：</strong></p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211051630050.png" alt="起落架的布置形式" style="zoom: 50%;">
+<p>起落架主轮安装截面在全机最大迎风面积截面附近，起落架收放的开口位于全机受力最大的机身中段。这两点使得起落架的设计、布置成为飞机设计过程中必须考虑的重要问题。</p>
+<table>
+<thead>
+<tr>
+<th>起降角度</th>
+<th>布置要求与图示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>飞机迎角$\alpha $</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211051637449.png" alt="飞机迎角设计" style="zoom: 25%;"></td>
+</tr>
+<tr>
+<td>擦地角$\gamma $</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211051640159.png" alt="擦地角设计" style="zoom: 25%;"></td>
+</tr>
+<tr>
+<td>防侧翻角$\theta $</td>
+<td>是飞机滑行时急剧转弯侧翻趋势的量度。在已知飞机严重情况的重心位置和飞机轮距以及轮胎与地面之间的摩擦因数，按照飞机不侧翻的条件即可算出角$\theta $。<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211051643114.png" alt="防侧翻角设计" style="zoom:25%;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>减速伞布置：</strong></p>
+<p>减速伞（也叫阻力伞）是军用飞机着陆时为了缩短着陆滑跑距离而配置的。减速伞系统包括减速伞、伞舱、悬挂锁、舱门及其操纵系统。配置时需要隔热防止发动机燃烧室热传导或者气动热点燃减速伞。同时，注意减速传力位置，尽量减小对飞机的附加力矩。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211051648913.png" alt="减速伞的组成" style="zoom:33%;">
+<p><strong>拦阻钩的布置：</strong></p>
+<p>拦阻钩也有叫阻拦钩的。拦阻钩系统包括拦阻钩、与钩有关的控制器件和缓冲器等。拦阻钩系统一般都布置在后机身中央下腹部位。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211051654187.png" alt="拦阻钩安装示意图" style="zoom: 25%;">
+<h4 id="8-1-3起落架减震器">8.1.3起落架减震器</h4>
+<p>减震器类型：刚性轴式、固体弹簧式、摇臂张力式（常用于舰载机）还有油压式和油气式（效率高、很好的能量消散能力）。<br>
+减震器又分单腔和双腔式。双腔式支柱行程长、吸收能量大，可以改善飞机在粗糙跑道上的减震特性。</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211051711521.png" alt="减震器的布置与分类" style="zoom: 33%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211051711229.png" alt="油液减震器的造型" style="zoom:33%;"></p>
+<p>行程的确定：减震器的行程即减震系统的位移取决于接地时的垂直速度、减震材料和接地时机翼上可用的升力。</p>
+<table>
+<thead>
+<tr>
+<th>行程确定的有关指标</th>
+<th>详细介绍</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>下沉速度</td>
+<td>飞机接地时的垂直速度。<br>不同飞机具有不同的规范数值。</td>
+<td></td>
+</tr>
+<tr>
+<td>过载<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mi>g</mi></msub></mrow><annotation encoding="application/x-tex">n_g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></td>
+<td>垂直速度的减速率称为起落架过载<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mi>g</mi></msub></mrow><annotation encoding="application/x-tex">n_g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>。<br>起落架过载决定了由起落架传到机体上的载荷大小，它影响着机体结构重量以及着陆时机组和旅客的舒适性。</td>
+<td></td>
+</tr>
+<tr>
+<td>减震器的效率因数$\eta $</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211051730239.png" alt="image-20221105173013119" style="zoom:33%;"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>减震器行程的计算：</strong></p>
+<ul>
+<li>飞机的垂直动能</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>E</mi><mi>k</mi></msub><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>⋅</mo><mfrac><msub><mi>G</mi><mrow><mi>z</mi><mi>l</mi></mrow></msub><mi>g</mi></mfrac><mo>⋅</mo><msubsup><mi>v</mi><mi>y</mi><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">E_k=\frac{1}{2}\cdot \frac{G_{zl}}{g}\cdot v_{y}^{2}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.2408em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2472em;vertical-align:-0.3831em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-2.453em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3831em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mrow><mi>z</mi><mi>l</mi></mrow></msub></mrow><annotation encoding="application/x-tex">G_{zl}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>——飞机着陆重力<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>y</mi></msub></mrow><annotation encoding="application/x-tex">v_y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>——飞机下沉速度<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">E_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>——飞机垂直动能</p>
+<ul>
+<li>减震器和轮胎吸收的垂直动能</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>E</mi><mrow><mi>k</mi><mo separator="true">,</mo><mi>x</mi><mi>s</mi></mrow></msub><mo>=</mo><mi>η</mi><mi>p</mi><mi>s</mi><mo>+</mo><msub><mi>η</mi><mi>t</mi></msub><msub><mi>p</mi><mi>t</mi></msub><msub><mi>s</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">E_{k,xs}=\eta ps+\eta_{t} p_ts_t
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">η</span><span class="mord mathnormal">p</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">η</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi></mrow><annotation encoding="application/x-tex">\eta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">η</span></span></span></span>——减震器效率因数，实际取0.5一0.9。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>η</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\eta_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">η</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>是轮胎的效率因素，一般假设0.47<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span>——压缩时平均总载荷。<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span>——行程。</p>
+<p>飞机的垂直动能应当能够被完全吸收，即<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>k</mi></msub><mo>=</mo><msub><mi>E</mi><mrow><mi>k</mi><mo separator="true">,</mo><mi>x</mi><mi>s</mi></mrow></msub></mrow><annotation encoding="application/x-tex">E_k=E_{k,xs}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>。</p>
+<ul>
+<li>同时起落架过载 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mi>g</mi></msub></mrow><annotation encoding="application/x-tex">n_g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> 等于䧕减震载荷的平均值除以着陆重力, 并假定过载在接地时不变, 则</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>n</mi><mi mathvariant="normal">g</mi></msub><mo>=</mo><mi>L</mi><mi mathvariant="normal">/</mi><msub><mi>G</mi><mrow><mi mathvariant="normal">z</mi><mi mathvariant="normal">l</mi></mrow></msub></mrow><annotation encoding="application/x-tex">n_{\mathrm{g}}=L / G_{\mathrm{zl}}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight" style="margin-right:0.01389em;">g</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mord">/</span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">zl</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<ul>
+<li>将<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mi mathvariant="normal">g</mi></msub><mo>=</mo><mi>L</mi><mi mathvariant="normal">/</mi><msub><mi>G</mi><mrow><mi mathvariant="normal">z</mi><mi mathvariant="normal">l</mi></mrow></msub></mrow><annotation encoding="application/x-tex">n_{\mathrm{g}}=L / G_{\mathrm{zl}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight" style="margin-right:0.01389em;">g</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mord">/</span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">zl</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>代人<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>k</mi></msub><mo>=</mo><msub><mi>E</mi><mrow><mi>k</mi><mo separator="true">,</mo><mi>x</mi><mi>s</mi></mrow></msub></mrow><annotation encoding="application/x-tex">E_k=E_{k,xs}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>并设 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mi>P</mi></mrow><annotation encoding="application/x-tex">L=P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span>, 则得到减震器行程公式:</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>s</mi><mo>=</mo><mfrac><msubsup><mi>v</mi><mi>y</mi><mn>2</mn></msubsup><mrow><mn>2</mn><mi>g</mi><msub><mi>η</mi><mi>g</mi></msub></mrow></mfrac><mo>−</mo><mfrac><msub><mi>η</mi><mi mathvariant="normal">t</mi></msub><mi>η</mi></mfrac><msub><mi>s</mi><mi mathvariant="normal">t</mi></msub></mrow><annotation encoding="application/x-tex">s=\frac{v_y^2}{2 g \eta_g}-\frac{\eta_{\mathrm{t}}}{\eta} s_{\mathrm{t}}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.5593em;vertical-align:-0.9721em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5872em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">η</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.7731em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.453em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3831em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9721em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.988em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">η</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">η</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>计算的行程通常应增加 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>20</mn><mo>∼</mo><mn>25</mn><mrow><mtext> </mtext><mi mathvariant="normal">m</mi><mi mathvariant="normal">m</mi></mrow></mrow><annotation encoding="application/x-tex">20 \sim 25 \mathrm{~mm}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">20</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">25</span><span class="mord"><span class="mspace nobreak"> </span><span class="mord mathrm">mm</span></span></span></span></span>, 以考虑容差, 增加安全裕度。通常认为小行程是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>200</mn><mrow><mtext> </mtext><mi mathvariant="normal">m</mi><mi mathvariant="normal">m</mi></mrow></mrow><annotation encoding="application/x-tex">200 \mathrm{~mm}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">200</span><span class="mord"><span class="mspace nobreak"> </span><span class="mord mathrm">mm</span></span></span></span></span>, 而对大多数飞机来说,希望不小于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>250</mn><mo>∼</mo><mn>300</mn><mrow><mtext> </mtext><mi mathvariant="normal">m</mi><mi mathvariant="normal">m</mi></mrow></mrow><annotation encoding="application/x-tex">250 \sim 300 \mathrm{~mm}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">250</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">300</span><span class="mord"><span class="mspace nobreak"> </span><span class="mord mathrm">mm</span></span></span></span></span> 。</p>
+<h4 id="8-1-4起落装置其他部件介绍">8.1.4起落装置其他部件介绍</h4>
+<p><strong>机轮的选择：</strong></p>
+<p>轮胎的尺寸由它所承受的飞机重量确定，一般根据现有的轮胎标准来查取。轮胎选择是要找出能<u>承受计算的最大载荷的最小尺寸的轮胎</u>，对于前轮胎必须能承受总动载及最大静载。</p>
+<p>选择时：需要在原先载荷的基础上设置余量，一方面为了<u>后续增重留有储备</u>，一方面作为<u>计算的安全系数</u>，一方面<u>考虑机轮失效时的超载情况</u>。</p>
+<p><strong>刹车、轮毂和防滑装置：</strong></p>
+<p>轮胎嵌入轮毂，在轮毂内装上刹车装置和防滑装置就组成了机轮。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211051850668.png" alt="刹车装置" style="zoom:50%;">
+<p>飞机的刹车容量计算：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>E</mi><mo>=</mo><mi>C</mi><mi>m</mi><msup><mi>v</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">E=C m v^2
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">m</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi></mrow><annotation encoding="application/x-tex">E</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span></span> ——全机刹车装置吸收的总能量, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">J</mi><mo stretchy="false">(</mo></mrow><annotation encoding="application/x-tex">\mathrm{J}(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathrm">J</span><span class="mopen">(</span></span></span></span> 焦耳); ;<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mn>0.0368</mn></mrow><annotation encoding="application/x-tex">C=0.0368</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.0368</span></span></span></span> 对“前三点”或“自行车”式起落架飞机及所有直升机;<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mn>0.0299</mn></mrow><annotation encoding="application/x-tex">C=0.0299</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.0299</span></span></span></span> 对“后三点”式飞机;<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> ——所取承载状态下的飞机重量, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">k</mi><mi mathvariant="normal">g</mi></mrow><annotation encoding="application/x-tex">\mathrm{kg}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathrm" style="margin-right:0.01389em;">kg</span></span></span></span></span>;<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>——所取重量下, 发动机关闭后的飞机失速速度, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">k</mi><mi mathvariant="normal">m</mi></mrow><mi mathvariant="normal">/</mi><mi mathvariant="normal">h</mi></mrow><annotation encoding="application/x-tex">\mathrm{km} / \mathrm{h}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathrm">km</span></span><span class="mord">/</span><span class="mord mathrm">h</span></span></span></span> 。</p>
+<p>自动松刹装置的设置：考虑轮胎的使用工况，飞机地面停机的稳定性，滑行过程机组人员的舒适性。</p>
+<p>刹车热量问题：一是对预期的使用情况作热量分析，并按此设计刹车；二是给刹车安装冷却装置（风扇冷却系统，强迫对流换热；设置易融塞，提前释放胎压）。</p>
+<p><strong>前轮转弯机构：</strong></p>
+<p>飞机的转弯可以通过差动刹车或者操纵前起落架实现。前轮的转向时通过方向舵脚蹬（对于战斗机）或驾驶舱中的操纵盘或操纵杆（对于大飞机)进行操控。</p>
+<p>前轮转弯机构的构造有用于前轮转向小于或等于士60°的简单的推拉式前轮转向作动筒；在大于士60°时，可采用齿条式转向装置，旋转式作动筒和放大联动装置。</p>
+<p><strong>前轮转向机构的组成：</strong></p>
+<p>有动力的转弯系统组成元件由一个或两个转向作动筒（线性或转动的、液压或电动的），一个动力源，一个控制阀，一个起落架转向卡圈、控制阀和驾驶员操纵盘之间的伺服随动装置，驾驶员使用的驾驶盘、驾驶杆或方向舵脚蹬连杆所组成。</p>
+<p>**【减摆阻尼】**由于起落架扭转刚度不足、变形过大、稳定矩不适当以及机轮不平衡等因素，机轮会发生摆振（机轮绕其自定向轴摆动）。操纵转向的前轮对其特别敏感，应使用各种方法减弱这种振摆。</p>
+<p><strong>起落架的收、放：</strong></p>
+<p>起落架的收放位置需要考虑故障时的使用要求，减重需要，结构的连贯性。</p>
+<p>起落架的收放机构、舱门和支撑结构必须按设计着陆重量和襟翼在进场位置进行设计，并考虑摩擦、惯性力、刹车力矩以及空速达到设计要求的收上或放下时产生的空气载荷组合作用。</p>
+<h4 id="8-1-5起落装置的发展展望">8.1.5起落装置的发展展望</h4>
+<ul>
+<li>满足起降条件的前提下，实现重量的减轻是基本准则。从材料、结构、工艺入手，同时兼顾轻量化、可靠性、维护性、耐用性、滑跑冷却性、低滚动阻力。</li>
+<li>减震器将更能够适应起伏（不平缓）路面情况下的减震性能改善。</li>
+<li>综合了前轮转弯、方向舵及刹车操纵，以提供自动化滑行操纵性，特别在大侧风和光滑跑道时进行操作的先进刹车操纵系统也将会得到发展。</li>
+</ul>
+<h3 id="8-2水上飞机船体及浮简设计">8.2水上飞机船体及浮简设计</h3>
+<h4 id="8-2-1水上飞机船体的设计">8.2.1水上飞机船体的设计</h4>
+<table>
+<thead>
+<tr>
+<th>船体结构</th>
+<th>设计要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>船体底部</td>
+<td>少数小型水上飞机船体，采用V型底部，以减小水的冲击载荷。V型角度叫“底部升高角”，角度增加到30°~40°，可较好地劈开波浪，适宜为高速飞机配置</td>
+</tr>
+<tr>
+<td>船体长</td>
+<td>水线长度与“船体长度”的比值，对水动阻力与水面着水时的冲击有很大影响。</td>
+</tr>
+<tr>
+<td></td>
+<td>宽的船身由于具有较好的水上滑行能力，故水动阻力较低，但着水冲击较大。</td>
+</tr>
+<tr>
+<td>防溅条</td>
+<td>4.为减少浪花，可在船体下部边缘安装防溅条。防溅条的角度约在水平线以下30°。</td>
+</tr>
+<tr>
+<td>断阶</td>
+<td>断阶的布置可以防止后体吸附和垂直方向的不连续，断阶高度约为水线的5%，断阶约位于重心之后10°~20角。<br>在断阶之前约1.5倍船体宽度距离范围内船体的下部不应是曲线。这是为了减小纵向波动的趋势；而断阶之后，应向后翘起7°一9°。</td>
+</tr>
+</tbody>
+</table>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211051939960.png" alt="水上飞机的几何参数" style="zoom:50%;">
+<h4 id="8-2-2浮筒设计">8.2.2浮筒设计</h4>
+<p>水上飞机一般在其机翼下安装浮筒，以提供飞机在水面上的横向稳定性。浮筒的位置是当飞机侧向一边约1°时，浮简接触水面。<br>
+浮筒式的水上飞机的浮力，是由静水线以下船身淹没的体积乘以水的密度来决定的，飞机的重量由它的排水量支承。</p>
+<h3 id="8-3飞行操纵和控制系统设计">8.3飞行操纵和控制系统设计</h3>
+<h4 id="8-3-1概要及基本设计要求">8.3.1概要及基本设计要求</h4>
+<p><strong>概述：</strong></p>
+<p>飞行操纵和控制系统：接收指令，产生力或力矩，实现飞行状态规律改变和稳定控制。<br>
+随飞行速度的提高和飞机尺寸与重量的增大，操纵系统由早期的<u>钢索、拉杆</u>演变成<u>液压助力器</u>。<br>
+液压助力器首先被应用在<u>可逆助力操纵系统</u>，随后又演化出了<u>不可逆助力操作系统</u>（舵面气动载荷全部由助力器来克服）。<br>
+为解决高度和速度大范围变化引起驾驶技术的不一致，还设置了<u>力臂自动调节器</u>。</p>
+<p>由于飞行包线不断扩大，高空高速飞行阻尼明显变小而出现动不稳定，纵向和横侧向的短周期振荡严重影响了飞机的操纵性能。<br>
+<u>阻尼器</u>（采用速率反馈来提供操纵阻尼）——<u>过载及迎角反馈</u>（构成增稳系统）——来自<u>驾驶杆的电信号构成控制增稳系统</u>（既增加飞机的安定性，又提高了操纵反应能力）——全权限电传操纵系统（加入计算机控制）。</p>
+<p>飞行控制系统发展中，全面提高飞机性能与系统控制一体化是发展的趋势和方向。</p>
+<p><strong>飞机操纵系统的设计要求：</strong></p>
+<p>统一要求：应具有足够的强度和刚度并满足重量轻、制造简单、维修方便、生存性好。</p>
+<p>特别要求：</p>
+<ul>
+<li>操纵动作符合人类本能反应和习惯。</li>
+<li>纵向操作和横向操作独立、不干涉，即当操纵升降舵时副翼不动和当操纵副翼时升降舵不动。</li>
+<li>过载的大小要能够通过适宜的杆力和杆位移实现反馈。</li>
+<li>飞机纵、横、航向操纵杆的力要匹配。</li>
+<li>偏转操纵力应均匀增长，且力指向配平位置，具有自动回中趋势。</li>
+<li>杆力到舵面的操纵延迟要短，反应快、死区小、系统刚性好、灵敏度高。</li>
+</ul>
+<h4 id="8-3-2简单机械操纵系统">8.3.2简单机械操纵系统</h4>
+<p>飞机主操纵系统通常由两部分组成：一是由手操纵机构（<u>驾驶杆或驾驶盘</u>）和脚操纵机构(<u>脚蹬</u>)所组成的<u>中央操纵机构</u>；第二部分是由<u>拉杆</u>、<u>摇臂</u>、<u>钢索</u>、<u>滑轮</u>等所组成的<u>传动机构</u>（或称传动装置)。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211052056690.png" alt="中央操纵机构" style="zoom:40%;">
+<table>
+<thead>
+<tr>
+<th>操纵机构</th>
+<th>介绍</th>
+<th>图例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>手操纵机构</td>
+<td>杆式操纵机构比较简单，杆式适合飞行员一只手操纵驾驶杆而另一只手操纵油门手柄，多用于机动性较好而操纵力小（或有助力器)的飞机。<br>盘式构造较复杂，但可通过增大驾驶盘来减小副翼操纵力，多用于机动性要求较低的中型和大型飞机。</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211052105454.png" alt="image-20221105210520307" style="zoom: 67%;"></td>
+</tr>
+<tr>
+<td>脚操纵机构</td>
+<td>脚操纵机构根据转轴的布置分为立轴式和平轴式两种。<br>立轴式脚蹬安装在平行四边形机构上，脚蹬前后移动时无转动，构造简单、操纵方便，一般与杆式操纵配合使用。<br>平轴式摇臂支点固定在平放轴上，通过增大与脚蹬连接的摇臂来获得足够的力臂，脚蹬间距小，多与盘式手操纵机构组合。</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211052107054.png" alt="image-20221105210707911"></td>
+</tr>
+</tbody>
+</table>
+<p>简单机械操纵系统的传动机构通常分为软式、硬式和混合式三种。</p>
+<table>
+<thead>
+<tr>
+<th>传动机构</th>
+<th>介绍</th>
+<th>图例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>软式传动机构</td>
+<td>主要构件有钢索、滑轮、松紧螺套和钢索张力补偿器等。<br>软式操纵重量轻、构造简单、通过性好；<br>缺点是刚度小，钢索受拉易伸长，操纵灵敏性差。</td>
+<td></td>
+</tr>
+<tr>
+<td>硬式传动机构</td>
+<td>硬式传动机构主要有传动杆、摇臂和导向滑轮等。<br>硬式传动机构可以承受拉力和压力，刚度大，变形小，舵面不易引起振动，具有较好的操纵灵敏性；<br>缺点是构造复杂，重量大，而且不像钢索那样容易绕过飞机内部设备和装置。</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211052114963.png" alt="image-20221105211459770" style="zoom:50%;"></td>
+</tr>
+<tr>
+<td>混合式传动机构</td>
+<td>由软式和硬式传动机构混合组成，兼有硬式和软式传动的优缺点。</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211052117537.png" alt="QQ图片20221105211611" style="zoom:50%;"></td>
+</tr>
+</tbody>
+</table>
+<p>一般对于<u>舵面气动力较小</u>的<u>低速飞机</u>和<u>对机动性要求较低</u>的运输机，多采用<u>软式传动或混合式传动机构</u>。现代歼击机和<u>操纵灵敏度较高</u>的一些飞机，多采用<u>硬式传动机构</u>。</p>
+<h4 id="8-3-3助力机械操纵系统">8.3.3助力机械操纵系统</h4>
+<p>可逆助力操纵系统：气动载荷一部分由助力器克服，另一部分由<u>回力杆</u>传递至驾驶杆。通常用在亚声速飞机上，可以在不增加其他设备条件下，<u>使飞行员能真实地感觉到舵面铰链力矩的变化</u>。</p>
+<p>不可逆助力操纵系统：当超声速飞机飞行速度大于临界Ma数时，飞机的气动焦点随Ma数的增加而向后移动，使飞机<u>静稳定性增大</u>。为增大舵面的操纵效能，遂采用<u>全动平尾</u>。全动平尾的铰链力矩很大，以致无法选用合适的回力比，于是取消了回力杆，而成为“不可逆助力操纵系统”。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211052130974.png" alt="全动平尾助力操纵系统" style="zoom:40%;">
+<p><strong>以平尾操纵系统为例介绍不可逆操纵系统组成和工作原理：</strong></p>
+<table>
+<thead>
+<tr>
+<th>组成</th>
+<th>工作作用与原理介绍</th>
+<th>图示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>液压助力器</td>
+<td>通过操纵活塞控制油路通断，油压为尾翼运动提供动力。<br>助力器的静特性包括：最大输出力，空载时的最大输出速度和助力器的最大输出位移。</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211052135915.png" alt="液压助力器原理图" style="zoom:50%;"></td>
+</tr>
+<tr>
+<td>载荷机构</td>
+<td>与力臂调节器配合使用还能间接地感觉到舵面载荷的变化，从而改善杆力特性和飞机的操纵性。</td>
+<td></td>
+</tr>
+<tr>
+<td>调整片效应机构</td>
+<td>无力不可逆助力操纵系统中，操纵杆力由弹簧感觉器提供。调校机构可以卸除弹簧感觉器中的压缩位移，使飞行员可以松杆飞行。</td>
+<td></td>
+</tr>
+<tr>
+<td>力臂调节器</td>
+<td>力臂调节器用以改变驾驶杆到平尾的传动系数和到载荷机构的传动位置，保证全飞行范围内的操纵品质。<br>力臂调节器按飞行高度和表速自动调整杆-舵传动比及杆力对杆位移的变化梯度，借以补偿舵面效率随速压和高度变化所导致的单位过载杆力和杆位移的大范围变化。</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211052143206.png" alt="力臂调节器原工作原理" style="zoom:33%;"></td>
+</tr>
+<tr>
+<td>非线性机构</td>
+<td>它将系统的线性传动改变为非线性传动。<br>使副翼操纵既满足低空、大表速横向精确操纵要求，又能满足高空副翼效率降低时具有良好的横向操纵特性要求。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="8-3-4电传操纵系统">8.3.4电传操纵系统</h4>
+<p><strong>电传操纵系统的组成：</strong></p>
+<p>电传操纵系统分为<u>模拟式</u>和<u>数字式</u>两种。<br>
+数字式具有高度灵活性，容易实施复杂的控制律和与自动驾驶、火控、导航和推力矢量控制系统的交联。<br>
+为保证系统的安全，模拟式电传常用机械操纵系统为备份；而数字式电传常采用模拟式电传作备份。</p>
+<p>电传操纵系统除保留原机械操纵系统中的中央操纵机构（<u>驾驶杆及脚蹬</u>）、<u>载荷机构及调整片效应机构</u>（取消了机械拉杆、摇臂、力臂调节器）外，主要组成部件还有：</p>
+<table>
+<thead>
+<tr>
+<th>组成</th>
+<th>功能、作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>四余度杆力（或杆位移）传感器</td>
+<td>飞行员操纵飞机时通过它<u>给出三轴操纵指令</u></td>
+</tr>
+<tr>
+<td>四余度角速率陀螺传感器</td>
+<td>感受飞机的三轴角速率构成操纵指令的反馈，用于<u>改善飞机操纵稳定性</u></td>
+</tr>
+<tr>
+<td>四余度加速度计</td>
+<td>感受飞机法向和横、侧向加速度，用于<u>实现法向过载指令控制，并改善纵、横向操纵安定性</u></td>
+</tr>
+<tr>
+<td>迎角（侧滑角）传感器</td>
+<td>提供迎角（侧滑角）信号，用以实现<u>飞行边界限制、放宽静安定性补偿及改善操纵品质</u></td>
+</tr>
+<tr>
+<td>气压传感器</td>
+<td>为电传系统及大气数据系统提供动、静压信号，用以<u>调整电传系统参数，解算大气数据及飞行参数</u></td>
+</tr>
+<tr>
+<td>大气数据计算机</td>
+<td>为电传系统提供飞行速度、Ma数、高度信号，用来<u>系统调参和飞行仪表显示</u></td>
+</tr>
+<tr>
+<td>机载计算机</td>
+<td><u>接受驾驶指令</u>及飞<u>机运动反馈信息进行综合控制</u>，实现任务剪裁、自动调参、结构滤波、三轴解耦交联、故障监控、余度管理等</td>
+</tr>
+<tr>
+<td>状态显示器</td>
+<td><u>飞控系统状态显示及咨询指示</u></td>
+</tr>
+<tr>
+<td>飞行控制板</td>
+<td><u>飞行控制</u>、<u>自检测</u>、<u>配平</u>等</td>
+</tr>
+<tr>
+<td>平尾、副翼、方向舵舵机</td>
+<td>接受计算机输出的指令，驱动舵面偏转，形成三轴操纵力矩</td>
+</tr>
+<tr>
+<td>电源组件</td>
+<td>为全系统提供各部件所需用的各类交、直流电源</td>
+</tr>
+</tbody>
+</table>
+<p><strong>电传操纵系统工作原理：</strong></p>
+<p>电传操纵系统的基本特点是<u>飞行员不直接控制舵面</u>，而是<u>直接指令飞机的运动响应</u>，<u>舵面只是闭环控制系统里的中间变量</u>，这是与机械杆系操纵的本质区别所在。</p>
+<p>系统控制律由几种典型回路构成：</p>
+<ul>
+<li>电信号指令回路，将电传系统驾驶杆的运动通过四余度杆位移或杆力传感器变成电信号。</li>
+<li>前向回路，不仅起到了机械操纵系统力臂调节器的作用，而且对闭环系统的操纵性和稳定性的设计综合具有重要影响。</li>
+<li>反馈回路，电传系统的控制增稳功能是由前向回路和反馈通道构成的闭环回路来实现的。</li>
+</ul>
+<p><strong>纵向电传操纵系统的功能：</strong></p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>功能介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>控制增稳功能</td>
+<td>控制增稳是电传操纵的基本功能。<br>它是由指令回路（杆至闭环系统综合口）、前向回路和反馈回路构成。</td>
+</tr>
+<tr>
+<td>自动配平功能</td>
+<td>电传操纵系统提供了中性速度稳定性，即飞机在加、减速飞行时，飞行员无须操纵驾驶杆就可以保持飞机的水平直线飞行，这一功能称作自动配平功能。<br>它是用前向回路上的比例积分环节中的积分器实现的。</td>
+</tr>
+<tr>
+<td>飞行边界限制功能</td>
+<td>纵向运动重要的是迎角和法向过载，操纵指令过大、超过安全限度会发生失速、抖振，甚至超过强度限制而使飞机解体。<br>纵向电传飞行边界限制功能是由指令回路的过载限制器和反馈回路的迎角限制器完成的。<br>使飞行员放心大胆地操纵飞机，最大限度地发挥飞机的最大机动能力。</td>
+</tr>
+<tr>
+<td>放宽静安定性</td>
+<td>所谓放宽静安定性就是使重心后移，把飞机的静安定性设计得比正常值更小，甚至设计成静不安定的，其主要目的是降低配平阻力和尾翼结构重量，从而<u>提高飞机的机动性</u>。<br>重心后移放宽静安定性后，必须要<u>通过飞行控制系统对飞机进行增稳补偿</u>。<br>因为重心后移导致亚声速状态纵向静不安定，无法操纵；<br>超声速状态安定度的降低导致飞机自振频率下降，为改善操纵品质，也需要补偿。</td>
+</tr>
+</tbody>
+</table>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211052228629.png" alt="放宽静安定性气动布局比较" style="zoom:60%;">
+<p><strong>电传系统的余度技术：</strong></p>
+<p>余度技术提高了机械操纵系统的安全可靠性。所说余度技术就是采用多套相同的部件构成余度通道，按特定的余度管理方式参与系统工作，从而提高工作的可靠性。</p>
+<p>假定单轴系统，故障概率是$\lambda <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>。如果采用自监控余度管理方式，那么对于二余度系统，可使一个通道工作，另一通道备份，只有二个通道同时故障才能使系统失效，其失效概率为</mtext></mrow><annotation encoding="application/x-tex">。如果采用自监控余度管理方式，那么对于二余度系统，可使一个通道工作，另一通道备份，只有二个通道同时故障才能使系统失效，其失效概率为</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">。如果采用自监控余度管理方式，那么对于二余度系统，可使一个通道工作，另一通道备份，只有二个通道同时故障才能使系统失效，其失效概率为</span></span></span></span>\lambda ^2$。</p>
+<p>在相同的余度管理方式下，余度数目越多，系统失效概率就越小。然而余度数越多，部件数目也越多，出现故障的概率也就越大，任务可靠性就越差。</p>
+<p>余度管理主要包括两个方面，第一是信号选择，第二是故障监控与隔离。</p>
+<p><strong>电传操纵系统的发展方向：</strong></p>
+<ul>
+<li>一体化（电传操纵与火控、推力、导航系统交联）</li>
+<li>系统生存性（容错控制计算机分置微型电路片上，规格系列化），</li>
+<li>动力元件优化（研制电动静液舵机；高磁能稀土永磁性材料研制）</li>
+<li>解决电气隔离性和电磁干扰（以光导纤维取代线束电缆，开辟一个更新的光传操纵领域）</li>
+</ul>
+<h3 id="8-4液压系统设计">8.4液压系统设计</h3>
+<h4 id="8-4-1液压系统功用、组成及其要求">8.4.1液压系统功用、组成及其要求</h4>
+<p><strong>液压系统的作用：</strong></p>
+<p>液压系统有比功率（功率重量比）大、响应速度快、抗负载刚性大及易于控制等特点，成为飞机十分重要的功能系统。</p>
+<p>液压技术随着飞机结构升级和性能的提升也在不断发展。对于现代高性能飞机由于功用比较多、功率大、速度要快、刚性要好，所以几乎全部用液压系统来实现各项功能。</p>
+<p><strong>液压系统的组成：</strong></p>
+<p>一部分是<u>供压系统</u>，它是液压系统的核心，保证系统能源需求，也是地面试验、清洗系统时的接口，且具有压力显示和告警、系统保安等功能；<br>
+另一部分是<u>完成各种用途的功能子系统</u>，如起落架收放、减速板收放等。子系统按需分别设置有分配、换向、调压、调速、顺序动作、缓冲、节流、锁闭和优先分配等功能附件。</p>
+<p>通常由液压油箱、液压泵、液压油滤、安全阀、单向阀、压力指示装置、蓄压器等附件组成。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211060109472.png" alt="液压系统典型的供压系统原理图" style="zoom:50%;">
+<table>
+<thead>
+<tr>
+<th>组成附件</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>液压油箱</td>
+<td>供存贮液压油用，它的容积应适应工作过程中油液的变化。并且，采用隔离式液压油箱防止气体溶入油液，以提高系统刚性。</td>
+</tr>
+<tr>
+<td>液压泵</td>
+<td>将机械能转换为液压能源的装置。<br>为了保证泵的润滑和冷却，通常设置循环管路在泵运转中不断向运动副注入油液，改善润滑，降低磨耗，防止局部过热，并将此油液返回油箱，进行热交换。</td>
+</tr>
+<tr>
+<td>单向阀</td>
+<td>隔离地面设备工作时的液压，防止液压泵反转。</td>
+</tr>
+<tr>
+<td>液压油滤</td>
+<td>用以过滤液压泵运转中产生的磨屑。</td>
+</tr>
+<tr>
+<td>安全阀</td>
+<td>保证安全的措施，系统超过规定压力时，泄放油液使压力保持在一定范围</td>
+</tr>
+<tr>
+<td>蓄压器</td>
+<td>是一个蓄能装置，可以提高系统的瞬态响应能力</td>
+</tr>
+<tr>
+<td>导管</td>
+<td>回油导管通常用铝合金制造，压力导管用不锈钢或钛合金制造，柔性连接则用橡胶软管、氟塑料软管或转动接头。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>系统设计要求：</strong></p>
+<table>
+<thead>
+<tr>
+<th>设计要求</th>
+<th>具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>压力等级和温度型别的确定及对液压油的要求</td>
+<td>压力等级：研究结果表明减小液压系统附件和管路体积和减轻重量的较佳压力为.28~35MPa。<br>温度型别：主要是考虑油料、密封用橡胶、软管等的承受能力，以及所有的液压附件在规定的寿命期限内在该温度范围内能可靠地工作。<br>液压油：我国常用YH一10和YH一12两种航空液压油。（需要考虑阻燃性，粘度，使用温度）</td>
+</tr>
+<tr>
+<td>系统设计总则</td>
+<td>液压系统及其附件应设计成能在飞机结构允许的所有条件下正常工作。<br>同时，满足在发生任何两个导致丧失油液或压力的故障，不致于造成全部丧失飞行操纵能力。<br>飞机设计最终方案的确定：对余度技术、安全性及可靠性评估、维修准则测、战场生存力评估、经济性评估及风险分析等进行综合评审来最终选取方案。</td>
+</tr>
+<tr>
+<td>确定各功能子系统</td>
+<td>(1)主操纵面：平尾、副翼、方向航、前翼等；<br>(2)辅助操纵面：机翼前缘襟翼、后缘襟翼、缝翼、扰流片；<br>(3)通用系统：起落架收放、刹车、前轮转弯、减速板、减速伞、进气道调节等。<br>(4)专用系统：舰载机机翼折叠、着陆钩收放等。</td>
+</tr>
+<tr>
+<td>余度技术的应用</td>
+<td>为了提高系统的工作可靠性和生存力，现代飞机一般设置两套或三套完全独立的液压系统，大型客机甚至设置四套完全独立的液压系统。此外，有的飞机还设置应急能源。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="8-4-2系统设计">8.4.2系统设计</h4>
+<p><strong>系统分类</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>分类依据</th>
+<th>分类型别</th>
+<th>型别区分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>按照功能作用</td>
+<td>关键子系统、重要子系统和一般子系统</td>
+<td>关键子系统关系着飞行安全，应重点采取余度来保证。<br>重要子系统也关系着飞机安全，但只要不丧失功能其性能可以适当放宽。<br>一般子系统指出现故障后不产生关连故障殃及其他子系统或整个液压系统。</td>
+</tr>
+<tr>
+<td>按照功能性质</td>
+<td>飞行操纵（控制）系统和通用系统。</td>
+<td>飞行操纵液压系统是指驱动副翼、方向舵、升降舵或全动水平尾翼及组合功能操纵面（襟副翼、扰流片、鸭式飞机的前翼)等翼面操纵用的液压系统。<br>除了飞机主操纵面工作用子系统之外的其他正常工作的子系统。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>应急能源：</strong></p>
+<ul>
+<li>(1)直流电机驱动液压泵——受蓄电池限制，小功率、</li>
+<li>(2)交流电机驱动液压泵——根据交流发电机容量来确定</li>
+<li>(3)冲压空气涡轮驱动液压泵和应急发电机——受使用高度和速度限制，着陆减速时功率降低</li>
+<li>(4)辅助动力装置(APU)——它与小型涡轮喷气发动机相似，但作功主要不是用于推进而用于驱动</li>
+<li>(5)应急动力装置(EPU)——多用于应急情况下驱动发电机和液压泵，可以获得较大功率的应急能源</li>
+</ul>
+<p>不同的方案设计，如系统的余度设计、应急方案的选择、飞行操纵系统余度配置等情况，可以从<u>飞机的液压系统的原理方块图</u>中得到。</p>
+<h4 id="8-4-3液压系统的功率估算">8.4.3液压系统的功率估算</h4>
+<p>功率估算时应考虑飞行包线范围内所对应的工作状态（高度、速度、过载等）的影响、发动机相应转速（换算液压泵转速及其输出流量）、可能产生的子系统复合工作等。</p>
+<p><strong>对于液压执行机构的输出功率主要有下列形式：</strong></p>
+<ul>
+<li>(1)直线位移作动简其输出功率为：输出力×单位时间的位移</li>
+<li>(2)角位移作动器的输出功率为：输出力矩×角速度</li>
+<li>(3)对于液压马达，其输出功率为：输出扭矩×转速</li>
+<li>(4)对于飞行控制系统，每一作动器的输出功率应为：铰链力矩×舵面转动角速度</li>
+</ul>
+<h4 id="8-4-4在总体设计中提高生存力和改善维护性的一些措施与发展规划">8.4.4在总体设计中提高生存力和改善维护性的一些措施与发展规划</h4>
+<p><strong>措施：</strong></p>
+<ul>
+<li>两套或几套系统在机体上应予以分离布置。（防止以外损坏）</li>
+<li>蓄压器、冷气瓶及其他容器一旦被炮火击中或击伤不得爆炸。（应按照专用标准进行防爆测试）</li>
+<li>如有可能，应将发动机驱动液压泵和发电机等飞机附件的机匣安装在机体上。（消除发动机推力变化、振动、温差和安装误差导致的发动机与机体相对位移）</li>
+<li>座舱内不应装有液压系统导管，同时应设有遥控开关和远读压力表，有故障警告功能。</li>
+<li>经常分解的接头，应有明确的标识，保证正确地对接。</li>
+<li>附件逐步实现多功能和模块化，故障定位后可以快速更换。</li>
+<li>应急系统能源独立化</li>
+<li>系统间隔措施，隔火、隔热或者防止爆破伤害。</li>
+<li>减少系统污染，液压系统中的一些精密元件长期处于外来污染以及油液污染物的工作状态必然磨损出现污染颗粒积累，从而导致摩擦增加或配合元件间产生瞬时形变等，因此产生故障或降低工作可靠性。</li>
+</ul>
+<p><strong>发展规划：</strong></p>
+<ul>
+<li>(1)提高现有液压技术的可靠性、可维护性，自检测技术应用，应用新的工作原理发展新附件，附件的组合化等等方面的研究；</li>
+<li>(2)研究防火或抗燃液压油以及适配的密封材料和密封形式；</li>
+<li>(3)为了迎接21世纪高超声速旅客机的发展，国外还开展42MPa或56MPa高温、高压液压系统的预研。</li>
+</ul>
+<h3 id="8-5飞机供电系统设计">8.5飞机供电系统设计</h3>
+<h4 id="8-5-1供电系统总述、基本要求以及分类">8.5.1供电系统总述、基本要求以及分类</h4>
+<p><strong>功能</strong>：</p>
+<p>向飞机上所有用电设备（如飞行控制系统、火控系统、电子设备、电动油泵、照明、电动机构、生命保障设备等)提供电能，</p>
+<p>保证用电设备的正常工作和飞机任务的执行。</p>
+<p><strong>组成</strong>：</p>
+<p>飞机电气系统由供电系统和用电设备组成。</p>
+<p>供电系统指的是电能的产生、变换和输配电的一整套装置所组成的系统，它分为电源系统（又称为发电系统）和配电系统两大部分。</p>
+<p><strong>供电系统种类：</strong></p>
+<p>(1)额定电压为115/200V,额定频率为400Hz,中线接地（飞机壳体）的三相四线制交流供电系统。<br>
+(2)额定电压为28.5V,负线接地（飞机壳体）的直流供电系统。</p>
+<p><strong>用电设备分类：</strong></p>
+<p>根据对用电设备的要求，通常按线路电压降的大小把用电设备分成A（对电压敏感）、B（绝大部分用电设备属于）、C（允许更宽的稳态电压范围）三类</p>
+<h4 id="8-5-2飞机电气负载分析和电源容量确定">8.5.2飞机电气负载分析和电源容量确定</h4>
+<p>在飞机设计阶段初期，应对可能采用的用电设备进行电能要求的初步统计，并估算各类电能所需稳态功率要求，以便合理选择飞机主电源、二次电源、应急电源的容量。</p>
+<p><strong>飞机电气负载分析：</strong></p>
+<p>划分飞行任务阶段，进行机载用电设备统计并将二次电源的负载折算到主电源负载，最后绘制出电源负载曲线图。</p>
+<p>电源负载图是飞机电源容量确定的依据。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211251514143.png" alt="电源负载曲线图" style="zoom:40%;">
+<p><strong>主电源容量的选择：</strong></p>
+<p>主电源容量为发动机台数与单通道发电机额定容量的乘积。</p>
+<p>单通道发电机的容量：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mo>≥</mo><mfrac><mrow><mi>K</mi><msub><mi>P</mi><mrow><mi>M</mi><mi>A</mi><mi>X</mi></mrow></msub></mrow><mi>N</mi></mfrac></mrow><annotation encoding="application/x-tex">P\geq \frac{KP_{MAX}}{N}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">M</span><span class="mord mathnormal mtight">A</span><span class="mord mathnormal mtight" style="margin-right:0.07847em;">X</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>式中：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mrow><mi>M</mi><mi>A</mi><mi>X</mi></mrow></msub></mrow><annotation encoding="application/x-tex">P_{MAX}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">M</span><span class="mord mathnormal mtight">A</span><span class="mord mathnormal mtight" style="margin-right:0.07847em;">X</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>一一电源负载图中统计估算得到的最大功率(kW或kV·A);<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span>一全机主发动机台数；<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span>一容量裕度系数，一般取K=1.3-1.5。</p>
+<p><strong>应急电源容量要求与选择：</strong></p>
+<p>应急电源是主电源系统以外的独立电源系统，它的能源可来自冲压空气涡轮、辅助或应急动力装置。</p>
+<p>应急电源的容量应保证在所有发电机均遭受损坏的情况下，飞机能安全返航或就近着陆，该容量应大于由主电源供电的重要负载汇流条中所有负载总的连续稳态功率要求，而且至少能供电30min。</p>
+<h4 id="8-5-3飞机发电机的传动和冷却">8.5.3飞机发电机的传动和冷却</h4>
+<p><strong>飞机发电机的传动：</strong></p>
+<p>在协调发电机的传动要求时，首先要使发电机或恒速传动装置的输入转速范围和发动机附件机匣的输出转速围相协调，同时转向、悬挂力矩、传动花键、快卸卡箍及安装空间尺寸等都应满足要求。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211251535424.png" alt="飞机上的发动机及其恒转速传动装置" style="zoom:40%;">
+<p><strong>飞机发动机的冷却：</strong></p>
+<table>
+<thead>
+<tr>
+<th>冷却方式</th>
+<th>冷却原理</th>
+<th>评价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>气冷</td>
+<td>气冷发电机在飞行中将外部气流引入发电机内部，然后从电机出风口排至发动机舱内（也可直接排至机外）</td>
+<td>发动机的通风量与众多因素有关，在地面停机、滑行或者超音速飞行中使用需要额外考虑。<br>当选择冲压空气冷却发电机时，一定要按飞机使用包线（高度、速度使用范围）计算和验证能否可靠地把发电机产生的热量带走。</td>
+</tr>
+<tr>
+<td>油冷</td>
+<td>油冷发电机有循油和喷油两种：循油冷却是将冷却油引入发电机内部油路，借热交换带走电机的热量。喷油冷却是将油雾直接喷射到发电机绕组端部等发热部位，冷却效果显著提高。</td>
+<td>循油冷却：冷却介质与热源非直接接触，冷却效果不够理想<br>飞机上常用航空滑油或燃油作为恒速传动装置的工作介质和油冷发电机的冷却介质。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="8-5-4飞机电气系统安装及维修设计要求">8.5.4飞机电气系统安装及维修设计要求</h4>
+<ul>
+<li>发电机安装要稳定同时注重维修的方便性：</li>
+</ul>
+<p>发电机应使用快御环水平安装在作为驱动源的发动机附件传动机匣上。<br>
+或为了改善维修性亦可将发电机安装在飞机骨架上的附件传动装置上。</p>
+<ul>
+<li>合理减少馈电线的电压损失：</li>
+</ul>
+<p>电源系统的调节、控制、保护装置及中心配电装置应尽量布置在全机用电负载中心处的舱段。<br>
+外部电源插座及应急电源（蓄电池等）亦应尽量布置在全机用电负载中心处附近</p>
+<ul>
+<li>抑制电磁干扰、提高飞机系统可靠性的重要措施：合理选择布线的电缆通路</li>
+</ul>
+<p>两个独立电源的电缆应分开效设。电源电缆应与敏感电路电缆隔离，其间隔不应小于50mm，以减少不同电缆之间有害的耦合。</p>
+<ul>
+<li>蓄电池安装需要考虑维修性、安全性设计</li>
+</ul>
+<p>由于频繁的维护，每个蓄电池的布置和安装应便于快速检查与装御。<br>
+蓄电池安装位置的安排应考虑使排出的有害气体不损坏邻近的结构或重要设备。</p>
+<ul>
+<li>余度配置</li>
+</ul>
+<p>为使易损性减到最低，余度供电电缆和部件应分开布线与安装。</p>
+<ul>
+<li>外部插座选择的通用性、安装的安全性</li>
+</ul>
+<p>外部电源插座应尽量采用国际通用的，并安置在易接近且对人员危害最小的部位，不应布置在发动机进气道或尾喷口附近以及然油注入口或排泄口处。</p>
+<h3 id="8-6环控与救生">8.6环控与救生</h3>
+<h4 id="8-6-1飞机环境控制系统">8.6.1飞机环境控制系统</h4>
+<p><strong>概述：</strong></p>
+<p>环控系统提供增压、通风、冷却，以保证飞行员和电子设备的正常工作，是生命保障系统的重要组成部分。<br>
+战斗机上环控系统主要分为空气循环制冷系统和蒸发循环制冷系统。</p>
+<p>**主要功能：**①座舱冷却和增压；②风挡除雾、防冰和除雨；飞行员抗荷和通风服；电子设备冷却；雷达液体冷却；⑥电子设备增压；电子吊舱冷却和增压；燃油增压。</p>
+<p><strong>系统组成：</strong></p>
+<p>主要由引气子系统、制冷子系统、座舱通风增压子系统和电子设备通风子系统等组成</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211251714048.png" alt="飞机环境控制系统" style="zoom: 33%;">
+<p><strong>系统性能要求：</strong></p>
+<ul>
+<li>满足座舱和电子设备通风冷却增压要求</li>
+<li>满足风挡和舱盖的防冰、除雨和除雾要求</li>
+<li>满足飞行员抗荷和通风服的要求（提供具有适当压力和温度的空气）</li>
+<li>系统中空气温度、压力、流量以及冷却效果等参数应具有自动控制和调节能力</li>
+<li>座舱内应有引气温度和压力座舱和电子设备舱供气温度有显示和报警</li>
+<li>系统应有冲压空气应急通风功能</li>
+</ul>
+<p>这些性能要求大致可以归纳为对温度、压力、故障检测、综合控制与显示、安全性。</p>
+<p><strong>系统与附件的安装及布置：</strong></p>
+<ul>
+<li>制冷附件集中在一起应安装在一个隔舱内，便于维护和检测。</li>
+<li>引气系统的导管和附件温度较高，沿引气导管应安装泄漏探测或采用屏蔽等措施，以便保证邻近系统附件的安全。</li>
+<li>系统导管安装应与飞机结构有一定的间隙，一般与固定结构间隙不小于3m，与活动机构间隙不小于10mm。</li>
+<li>导管和附件与飞机结构还应有防止电磁干扰的搭接等。</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211251729803.png" alt="F一18环境控制系统布置图" style="zoom: 33%;">
+<h4 id="8-6-2应急救生设备">8.6.2应急救生设备</h4>
+<p><strong>旅客机的救生设备：</strong></p>
+<p>旅客机发生应急迫降事故时，应考虑如何<u>最大限度地减少乘员伤亡并提供有效的拯救乘员生命的救生设备</u>。</p>
+<table>
+<thead>
+<tr>
+<th>设备</th>
+<th>设置要求</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>客舱和座椅</td>
+<td>应当保证结构的完整性，客舱和座椅应具有足够的强度和刚度。<br>同时考虑减震，客舱结构和设备表面应采用有减振作用的软性材料进行装饰。</td>
+<td></td>
+</tr>
+<tr>
+<td>座椅安全带</td>
+<td>固定乘客及机组人员时能够承受足够冲击载荷</td>
+<td></td>
+</tr>
+<tr>
+<td>应急舱门</td>
+<td>应保证旅客和机组人员在1.5n时间内，全部撤离飞机。<br>保证舱门和门框足够的强度和刚度，不至受击损坏或变形影响使用<br>水上迫降时，保证紧急出口高于吃水线</td>
+<td></td>
+</tr>
+<tr>
+<td>应急滑梯</td>
+<td>在不位于机翼区域内的应急出口备有应急充气滑梯。<br>滑梯通常用合成橡胶或涂胶（氨基甲酸乙酯）尼龙布制成。<br>对于尺寸较大的出口，充气滑梯应可以同时并行的疏散两行旅客。<br>滑梯的充气应在7-9s内完成</td>
+<td></td>
+</tr>
+<tr>
+<td>充气救生背心</td>
+<td>救生背心应产生足够的浮力，以保证落水者头部高出水面<br>能产生足够的力矩，以保持良好的稳定性。</td>
+<td></td>
+</tr>
+<tr>
+<td>滑梯-救生筏</td>
+<td>应急着水后，疏散旅客的充气滑梯可以作为漂浮救生设备<br>配备有：筏篷、浮锚、修理用具、信号发生器，应急定位发射器等。</td>
+<td></td>
+</tr>
+<tr>
+<td>救生船</td>
+<td>在没有滑梯一救生筏的客机上，水上漂浮设备主要是救生船。<br>平时，救生船紧密包装，收藏在客舱出口顶部的隔舱里。</td>
+<td></td>
+</tr>
+<tr>
+<td>应急氧气设备</td>
+<td>保证飞机从高空下降到呼吸大气高度时间内乘员的氧气供应。<br>应急氧气设备由应急氧源和氧气面罩组成。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>高速机动飞机的救生设备：</strong></p>
+<p>应急救生设备通常分为下述三个分系统：弹射通道清理系统（即座舱盖应急抛放系统）、弹射座椅和应急氧气系统。</p>
+<p><strong>弹射通道清理系统：</strong></p>
+<ul>
+<li>弹射通道</li>
+</ul>
+<p>座椅弹离飞机座舱时所经过的轨迹区域称为弹射通道。座舱布局时，必须保证弹射通道的畅通无阻。座椅应急离机过程中，不应发生与飞机结构或设备的干涉。</p>
+<ul>
+<li>座舱盖抛放系统</li>
+</ul>
+<p>飞行时，活动座舱盖通过分布在机身与座舱盖分合面间的几个锁锁闭在机身上，形成约束并用来传递作用在座舱盖上的气动力载荷和座舱增压载荷。应急离机时，瞬时开锁，解除约束，释放座舱盖。</p>
+<ul>
+<li>穿盖弹射</li>
+</ul>
+<p>应急时，不抛放座舱盖，座椅直接穿破座舱盖透明区离开飞机的一种弹射方式。由于穿盖弹射赢得了不少宝贵的救生时间（约为0.3s),提高了救生成功率，从而使<u>穿盖弹射成为了新一代飞机弹射救生的主方案</u>。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211252031616.png" alt="破碎器的结构简图" style="zoom:33%;">
+<p><strong>弹射座椅：</strong></p>
+<p>弹射座椅是现代高速机动飞机的<u>主要救生设备</u>。</p>
+<p>弹射座椅通常由骨架、动力装置、约束装置、弹射操纵装置、开伞和人~椅分离装置、稳定装置、人体防护装置及特种救生包等组成。</p>
+<ul>
+<li>骨架：</li>
+</ul>
+<p>由纵、横构件组形成座椅的基本构型和受力骨架，并作为座椅附件的安装基体。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211252033890.png" alt="典型座椅结构简图" style="zoom: 40%;">
+<ul>
+<li>复合动力装置：</li>
+</ul>
+<p>由弹射筒（一级动力）和座椅火箭包（二级动力装置）组成座椅的复合动力装置，是座椅弹离飞机并上升至所需轨迹高度的动力源。</p>
+<ul>
+<li>约束装置：</li>
+</ul>
+<p>约束装置用来将飞行员强制地固定在座椅上，以保证飞行员正确的弹射姿态，防止因过载和速压作用对脊椎及身体其他部位造成伤害。<br>
+约束装置包括：肩带拉紧机构、腰带拉紧机构、限腿机构及挡臂器。</p>
+<ul>
+<li>椅盆升降机构：</li>
+</ul>
+<p>适应不同坐高宇航员的视界需要，椅盆升降装置可以调节座椅高低。<br>
+机构由直流电机、减速传动机构、行程控制盒和控制开关等组成。</p>
+<ul>
+<li>弹射操纵装置：</li>
+</ul>
+<p>接受弹射信号后，按弹射程序分别向约束装置的启动机构、座舱盖应急抛放系统的启动装置、等输出相应的机械或电气信号。</p>
+<ul>
+<li>稳定装置：</li>
+</ul>
+<p>由稳定-减速伞来完成。<br>
+当座椅启动后，稳定伞被释放，其在气流中产生的力矩将座椅从可能的旋转运动中稳定到坐姿或仰卧姿态以减小局部过载，并迅速将座椅减速到救生伞允许展开的速度，</p>
+<ul>
+<li>开伞和人一椅分离装置：</li>
+</ul>
+<p>当座椅达到允许救生伞打开和飞行员脱离座椅的高度和速度时，救生伞从伞箱中拉出并迅速展开。<br>
+要控制开伞时的最大动载，使其在飞行员的耐受极限内。</p>
+<ul>
+<li>气流防护装置：</li>
+</ul>
+<p>减少高速气流吹袭对飞行员人体的伤害<br>
+如胸腹部导流板。当飞机速度大于800k/h时，导流板展开，保护飞行员身体免受高速气流吹袭的伤害。</p>
+<ul>
+<li>特种救生包：</li>
+</ul>
+<p>一些生存和营救物品。根据作战任务和飞行地域的不同，分别配备：海上、陆地、寒区及沙漠救生物品。</p>
+<p><strong>弹射救生的一般过程：</strong></p>
+<table>
+<thead>
+<tr>
+<th>过程</th>
+<th>系统动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>拉动座椅弹射手柄，由中央操纵机构向座椅各装置按程序输出机械和电气信号：</td>
+<td>向约束装置输出启动的机械和电气信号；<br>向座舱盖应急抛放系统输出机械和电气信号；<br>向保护盔面罩电爆管输出电信号；<br>飞机飞行速度小于800k/h,经压力继电器向导流板输送电信号；<br>约束装置工作，拉紧肩带，拉紧腰带，挡臂器转动，抬腿器工作限腿带拉紧；<br>抛放座舱盖，解除座椅一座舱盖联锁。</td>
+</tr>
+<tr>
+<td>座椅沿导轨运动。联锁解除，中央操纵机构的电信号和机械信号使第一级动力装置工作，座椅沿导轨运动。</td>
+<td>座椅与机上电路的接头脱开；<br>自动开伞器和半自动开伞器接通；<br>氧气断接器下块分离，应急氧气系统开始向飞行员供氧；<br>稳定装置弹射机构接通；<br>弹射筒内、外简分离；<br>二级动力点火机构接通，座椅沿导轨滑出座舱。</td>
+</tr>
+<tr>
+<td>沿轨迹飞行</td>
+<td>继续向飞行员供氧；<br>释放稳定-减速伞；<br>自动开伞器和半自动开伞器工作。</td>
+</tr>
+<tr>
+<td>开伞和人-椅分离</td>
+<td>开伞机构接通，头靠被抛离座椅；<br>切断肩带（或释放肩带锁）；<br>切断腰带和限腿带（或腰带锁释放），限臂器复位，人-椅分离；<br>救生包随飞行员从椅盆中拉出，切断救生包捆绳，救生物品随身携带，飞行员乘伞稳定下降。</td>
+</tr>
+</tbody>
+</table>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211252053410.png" alt="**弹射救生的一般过程" style="zoom:40%;">
+<p><strong>救生装置的发展展望：</strong></p>
+<p>采用先进的<u>微机处理</u>和<u>控制技术</u>以及<u>火箭矢量喷管技术</u>，使座椅具有读出自身飞行速度、高度、俯仰角、滚转角等运动参数并自动调节火箭喷管方向和推力大小的能力，将座椅弹射的不利姿态变成有利姿态。</p>
+<h2 id="第九章-航电系统设计">第九章 航电系统设计</h2>
+<h3 id="9-1通信、导航、识别系统设计">9.1通信、导航、识别系统设计</h3>
+<h4 id="9-1-1概述">9.1.1概述</h4>
+<p>概述：</p>
+<p>通信、导航、识别系统的主要使命是航行保障，其基本功能为保证飞机的话音和数据通信；完成自主导航和无线电导航、着陆，空中编队集结；信息识别和敌我识别任务。</p>
+<p>研制成功并已获得应用的典型系统有：联合战术信息分布系统(JTDS)、全球卫星定位系统(GPS/GLONASS)、地形辅助导航系统(TAN)、组合导航系统等等。</p>
+<h4 id="9-1-2系统组成">9.1.2系统组成</h4>
+<p><strong>通信系统：</strong></p>
+<ul>
+<li>短波电台</li>
+</ul>
+<p>被用于超视距、远距离通信，其通信距离一般在1000km以上。设备效果与所处经纬度以及天气变化有关，可靠性与稳定性差。短波自适应通信系统是其替代。</p>
+<ul>
+<li>超短波电台</li>
+</ul>
+<p>是各型飞机必备的一种机载电台，其通信距离在视距范围内(10000高度，作用距离为350km)。<br>
+该电台与保密机配合可进行保密通信，与救生接收机配合可进行航空救生寻找，与机载定向器配合可进行自动定向。</p>
+<ul>
+<li>战术数据通信设备</li>
+</ul>
+<p>用于完成多方位战术数据通信，既可形成空中作战态势，又可实现地面指挥中心对飞机的作战指挥引导。</p>
+<ul>
+<li>机载保密机</li>
+</ul>
+<p>保密机是机载电台话音数字保密终端设备，它与话音电台配套使用，完成话音数字加密通信。</p>
+<ul>
+<li>音频信号控制器</li>
+</ul>
+<p>该设备是实现人机接口的一种必备的保障手段。用于对机载各设备产生的各种音响信号、话音信号、告警信号等进行综合控制和处理。</p>
+<p><strong>惯性导航系统(INS)：</strong></p>
+<p>自主式、全天候、高精度的导航系统</p>
+<p>通过测量飞机相对惯性空间的角速度或角位移和加速度，经计算后获得飞机的速度、位置、状态等导航数据。</p>
+<p>【优点】惯性导航系统不受外部干扰、隐蔽性好，并且其定位精度较高</p>
+<p>【缺点】是误差随系统工作时间的增加而积累，因此需要外部设备对系统进行校正。</p>
+<p><strong>无线电导航系统：</strong></p>
+<table>
+<thead>
+<tr>
+<th>系统</th>
+<th>系统介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无线电罗盘(MW一ADF测向仪)</td>
+<td>机载无线电罗盘与地面台共同组成无线电信标系统，既可用来测向，也可用来导航。</td>
+</tr>
+<tr>
+<td>塔康(TACAN)</td>
+<td>机载塔康设备与地面台共同组成塔康极坐标定位系统，是国际通用导航设备</td>
+</tr>
+<tr>
+<td>雷达高度表</td>
+<td>雷达高度表可实时测量飞机距地表面的真实高度。输出所测高度值、高度变化率及安全高度告警信号。</td>
+</tr>
+<tr>
+<td>信标接收机</td>
+<td>是飞机的仪表着陆设备之一。给飞行员提供此刻飞机至跑道端点的水平距离。</td>
+</tr>
+<tr>
+<td>航管应答机</td>
+<td>主要用于空中交通管制，它与地面雷达协同工作，完成空中调度任务，以保障飞机安全飞行和着陆。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>着陆系统：</strong></p>
+<p>目前保障飞机着陆的系统主要有：双信标着陆系统、地面指挥引进系统、仪表着陆系统和微波着陆系统。</p>
+<table>
+<thead>
+<tr>
+<th>着陆系统</th>
+<th>系统介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>双信标着陆系统</td>
+<td>通过无线电罗盘对准跑道（航向0°），当信标接收机接收到地面指点信标台信号时，飞行员读出此刻的飞行高度，以判断是否处于预定的下滑道。</td>
+</tr>
+<tr>
+<td>地面指挥引进系统</td>
+<td>利用机场雷达测量下滑中飞机的位置参数，判断着陆飞机的实际位置是否与预定的下滑道吻合。</td>
+</tr>
+<tr>
+<td>微波着陆系统</td>
+<td>电机载设备通过接收并测量两种波束往复扫描的时间间隔，从而得出下滑中飞机相对于跑道的方位偏差以及相对于下滑道的仰角偏差；距跑道终点的距离则由精密测距器提供。<br>引导精度高、可用性和完好性好，飞行员可主动选择，易于达到高等级着陆标准。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>识别系统：</strong></p>
+<p>当本机雷达发现目标时，触发询问机发出预定的询问码，倘若目标机回答出符合规定的应答码，则为友机；反之则视为敌机。</p>
+<p><strong>近期装备飞机的新系统简介：</strong></p>
+<table>
+<thead>
+<tr>
+<th>系统</th>
+<th>系统介绍</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全球卫星定位系统(GPS/GLONASS)</td>
+<td>一种空基导航系统。<br>它具有全球覆盖、全时间、连续、高精度、用户不发射信号及精度不受地理区域的影响等优点</td>
+<td></td>
+</tr>
+<tr>
+<td>地形辅助导航系统</td>
+<td>具有高度自主性、保密性、抗干扰、精确性等诸多优点。<br> 但该系统提供的水平位置和高度信息，其定位精度可达10左右。<br>此外它还具有地形跟踪、贴地告警、威助回避、目标截获、精确武器投放等。</td>
+<td></td>
+</tr>
+<tr>
+<td>联合战术信息分布系统</td>
+<td>联合战术信息分布系统是为克服分立系统生存能力差、容量和覆盖范围有限、数据不及时、不能产生敌我和中立方相互间的位置信息和识别数据信息等缺陷而研制的一种新型的综合系统。</td>
+<td></td>
+</tr>
+<tr>
+<td>组合导航系统</td>
+<td><u>依靠无线电导航对惯性导航积累误差的校正</u>，把无线电导航长期精度高与惯性导航短期精度高的优点相结合，从而克服无线电导航易受干扰、易被遮挡、惯性导航误差随时间积累的缺点，使得整个系统导航精度高，安全可靠。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211252154555.png" alt="设备的总体布局示意图" style="zoom: 50%;">
+<p><strong>系统与外部接口：</strong></p>
+<p>主要分为：人机接口，火控、武器系统接口以及飞控系统接口。</p>
+<p>火控、武器系统接口：为武器系统提供高精度的飞机位置及动态数据、目标位置数据，供火控解算、武器投放使用。</p>
+<p>飞控系统接口：向飞控系统提供各种导航信息及低高度拉起、障碍告警信息，以及着陆引导信息。</p>
+<h4 id="9-1-3系统设计">9.1.3系统设计</h4>
+<p><strong>系统设计原则：</strong></p>
+<p>首先，符合国家体制要求；再者，依据不同的飞机种类、不同的作战对象和用途，满足飞机战术技术要求。</p>
+<p><strong>系统方案设计：</strong></p>
+<ul>
+<li>确定各功能子系统</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>飞机作战环境</th>
+<th>系统设计要点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>缺少地面设施的边远地区、沙漠、海上飞行</td>
+<td>其通信、导航、识别系统必须要有覆盖较大作用范围的能力。<br>通信系统要有远距通信、中继通信功能；<br>导航系统要采用组合导航系统，兼顾长距离与精确性</td>
+</tr>
+<tr>
+<td>低空、超低空突防的飞机</td>
+<td>必须要有地形回避、障碍告警能力。<br>因此，必须装备地形辅助导航或增挂导航吊舱。</td>
+</tr>
+<tr>
+<td>空中预警机、指挥机</td>
+<td>在较大作用范围内，对多个目标进行指挥、识别等，<br>强有力的通信、导航、识别系统支持，联合战术信息分布系统(JTDS)。</td>
+</tr>
+<tr>
+<td>歼击机</td>
+<td>直接对空中或地面目标实施攻击，<br>保密、抗干扰、大容量数据和话音通信系统以及高准确度的导航定位和识别系统</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>方案设计中的诸要素</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>设计要素</th>
+<th>具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>余度设计</td>
+<td>通信系统，导航系统，着陆系统，识别系统均存在余度设计</td>
+</tr>
+<tr>
+<td>自检测设计</td>
+<td>加电自检测、周期自检测、操作员启动自检测三级自检测功能</td>
+</tr>
+<tr>
+<td>电磁兼容性设计</td>
+<td>主要从空间分隔、时间分隔、静电放电器、电搭接几个方面进行</td>
+</tr>
+<tr>
+<td>可测试性要求</td>
+<td>要求系统要有良好的信息可测试性，并具有信息重现功能，以便于查找和分析故障原因。</td>
+</tr>
+<tr>
+<td>软件设计要求</td>
+<td>软件设计要求系统内各设备的软件设计应符合所指定的军用软件文档编写要求。</td>
+</tr>
+<tr>
+<td>可靠性、维修性设计</td>
+<td>各设备设计时要进行可靠性预计、评估，产品交付前要进行可靠性鉴定试验</td>
+</tr>
+<tr>
+<td>重量设计</td>
+<td>重量指标被严格控制在系统设计过程中，需要从多方面进行减重量设计。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>电磁兼容性设计包括：</strong></p>
+<ul>
+<li>
+<p>空间分隔：包括设备布局、天线选位、电缆数设及屏蔽等。空间分隔要求大功率辐射设备要尽量远离敏感设备。</p>
+</li>
+<li>
+<p>时间分隔：对同频段或相邻频段工作的设备采用相互闭锁措施，使其<u>形成分时工作方式，防让相互干扰</u>。</p>
+</li>
+<li>
+<p>静电放电器：为了释放静电荷，从而使飞机与周围环境的静电场始终保持很低的电位差，以<u>消除飞机的沉积静电干扰</u>。</p>
+</li>
+<li>
+<p>电搭接：是机载设备、附件与机体之间的一种专门的电连接，以保证它们之间<u>形成低电阻的、始终可靠的电接触。</u></p>
+</li>
+</ul>
+<p><strong>系统布局与安装设计：</strong></p>
+<ul>
+<li>全机天线布局要根据各设备的工作方式和电性能要求进行；</li>
+<li>天线选位应满足各天线间的隔离度要求；</li>
+<li>天线安装位置应尽量避免机身遮挡。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>天线</th>
+<th>布局特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>短波电台天线</td>
+<td>安装在立尾前缘</td>
+</tr>
+<tr>
+<td>超短波电台天线</td>
+<td>安装于飞机上空间较开阔的位置（如背鳍、立尾）</td>
+</tr>
+<tr>
+<td>罗盘</td>
+<td>环天线安装于机身前部，垂直天线在机身后部<br>且按定向性能要求均安装于飞机对称轴线上。</td>
+</tr>
+<tr>
+<td>定向、定位、着陆设备的天线</td>
+<td>通常要求天线安装于飞机对称轴线上，</td>
+</tr>
+<tr>
+<td>高度表的发射与接收天线</td>
+<td>其隔离度要求不小于85dB,两个天线安装于同一个水平基准面，安装倾斜角不大于5°，<br>在满足隔离度要求的情况下，两个天线应尽量靠近。</td>
+</tr>
+<tr>
+<td>敌我识别系统</td>
+<td>多个天线，安装位置要在前机身、机翼、立尾合理布置。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>环境适应性设计：</strong></p>
+<p>考虑大功率消耗的设备需要注意散热冷却通风的要求<br>
+安装设计需要考虑受过载冲击和振动</p>
+<p><strong>设备的布局和布线：</strong></p>
+<p>减小相互干扰，满足电磁兼容要求，接受与传输线路需要尽可能短，减少信号传输损耗，满足收发功率要求和灵敏度要求。</p>
+<h4 id="9-1-4系统发展方向">9.1.4系统发展方向</h4>
+<p>仍以分立设备为基础，逐步向多功能综合系统发展。</p>
+<p>系统应具有<u>低截获概率，实时、大容量的信息发布</u>，<u>肯定而明确的识别和定位及抗干扰能力</u>，<br>
+导航要尽量实现<u>全球覆盖、用户无源，在统一坐标中要有稳定而精确的定位能力</u>等，以达到对己方战斗力快捷地指挥调动能力。</p>
+<h3 id="9-2火力控制系统">9.2火力控制系统</h3>
+<h4 id="9-2-1概述">9.2.1概述</h4>
+<p><strong>火控系统的任务：</strong></p>
+<p>火控系统的任务是解决空战过程中作战飞机发/投射武器时，对目标实施瞄准和攻击方式的确定；也就是将作战飞机引导到能正确发投射武器的位置，从而达到摧毁目标的目的。</p>
+<p><strong>机载火控系统的组成及工作原理：</strong></p>
+<table>
+<thead>
+<tr>
+<th>组成模块</th>
+<th>具体装置</th>
+<th>工作作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目标参数测量装置</td>
+<td>光学测距器、雷达、红外和激光探测装置</td>
+<td>探测、搜索目标，搜索到目标后进一步识别和跟踪目标，测得目标的位置和运动参数。</td>
+</tr>
+<tr>
+<td>载机参数测量装置</td>
+<td>大气数据计算机、惯性测量（位置、速度、姿态和航向等）装置</td>
+<td>测得载机飞行条件和运动参数</td>
+</tr>
+<tr>
+<td>机载火控计算机</td>
+<td>计算机</td>
+<td>综合目标、载机参数连同装定的武器弹道参数，经机载火控计算机处理，并计算出瞄准修正量信息送给瞄准显示装置及武器发射、投放控制装置或自动驾驶仪等</td>
+</tr>
+<tr>
+<td>瞄准显示装置</td>
+<td>平视显示器、多功能显示器及头盔瞄准具</td>
+<td></td>
+</tr>
+<tr>
+<td>瞄准控制装置</td>
+<td></td>
+<td>完成不同方式瞄准所需的操纵部件</td>
+</tr>
+</tbody>
+</table>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211261922165.png" alt="机载火控系统的组成框图" style="zoom: 45%;">
+<h4 id="9-2-2火控系统中的主要设备和制导武器">9.2.2火控系统中的主要设备和制导武器</h4>
+<p>当代的火控系统主要包括：脉冲多普勒雷达(PD)、任务计算机(MC)、大气数据计算机(ADC)、惯导系统(INS)、平视显示器(HUD)、多功能显示器(MFD)、外挂管理系统(SMS)等。</p>
+<table>
+<thead>
+<tr>
+<th>设备</th>
+<th>设备介绍</th>
+<th>经典类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>机载火控雷达</td>
+<td>根据多普勒效应原理制成的雷达，<br>利用运动目标（如飞机）相对于地物表面在速度上的差异，以及由此产生的回波多普勒频率的不同，达到在频域上分离鉴别目标回波和地物杂波，从而实现对低空或下视目标的检测能力。</td>
+<td>具有下视能力的机载脉冲多普勒(PD)火控雷达<br>了新一代机载雷达：相控阵雷达</td>
+</tr>
+<tr>
+<td>平视显示仪（平显）</td>
+<td>平显的主要功用是作为攻击瞄准具使用，<br>显示各种攻击状态下的信息符号，包括操纵符号、目标、目标距离、导弹最大允许发射距离、最小允许发射距离、接近速度、武器类型等；也是导航、起飞和进场着陆的显示器。</td>
+<td>F-16 C/D广角平视仪（英国）<br>LANTIRN全息平视仪（英国）</td>
+</tr>
+<tr>
+<td>多功能显示仪</td>
+<td>多功能显示仪是重要的传感器显示器，<br>向飞行员随时显示综合信息，如雷达数据、机载飞行数据和姿态以及其他传感器的信息和战术信息</td>
+<td>2100系列彩色显示器（英国）<br>F—16C/D多功能显示仪（美国）</td>
+</tr>
+<tr>
+<td>机载火力控制计算机</td>
+<td>引导本机截击目标；跟踪目标，确定优先攻击的目标；火力控制计算和确定发射包线；导航和自检测等。</td>
+<td>AN/AYK-14中央任务计算机（美国）<br>Sagem 2084中央计算机（法国）</td>
+</tr>
+<tr>
+<td>惯性导航系统（惯导）</td>
+<td>惯导具有完全自主的特点，给飞行员提供完备的导航信息，还可向火控系统、飞控系统提供所需的主要参数。</td>
+<td>LN-39（美国）</td>
+</tr>
+<tr>
+<td>大气数据系统</td>
+<td>将传感器测得的总压、静压、总温、迎角等原始数据进行误差补偿后，计算并输出气压高度、真空速、马赫数、升降速度等大气数据信息，供导航、飞控、火控及座舱显示等系统使用。</td>
+<td>80型DADC（法国）</td>
+</tr>
+<tr>
+<td>空对空导弹</td>
+<td>当代的空对空导弹按其制导方式可分为被动寻的（红外型导弹）、<br>半主动（连续波制导）和<br>主动寻的（捷联惯导加指令修正制导和主动雷达末制导的复合制导体制）三类。</td>
+<td>被动：R550I/Ⅱ（法国）<br>半主动：AIM-7F/M（美国）<br>主动：AIM-120A（美国）</td>
+</tr>
+<tr>
+<td>空对地制导武器</td>
+<td>按用途和作用原理可分为战术空对地导弹、反辐射导弹和制导炸弹三类。<br>空对地导弹最初采用目视瞄准和跟踪，无线电指令制导，后来演变成半自动瞄准、跟踪的无线电指令制导，半主动激光制导或电视制导。</td>
+<td>AGM-137（美国）<br>AGM-154（美国）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="9-2-3几种基本的攻击方式">9.2.3几种基本的攻击方式</h4>
+<ul>
+<li>空对空攻击</li>
+</ul>
+<p>前置跟踪光学瞄准LCOS(机炮、火箭)；热线CCIL(机炮用)；空对空拦射攻击（导弹用）；空对空红外导弹离轴发射</p>
+<ul>
+<li>空对面攻击</li>
+</ul>
+<p>连续计算命中点方式CCIP和DCCIP（人工目视投射方法）；连续计算投放点方式CCRP（自动投弹）</p>
+<h4 id="9-2-4火力控制系统的设计与展望">9.2.4火力控制系统的设计与展望</h4>
+<p><strong>系统结构设计步骤：</strong></p>
+<p>在<u>战术技术指标确定</u>和<u>技术经济可行性论证</u>、<u>系统方案论证</u>之后，火控系统设计首先应根据飞机的战术技术要求<u>确定系统的顶层方案</u>，然后根据辅机研制方案提供的产品规格，确定主要组成部件。</p>
+<p><strong>顶层设计：</strong></p>
+<p>系统顶层设计的目标是建立一系列的高层技术设计规范，确定分系统设备间及与其他系统间的详细界面，使分系统设备具备独立设计、研制或采购的条件。</p>
+<p><strong>发展趋势：</strong></p>
+<p>航空电子系统的综合化、模块化、标准化和智能化的发展方向将直接影响着火控系统的发展。</p>
+<table>
+<thead>
+<tr>
+<th>设备</th>
+<th>发展趋势</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>火控雷达</td>
+<td>采用超大规模集成电路，提高雷达处理机能力；<br>开发利用各种新的先进的处理算法软件；<br>采用有源相控阵雷达和开发共形阵列天线技术</td>
+<td></td>
+</tr>
+<tr>
+<td>惯性导航系统</td>
+<td>惯性/卫星全球定位系统(GPS)组合导航系统、惯性/地形参考组合导航系统将被广泛应用。<br>光纤陀螺、半球谐振陀螺等的惯性元件开始走向实用阶段；<br>微电子技术正在进入<u>惯性传感器研制领域</u>。</td>
+<td></td>
+</tr>
+<tr>
+<td>大气数据计算机</td>
+<td>随着传感器技术和数据总线技术的发展，大气数据系统<u>从传统的集中式向分布式大气数据系统发展</u>。</td>
+<td></td>
+</tr>
+<tr>
+<td>座舱显示与控制系统</td>
+<td>采用平显、下显、多功能显示器等综合显示器代替分立仪表；扩大飞行员视界<br>用双杆技术代替传统的驾驶杆和油门杆。<br>采用直接人机对话-话音合成/识别系统和飞行员助手系统，使显示和控制迈向<u>智能化</u>。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="9-3电子战系统的设计">9.3电子战系统的设计</h3>
+<h4 id="9-3-1航空电子战系统的基本原理和主要手段">9.3.1航空电子战系统的基本原理和主要手段</h4>
+<p>电子战是现代战争的序幕和先导，并将贯穿战争的全部过程。</p>
+<p><strong>研究对象：</strong></p>
+<p>从电子对抗的对象来分，有<u>雷达对抗</u>、<u>导航对抗</u>、<u>制导对抗</u>、<u>敌我识别系统对抗</u>，以及<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>C</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">C^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span>(指挥、控制、通信)系统的对抗等。</p>
+<p>从频域上分，有<u>射频对抗</u>、<u>光电对抗</u>和<u>声学对抗</u>三个领域。</p>
+<p><strong>基本原理：</strong></p>
+<table>
+<thead>
+<tr>
+<th>对抗类型</th>
+<th>基本原理</th>
+<th>分类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>雷达对抗</td>
+<td>雷达对抗是和敌雷达及雷达武器系统作斗争、相对抗的各种战术措施的总称。<br>这些对抗措施主要包括对雷达的侦察、干扰、伪装和欺骗。</td>
+<td>雷达对抗的基本原理包括有源对抗和无源对抗。雷达对抗设备是破坏敌雷达对目标信息的获取<br>有源对抗主要内容包括：敌对电磁脉冲截获、分析；干扰信号发射，压制回波接收，制造假的目标回波<br>无源对抗主要采用干扰弹形成箔条云保护、遮蔽或者形成假的目标</td>
+</tr>
+<tr>
+<td>红外对抗</td>
+<td>红外对抗就军用飞机而言，主要对付的是威胁飞机的红外制导导弹的攻击</td>
+<td>其对抗措施为被动干扰（红外诱饵干扰）和主动干扰（红外定向干扰、激光定向干扰）。<br>红外诱饵干扰一被跟踪目标投放红外诱饵干扰弹，且在红外制导导弹视场角内点燃，被跟踪目标实施机动。<br>红外定向干扰、激光定向干扰一被红外制导导弹跟踪的目标发出红外干扰能量或激光干扰能量，欺骗或破坏红外热寻的导弹的导引头</td>
+</tr>
+</tbody>
+</table>
+<p><strong>主要手段：</strong></p>
+<p>雷达对抗是航空电子战系统研究的最主要的对象。</p>
+<p>雷达对抗的主要手段或者说主要途径一般有以下三种：</p>
+<ul>
+<li>侦察与告警(ESM)—侦测预警，随后使飞机采取机动飞行，避开敌火炮、导弹等火力系统</li>
+<li>火力消灭(ABM)—反辐射导弹是火力消灭雷达的最重要手段。</li>
+<li>电磁干扰（有源干扰ECM、无源箔条干扰）—通过辐射电磁能量或投放箔条干扰弹破坏敌雷达的正常工作。</li>
+</ul>
+<p><strong>系统方案设计的主要考虑要点：</strong></p>
+<ul>
+<li>确定各子系统之间、系统与其他系统之间的控制交联关系</li>
+<li>雷达告警作用距离的计算——衡量雷达告警设备对雷达的侦察能力</li>
+<li>最小于扰距离的计算——雷达对抗重要指标</li>
+<li>箔条弹有效反射面积估算——</li>
+<li>红外诱饵干扰弹辐射强度估算——强度应大于被保护目标的红外辐射强度三倍以上</li>
+</ul>
+<h4 id="9-3-2军用飞机机载自卫电子战系统">9.3.2军用飞机机载自卫电子战系统</h4>
+<p><strong>系统的构成：</strong></p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211262259356.png" alt="机载电子战系统框图" style="zoom: 50%;">
+<p><strong>在役系统战术要求中需考虑的指标：</strong></p>
+<ul>
+<li>雷达告警：告警频率范围，告警空域，侧向精度，测频精度等</li>
+<li>导弹逼近告瞥：告警频段，告警空域，告警距离，方位分辨率等</li>
+<li>自卫干扰：干扰空域范围，干扰功率，最小干扰距离等</li>
+</ul>
+<p><strong>电子干扰吊舱：</strong></p>
+<p>机载电子战系统（设备）可以内装也可以用吊舱的形式进行外挂。</p>
+<p>适用于：已设计好的飞机平台内不能提供其安装空间或寻找安装空间很困难的情况下</p>
+<p>【优点】飞机可避免执行某一特定任务而受不需要的电子战系统负荷所拖累一即不挂吊舱</p>
+<p>【缺点】留出一个可用挂架给吊舱外挂用，这将减少挂其他武器的能力</p>
+<h4 id="9-3-3航空电子战的其他手段与发展趋势">9.3.3航空电子战的其他手段与发展趋势</h4>
+<p><strong>其他电子战斗手段：</strong></p>
+<ul>
+<li>专用电子战飞机</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>飞机</th>
+<th>特点介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>远距支援干扰飞机</td>
+<td>在大型战术飞机上改装电子侦察和大功率干扰设备，远离战区，施放强力干扰，压制敌防空雷达网。</td>
+</tr>
+<tr>
+<td>近距随队掩护干扰飞机</td>
+<td>在中型战术飞机上改装电子侦察和较大功率干扰设备及挂装反辐射导弹，随攻击机群执行作战任务，干扰、摧毁敌雷达系统，掩护攻击机群。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>反辐射导弹</li>
+</ul>
+<p>反辐射导弹是航空电子战系统中实施硬杀伤的最主要的武器。</p>
+<p>具有挂装反辐射导弹能力的飞机挂装反辐射导弹并与侦察设备交联，接收侦察设备提供的敌雷达的有关信息，发动攻击，实现硬杀伤。</p>
+<p><strong>发展趋势：</strong></p>
+<ul>
+<li>由过去的告警、干扰等单一设备向侦察、告警、测向、干扰一体化的电子战系统发展。</li>
+<li>由电子干扰的软杀伤手段向软杀伤与硬杀伤（反辐射导弹攻击）手段综合的方向发展。</li>
+<li>由雷达对抗向光电/雷达对抗综合方向发展。</li>
+</ul>
+<h3 id="9-4航空电子系统在飞机上的综合">9.4航空电子系统在飞机上的综合</h3>
+<h4 id="9-4-1综合设计的意义">9.4.1综合设计的意义</h4>
+<p>由于传统的航空电子系统是由若干个独立的功能子系统（通信、导航、识别设备，探测等）组成。随着电子航空技术的发展，飞机作战任务、性能需要的复杂化使得传统设计方法陷入困境。</p>
+<p><strong>主要矛盾如下：</strong></p>
+<ul>
+<li>性能提高和重量控制之间的矛盾：</li>
+</ul>
+<p>(1)随着飞机推重比的增加，气动特性的改善，电子设备功能和性能要求的提高，使航电设备体积、重量剧增。</p>
+<ul>
+<li>检测信号繁多与操作精简化之间的矛盾</li>
+</ul>
+<p>(2)由于各项电子设备都有控制和显示要求，飞行员从繁杂的显示装置获得信息，经过判断，又要从众多的控制装置中选择正确的操作，飞行员的反应、承受能力受到严峻的挑战。另外，由于各项电子设备独立发展，没有标准化的接口，使地勤人员也难以维护。</p>
+<ul>
+<li>单项设备优化与综合效果提升之间的矛盾</li>
+</ul>
+<p>(3)组合之后的设备难以确保继承独立电子设备的优秀性能，达到总体性能更优的目标。而且由于不能作到资源共享或互为备份，使系统可靠性降低。</p>
+<ul>
+<li>飞机服役年限与电子设备更新周期之间的矛盾</li>
+</ul>
+<p>(4)由于现代飞机服役期长，电子技术发展快，不断更新，只要更新部分电子设备就可能使飞机任务功能得到较大改进。离散式的独立设计影响了航空电子系统的扩展能力。</p>
+<p>**【关键】：**在飞机上开展==“自上而下”(Top一Dow)的设计方法==，先对航空电子系统进行<u>顶层综合设计</u>，解决数据传输和资源共享；再对各功能系统分别提出设计要求，协调研制，组成航空电子综合系统。</p>
+<h4 id="9-4-2航空电子综合系统的宏观结构与特点">9.4.2航空电子综合系统的宏观结构与特点</h4>
+<p><strong>总述发展历程：</strong></p>
+<p>分立式结构——集中式结构（60年代，信号采用模拟量）——集中分布式结构（70年代，数字处理方式）——分布式结构</p>
+<p><strong>航空电子综合系统的数据总线结构：</strong></p>
+<p>航空电子综合系统的结构又可分为<u>单层次总线结构</u>和<u>多层次总线结构</u>。</p>
+<p>单层次总线结构是一种最简单的总线拓扑结构。</p>
+<p>多级总线层次结构或多层多级总线结构，适应功能、组成更复杂，或信息流通量更大的航空电子综合系统。</p>
+<p><strong>航空电子综合系统的计算机配置：</strong></p>
+<p>作为总线控制的中央计算机，一般还同时具备其他任务计算功能。为了保证系统安全，有时<u>采用两台互为备份的中央总线控制计算机</u></p>
+<p><strong>航空电子综合系统的结构特点：</strong></p>
+<ul>
+<li>通过数据总线连接各子系统</li>
+<li>通过综合显示器向飞行员提供信息——人机工程设计</li>
+<li>通过综合控制设备、预编程及话音控制等实现人机对话——人机工程设计</li>
+<li>通过资源共享实现系统结构简化——功能组件、传感器都与数据总线相连</li>
+<li>通过系统重构和容错能力提高系统工作可靠性——切断部分受损或失效功能部件和子系统</li>
+<li>通过机内自检提高系统的可维修性——专门的BIT电路和检测程序</li>
+</ul>
+<h4 id="9-4-3航空电子综合系统的顶层设计">9.4.3航空电子综合系统的顶层设计</h4>
+<p>先进的航空电子综合系统采取自上而下的顶层设计方法。（自上而下，反复迭代）</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211270044903.png" alt="航电综合系统研制程序" style="zoom:50%;">
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>内涵</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>需求确定</td>
+<td>系统设计的基础。要根据飞机所要执行的任务及飞机的总技术要求，确定需要配置的功能系统，</td>
+</tr>
+<tr>
+<td>系统定义</td>
+<td>根据系统的需求确定航电综合系统的系统组成、系统结构构型和对主要子系统、设备的总体要求。</td>
+</tr>
+<tr>
+<td>主要子系统的总体要求</td>
+<td>包括对这些系统的总体性能指标要求、体积、重量、环境、可靠性及与飞机和其他子系统协调的要求等。</td>
+</tr>
+<tr>
+<td>系统设计</td>
+<td>需编制详细的系统设计规范和系统的飞行员操作程序、接口控制文件<br>并在设计过程中需分阶段进行评审，修改设计方案。</td>
+</tr>
+<tr>
+<td>软件编制和硬件研制</td>
+<td>本阶段需根据系统设计的结果编制各子系统的软件，并进行硬件设计和生产。</td>
+</tr>
+<tr>
+<td>系统综合和仿真试验</td>
+<td>首先进行单个设备的对接试验，逐步扩大到功能区，直至全系统综合试验。</td>
+</tr>
+<tr>
+<td>机上试验和飞行试验</td>
+<td>在地面对航电系统进行通电试验，乃至在暗室进行全机电磁兼容试验。<br>试验成功之后才能进行飞行试验，在实际飞行环境中验证航电综合系统的功能和性能。</td>
+</tr>
+</tbody>
+</table>
+<p><u>航空电子综合系统的发展与数字技术、微电子技术和计算机技术的发展密切相关</u>，主要是系统的硬件和软件两个方面，其中硬件是系统的核心，软件是系统的中枢</p>
+<h4 id="9-4-4航空电子设备机上布置和安装的综合设计">9.4.4航空电子设备机上布置和安装的综合设计</h4>
+<p><strong>航空电子设备的总体布置：</strong></p>
+<ul>
+<li>设备交联</li>
+</ul>
+<p>关系有直接信号交联的设备应尽量靠近布置，以免用于信号交联的导线过长，致使重量增加、安装困难，甚至造成信号衰减。</p>
+<ul>
+<li>维修性</li>
+</ul>
+<p>同一子系统的设备尽量布置在一个舱段，同一舱段尽量布置同一地勤维护专业所属的设备。</p>
+<ul>
+<li>设备舱空间利用率</li>
+</ul>
+<p>在飞机总体设计时必须想方设法提高设备舱的空间利用率，必要时可采取一些特别安装方式（例如采用安装架整体减振）或对部分设备外形提出特殊要求。</p>
+<ul>
+<li>生存力</li>
+</ul>
+<p>战斗机航空设备和电缆布置应尽量减少因作战损伤而导致飞行安全受到威胁的重要电子设备失效。</p>
+<ul>
+<li>设备环境要求</li>
+</ul>
+<p>设备布置时应尽量考虑为机载设备提供合适的工作环境（气压、振动、通风、温度、电磁干扰）。</p>
+<ul>
+<li>其他</li>
+</ul>
+<p>有时，在总体布置时还须考虑全机重心调节、设备的特殊要求以及其他特殊要求。</p>
+<p><strong>天线布置和综合设计：</strong></p>
+<p>这就要求飞机总体设计时，不仅要考虑具体电子设备的天线布置要求，更要从飞机总体性能的角度全面分析，甚至对设备天线设计提出改进要求。</p>
+<p>天线布局不合理会导致：阻力增加、气动干扰、飞机雷达散射界面增加。这就要求尽量减少天线数量，特别是使天线尽量不要凸出机体表面。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211270100579.png" alt="天线布局设计范例" style="zoom:33%;">
+<h2 id="第10章-重量特性估算和控制">第10章 重量特性估算和控制</h2>
+<h3 id="10-1基本概念与分类">10.1基本概念与分类</h3>
+<h4 id="10-1-1基本概念">10.1.1基本概念</h4>
+<p>飞机重量特性：飞机的固有特性，它是由飞机的重量引起的，具体指的是飞机的重量、重心和转动惯量。</p>
+<p>飞机重量特性控制：实指飞机的<u>重量、重心控制</u>。</p>
+<h4 id="10-1-2飞机重量的分类">10.1.2飞机重量的分类</h4>
+<p>飞机重量是由大量的各类零件、外购件（设备或附件）、标准件和各种工作液体的重量组成的。</p>
+<table>
+<thead>
+<tr>
+<th>飞机重量分类</th>
+<th>具体内容</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.外挂物重量</td>
+<td>导弹及其悬挂、发射装置<br>火箭及其悬挂、发射装置<br>炸弹及其悬挂、投放装置<br>副油箱及其悬挂、投放装置<br>吊舱及其悬挂装置</td>
+<td></td>
+</tr>
+<tr>
+<td>2.有用装载</td>
+<td>可用燃油<br>航炮炮弹<br>干扰弹<br>氧气（含飞行员用氧和发动机空中起动补氧）<br>冷却液体<br>防冰液体<br>安全救生设备（应急舷梯、救生衣/船等）<br>旅客生活用品（餐具、食品和饮料等）<br>旅客<br>行李/货物</td>
+<td></td>
+</tr>
+<tr>
+<td>3.固定装载</td>
+<td>飞行员/空勤人员<br>机内不可用燃油<br>发动机滑油<br>配重（仅限于调整飞机重心用的）</td>
+<td></td>
+</tr>
+<tr>
+<td>4.空机重量（结构重量）</td>
+<td>机身（含座舱盖）<br>机翼<br>平尾（含转轴）/前翼<br>立尾（含腹蜻）<br>起落装置◇主起落架◇前起落架/尾轮◇减速伞系统◇着陆拦阻装置<br>进气道和发动机段/短舱（当发动机装在机身里，该项属于机身）<br>飞机表面涂料<br>飞机设计余重（有时该项被分散列入结构、动力装置和固定设备类中）</td>
+<td></td>
+</tr>
+<tr>
+<td>4.空机重量（动力装置）</td>
+<td>发动机（交付状态）<br>发动机系统◇发动机安装◇发动机冷却◇发动机控制与检<br>◇发动机补氧系统◇灭火/火警系统◇传动机匣装置◇矢量推力装置/助推装置<br>燃油系统◇油箱◇通气增压系统◇供、输油系统<br>◇加油系统（重力加油、压力加油、空中加油）◇放油系统◇安全防护装置</td>
+<td></td>
+</tr>
+<tr>
+<td>4.空机重量（固定设备·通用设备）</td>
+<td>飞行控制系统<br>液压、冷气系统（含机上所有的收放作动筒，系统工作液体和气体）<br>电源电气系统<br>应急动力装置/辅助动力装置(EPU/APU)<br>通信系统<br>导航系统<br>仪表系统<br>环控系统<br>氧气系统</td>
+<td></td>
+</tr>
+<tr>
+<td>4.空机重量（固定设备·专用设备）</td>
+<td>火控系统<br>敌我识别系统<br>电子对抗系统<br>军械◇航炮系统◇机上不可拆卸的武器悬挂/发射装置◇装甲</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><u>高比强度、高比刚度材料</u>（如钛合金、铝锂合金、复合材料）的应用为减轻结构重量开辟了广阔的前景，<u>先进的总体布局形式</u>（如翼身融合体）和<u>放宽静安定度</u>飞机设计技术的应用也是降低结构重量的有效措施。</p>
+<p>重量的控制与：<u>材料</u>；<u>总体布局形式</u>；<u>飞机设计技术</u>；<u>飞机的使用环境、技术条件</u>；<u>具体部位的结构形式、安装位置</u>等有关。</p>
+<h3 id="10-2重量估算">10.2重量估算</h3>
+<h4 id="10-2-1重量估算的概述">10.2.1重量估算的概述</h4>
+<p>飞机设计不仅要满足战术技术要求/使用技术要求规定的<u>重量要求</u>，同时还要满足飞机操纵性和安定性对飞机的<u>重心要求</u>。</p>
+<p>方案概念设计阶段的分类重量估算主要是估算结构部件重量和部分功能系统的重量。<br>
+结构部件的重量估算，工程上多是采用统计分析法：综合现有飞机数据依靠回归分析得到统计公式估算分类重量。</p>
+<h4 id="10-2-2战斗机重量估算">10.2.2战斗机重量估算</h4>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211271428416.png" alt="image-20221127142831122" style="zoom:50%;">
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211271429530.png" alt="image-20221127142910379" style="zoom:50%;">
+<h3 id="10-3重心位置及惯矩估算">10.3重心位置及惯矩估算</h3>
+<h4 id="10-3-1重心位置估算">10.3.1重心位置估算</h4>
+<p>飞机重心位置与飞机的操纵安定性及气动载荷密切相关，当然对飞机的飞行性能也有影响。</p>
+<p>在方案概念设计阶段，飞机重心位置估算的直接目的是协调它与飞机气动力焦点之间的关系。</p>
+<p>为了进行重心位置估算，首先要确定飞机重心位置估算用的参考坐标系。</p>
+<p><strong>参考坐标系的建立：</strong></p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211271432737.png" alt="飞机重心位置估算用参考坐标系" style="zoom:50%;">
+<p>通常把机身站位的零点选为参考坐标系的原点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi></mrow><annotation encoding="application/x-tex">O</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span></span></span></span>；<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">O_x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>轴与飞机的水平基准线重合，逆航向为正；<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>y</mi></msub></mrow><annotation encoding="application/x-tex">O_y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>轴位于飞机对称平面内，与<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">O_x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>轴垂直，向上为正；<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>z</mi></msub></mrow><annotation encoding="application/x-tex">O_z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>轴按右手定则确定。</p>
+<p>重心位置估算的主要依据是<u>飞机的总体布置草图</u>和<u>可供类比的或统计的资料</u>。</p>
+<p><strong>飞机纵向重心位置:</strong></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msub><mi>x</mi><mrow><mi>z</mi><mi mathvariant="normal">x</mi></mrow></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mfrac><mrow><mo>∑</mo><msub><mi>m</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub></mrow><mrow><mo>∑</mo><msub><mi>m</mi><mi>i</mi></msub></mrow></mfrac></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msub><mover accent="true"><mi>x</mi><mo>ˉ</mo></mover><mrow><mi>z</mi><mi mathvariant="normal">x</mi></mrow></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mrow><mo fence="true">[</mo><mrow><mo fence="true">(</mo><msub><mi>x</mi><mrow><mn>2</mn><mi mathvariant="normal">x</mi></mrow></msub><mo>−</mo><msub><mi>x</mi><mi mathvariant="normal">A</mi></msub><mo fence="true">)</mo></mrow><mi mathvariant="normal">/</mi><msub><mi>b</mi><mi mathvariant="normal">A</mi></msub><mo fence="true">]</mo></mrow><mo>×</mo><mn>100</mn><mi mathvariant="normal">%</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+x_{z \mathrm{x}} &amp;=\frac{\sum m_i x_i}{\sum m_i} \\
+\bar{x}_{z \mathrm{x}} &amp;=\left[\left(x_{2 \mathrm{x}}-x_{\mathrm{A}}\right) / b_{\mathrm{A}}\right] \times 100 \%
+\end{aligned}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:4.163em;vertical-align:-1.8315em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.3315em;"><span style="top:-4.3315em;"><span class="pstrut" style="height:3.427em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span><span class="mord mathrm mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.2555em;"><span class="pstrut" style="height:3.427em;"></span><span class="mord"><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span><span class="mord mathrm mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.8315em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.3315em;"><span style="top:-4.3315em;"><span class="pstrut" style="height:3.427em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-2.2555em;"><span class="pstrut" style="height:3.427em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">[</span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mathrm mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">/</span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">]</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">100%</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.8315em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>式中:<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mi>i</mi></msub><mtext>、</mtext><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo></mrow><annotation encoding="application/x-tex">m_i 、 x_i-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">、</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">−</span></span></span></span> 飞机的第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 个部件 (系统) 的重量和重心位置;<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi mathvariant="normal">A</mi></msub></mrow><annotation encoding="application/x-tex">x_{\mathrm{A}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 一一机翼平均气动力弦的前缘点到重心位置计算参考坐标系原点的距离;<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mi mathvariant="normal">A</mi></msub></mrow><annotation encoding="application/x-tex">b_{\mathrm{A}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 一一机翼的平均气动力弦长。</p>
+<p><strong>调整飞机重心位置的常用方法:</strong></p>
+<p>调整飞机内部装载位置，前/后移动机翼位置，改变机翼前缘后掠角的大小，改变进气道之前的机身长度等。</p>
+<h4 id="10-3-2惯矩估算">10.3.2惯矩估算</h4>
+<p><strong>概述：</strong></p>
+<p>惯矩是<u>转动惯量的简称</u>，它是飞机作转动运动时其惯性的度量，直接与飞机的<u>操纵安定特性</u>及某些运动情况下的飞机载荷等一系列设计有关，它取决于<u>飞机重量的大小和重量分布情况以及作转动时所对应的转轴位置</u>。</p>
+<p>其中<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mrow><mi>x</mi><mi>y</mi><mi>z</mi></mrow></msub></mrow><annotation encoding="application/x-tex">O_{xyz}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight" style="margin-right:0.04398em;">yz</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>为机体坐标系（体轴系），<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>p</mi></msub><mrow><msub><mi>x</mi><mi>p</mi></msub><msub><mi>y</mi><mi>p</mi></msub><msub><mi>z</mi><mi>p</mi></msub></mrow></mrow><annotation encoding="application/x-tex">O_p{x_py_pz_p}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></span>为中心惯性主轴坐标系（主轴系）。主坐标系由体坐标系绕<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>z</mi></msub></mrow><annotation encoding="application/x-tex">O_z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>轴旋转一个角度形成。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211271442391.png" alt="飞机惯矩计算用坐标系" style="zoom:50%;">
+<p>方案概念设计阶段通常采用：<u>经验公式</u>或<u>统计资料</u>进行惯矩估算，其式如下：</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211271447389.png" alt="image-20221127144753193" style="zoom:25%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211271448710.png" alt="image-20221127144825430" style="zoom:20%;"></p>
+<h3 id="10-4重量控制的主要措施">10.4重量控制的主要措施</h3>
+<ul>
+<li>
+<p>建立一套包括飞机主要部件、系统的<u>重量估算公式</u>。</p>
+</li>
+<li>
+<p>建立在型号总设计师直接领导下的<u>重量工作系统</u>，飞机<u>重量情况通报制度</u>，飞机<u>重量“跟踪一反馈-分析-预测”制度</u>，飞机重量设计单项奖励制度的重量检验制度</p>
+</li>
+<li>
+<p>制定<u>重量控制工作计划</u>和有关的细则规定，使重量控制工作做到有章可循，有法可依。</p>
+</li>
+<li>
+<p>在飞机研制中自始至终<u>贯彻“轻重量设计”原则</u></p>
+</li>
+<li>
+<p>认真做好经常性的重量资料积累和分析总结工作，不断探索重量控制的新途径。</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">David.Li</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/10/29/%E9%A1%BE%E8%AF%B5%E8%8A%AC%E2%80%94%E9%A3%9E%E6%9C%BA%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E4%B8%83%E8%87%B3%E5%8D%81%E4%BA%8C%E7%AB%A0%EF%BC%89/">http://example.com/2022/10/29/顾诵芬—飞机总体设计（第七至十二章）/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">戴威的Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a><a class="post-meta__tags" href="/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/">研究生知识积累</a></div><div class="post_share"><div class="social-share" data-image="/./img/1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/10/29/%E9%A1%BE%E8%AF%B5%E8%8A%AC%E2%80%94%E9%A3%9E%E6%9C%BA%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E4%B8%80%E8%87%B3%E5%85%AD%E7%AB%A0%EF%BC%89/"><img class="prev-cover" src="/./img/1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">《飞机总体设计》学习笔记</div></div></a></div><div class="next-post pull-right"><a href="/2022/10/19/hello-world/"><img class="next-cover" src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202210280202350.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/10/29/EDEM%E7%90%83%E7%A3%A8%E7%A0%B4%E7%A2%8E%E4%BB%BF%E7%9C%9F%E6%96%B9%E6%B3%95/" title="《EDEM离散元仿真》学习笔记"><img class="cover" src="/./img/11.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">《EDEM离散元仿真》学习笔记</div></div></a></div><div><a href="/2022/10/29/%E5%8C%97%E8%88%AA%E2%80%94%E8%88%AA%E5%A4%A9%E8%88%AA%E7%A9%BA%E6%A6%82%E8%AE%BA/" title="《航天航空概论》学习笔记"><img class="cover" src="/./img/4.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">《航天航空概论》学习笔记</div></div></a></div><div><a href="/2022/11/18/%E5%8D%97%E8%88%AA%E2%80%94%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B%E5%90%8E%E7%AB%A0/" title="飞行器总体设计与系统工程后章"><img class="cover" src="/./img/10.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-18</div><div class="title">飞行器总体设计与系统工程后章</div></div></a></div><div><a href="/2022/11/12/%E5%8D%97%E8%88%AA%E2%80%94%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B%E5%89%8D%E7%AB%A0/" title="飞行器总体设计与系统工程前章"><img class="cover" src="/./img/10.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-12</div><div class="title">飞行器总体设计与系统工程前章</div></div></a></div><div><a href="/2022/10/29/%E9%A1%BE%E8%AF%B5%E8%8A%AC%E2%80%94%E9%A3%9E%E6%9C%BA%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E4%B8%80%E8%87%B3%E5%85%AD%E7%AB%A0%EF%BC%89/" title="《飞机总体设计》学习笔记"><img class="cover" src="/./img/1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">《飞机总体设计》学习笔记</div></div></a></div><div><a href="/2022/10/29/EDEM%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="《EDEM离散元仿真》学习笔记"><img class="cover" src="/./img/11.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">《EDEM离散元仿真》学习笔记</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.postimg.cc/yNgHD8Yp/k-L4co-QHVj-A.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">David.Li</div><div class="author-info__description">生命啊, 它璀璨如歌！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/119DavidLi"><i class="fab fa-github"></i><span>一起玩吧</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/119DavidLi" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/daiwei_li119@163.com" target="_blank" title="邮箱"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://119davidli.github.io/" target="_blank" title="博客"><i class="fa-solid fa-robot"></i></a><a class="social-icon" href="https://space.bilibili.com/504053268?spm_id_from=333.1007.0.0" target="_blank" title="Bilibili"><i class="fa-solid fa-desktop-arrow-down"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到David.Li的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%8A%A8%E5%8A%9B%E8%A3%85%E7%BD%AE%E5%8F%8A%E7%87%83%E6%B2%B9%E7%B3%BB%E7%BB%9F"><span class="toc-text">第七章 动力装置及燃油系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1%E9%A3%9E%E6%9C%BA%E7%9A%84%E9%AB%98%E6%8A%80%E6%9C%AF%E6%80%A7%E5%92%8C%E5%A4%8D%E6%9D%82%E6%80%A7"><span class="toc-text">7.1飞机的高技术性和复杂性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2%E8%BF%9B%E6%B0%94%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-text">7.2进气系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-1%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%9F%BA%E6%9C%AC%E8%AE%BE%E8%AE%A1%E8%A6%81%E6%B1%82"><span class="toc-text">7.2.1总体介绍与基本设计要求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-2%E8%BF%9B%E6%B0%94%E9%81%93%E7%9A%84%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E5%BD%A2%E5%BC%8F%E4%BB%8B%E7%BB%8D"><span class="toc-text">7.2.2进气道的四种基本形式介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-3%E8%BF%9B%E6%B0%94%E9%81%93%E4%B8%BB%E8%A6%81%E5%8F%82%E6%95%B0%E7%9A%84%E7%A1%AE%E5%AE%9A"><span class="toc-text">7.2.3进气道主要参数的确定</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3%E6%8E%92%E6%B0%94%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-text">7.3排气系统设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4%E5%8A%A8%E5%8A%9B%E8%A3%85%E7%BD%AE%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-text">7.4动力装置的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-5%E7%87%83%E6%B2%B9%E7%B3%BB%E7%BB%9F"><span class="toc-text">7.5燃油系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-%E8%B5%B7%E8%90%BD%E8%A3%85%E7%BD%AE%E5%8F%8A%E6%9C%BA%E7%94%B5%E7%B3%BB%E7%BB%9F"><span class="toc-text">第八章 起落装置及机电系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1%E8%B5%B7%E8%90%BD%E8%A3%85%E7%BD%AE%E8%AE%BE%E8%AE%A1"><span class="toc-text">8.1起落装置设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-1%E8%B5%B7%E8%90%BD%E8%A3%85%E7%BD%AE%E4%BB%8B%E7%BB%8D%E4%B8%8E%E8%AE%BE%E8%AE%A1%E6%80%BB%E4%BD%93%E8%A6%81%E6%B1%82"><span class="toc-text">8.1.1起落装置介绍与设计总体要求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-2%E8%B5%B7%E8%90%BD%E8%A3%85%E7%BD%AE%E7%9A%84%E5%B8%83%E7%BD%AE"><span class="toc-text">8.1.2起落装置的布置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-3%E8%B5%B7%E8%90%BD%E6%9E%B6%E5%87%8F%E9%9C%87%E5%99%A8"><span class="toc-text">8.1.3起落架减震器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-4%E8%B5%B7%E8%90%BD%E8%A3%85%E7%BD%AE%E5%85%B6%E4%BB%96%E9%83%A8%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="toc-text">8.1.4起落装置其他部件介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-5%E8%B5%B7%E8%90%BD%E8%A3%85%E7%BD%AE%E7%9A%84%E5%8F%91%E5%B1%95%E5%B1%95%E6%9C%9B"><span class="toc-text">8.1.5起落装置的发展展望</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2%E6%B0%B4%E4%B8%8A%E9%A3%9E%E6%9C%BA%E8%88%B9%E4%BD%93%E5%8F%8A%E6%B5%AE%E7%AE%80%E8%AE%BE%E8%AE%A1"><span class="toc-text">8.2水上飞机船体及浮简设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-1%E6%B0%B4%E4%B8%8A%E9%A3%9E%E6%9C%BA%E8%88%B9%E4%BD%93%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="toc-text">8.2.1水上飞机船体的设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-2%E6%B5%AE%E7%AD%92%E8%AE%BE%E8%AE%A1"><span class="toc-text">8.2.2浮筒设计</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3%E9%A3%9E%E8%A1%8C%E6%93%8D%E7%BA%B5%E5%92%8C%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-text">8.3飞行操纵和控制系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-1%E6%A6%82%E8%A6%81%E5%8F%8A%E5%9F%BA%E6%9C%AC%E8%AE%BE%E8%AE%A1%E8%A6%81%E6%B1%82"><span class="toc-text">8.3.1概要及基本设计要求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-2%E7%AE%80%E5%8D%95%E6%9C%BA%E6%A2%B0%E6%93%8D%E7%BA%B5%E7%B3%BB%E7%BB%9F"><span class="toc-text">8.3.2简单机械操纵系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-3%E5%8A%A9%E5%8A%9B%E6%9C%BA%E6%A2%B0%E6%93%8D%E7%BA%B5%E7%B3%BB%E7%BB%9F"><span class="toc-text">8.3.3助力机械操纵系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-4%E7%94%B5%E4%BC%A0%E6%93%8D%E7%BA%B5%E7%B3%BB%E7%BB%9F"><span class="toc-text">8.3.4电传操纵系统</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4%E6%B6%B2%E5%8E%8B%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-text">8.4液压系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-4-1%E6%B6%B2%E5%8E%8B%E7%B3%BB%E7%BB%9F%E5%8A%9F%E7%94%A8%E3%80%81%E7%BB%84%E6%88%90%E5%8F%8A%E5%85%B6%E8%A6%81%E6%B1%82"><span class="toc-text">8.4.1液压系统功用、组成及其要求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-4-2%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-text">8.4.2系统设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-4-3%E6%B6%B2%E5%8E%8B%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8A%9F%E7%8E%87%E4%BC%B0%E7%AE%97"><span class="toc-text">8.4.3液压系统的功率估算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-4-4%E5%9C%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E4%B8%AD%E6%8F%90%E9%AB%98%E7%94%9F%E5%AD%98%E5%8A%9B%E5%92%8C%E6%94%B9%E5%96%84%E7%BB%B4%E6%8A%A4%E6%80%A7%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8E%AA%E6%96%BD%E4%B8%8E%E5%8F%91%E5%B1%95%E8%A7%84%E5%88%92"><span class="toc-text">8.4.4在总体设计中提高生存力和改善维护性的一些措施与发展规划</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-5%E9%A3%9E%E6%9C%BA%E4%BE%9B%E7%94%B5%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-text">8.5飞机供电系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-5-1%E4%BE%9B%E7%94%B5%E7%B3%BB%E7%BB%9F%E6%80%BB%E8%BF%B0%E3%80%81%E5%9F%BA%E6%9C%AC%E8%A6%81%E6%B1%82%E4%BB%A5%E5%8F%8A%E5%88%86%E7%B1%BB"><span class="toc-text">8.5.1供电系统总述、基本要求以及分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-5-2%E9%A3%9E%E6%9C%BA%E7%94%B5%E6%B0%94%E8%B4%9F%E8%BD%BD%E5%88%86%E6%9E%90%E5%92%8C%E7%94%B5%E6%BA%90%E5%AE%B9%E9%87%8F%E7%A1%AE%E5%AE%9A"><span class="toc-text">8.5.2飞机电气负载分析和电源容量确定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-5-3%E9%A3%9E%E6%9C%BA%E5%8F%91%E7%94%B5%E6%9C%BA%E7%9A%84%E4%BC%A0%E5%8A%A8%E5%92%8C%E5%86%B7%E5%8D%B4"><span class="toc-text">8.5.3飞机发电机的传动和冷却</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-5-4%E9%A3%9E%E6%9C%BA%E7%94%B5%E6%B0%94%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%8F%8A%E7%BB%B4%E4%BF%AE%E8%AE%BE%E8%AE%A1%E8%A6%81%E6%B1%82"><span class="toc-text">8.5.4飞机电气系统安装及维修设计要求</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-6%E7%8E%AF%E6%8E%A7%E4%B8%8E%E6%95%91%E7%94%9F"><span class="toc-text">8.6环控与救生</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-6-1%E9%A3%9E%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F"><span class="toc-text">8.6.1飞机环境控制系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-6-2%E5%BA%94%E6%80%A5%E6%95%91%E7%94%9F%E8%AE%BE%E5%A4%87"><span class="toc-text">8.6.2应急救生设备</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E8%88%AA%E7%94%B5%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-text">第九章 航电系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1%E9%80%9A%E4%BF%A1%E3%80%81%E5%AF%BC%E8%88%AA%E3%80%81%E8%AF%86%E5%88%AB%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-text">9.1通信、导航、识别系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#9-1-1%E6%A6%82%E8%BF%B0"><span class="toc-text">9.1.1概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-1-2%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90"><span class="toc-text">9.1.2系统组成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-1-3%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-text">9.1.3系统设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-1-4%E7%B3%BB%E7%BB%9F%E5%8F%91%E5%B1%95%E6%96%B9%E5%90%91"><span class="toc-text">9.1.4系统发展方向</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2%E7%81%AB%E5%8A%9B%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F"><span class="toc-text">9.2火力控制系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#9-2-1%E6%A6%82%E8%BF%B0"><span class="toc-text">9.2.1概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-2-2%E7%81%AB%E6%8E%A7%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E4%B8%BB%E8%A6%81%E8%AE%BE%E5%A4%87%E5%92%8C%E5%88%B6%E5%AF%BC%E6%AD%A6%E5%99%A8"><span class="toc-text">9.2.2火控系统中的主要设备和制导武器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-2-3%E5%87%A0%E7%A7%8D%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%94%BB%E5%87%BB%E6%96%B9%E5%BC%8F"><span class="toc-text">9.2.3几种基本的攻击方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-2-4%E7%81%AB%E5%8A%9B%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%B1%95%E6%9C%9B"><span class="toc-text">9.2.4火力控制系统的设计与展望</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-3%E7%94%B5%E5%AD%90%E6%88%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="toc-text">9.3电子战系统的设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#9-3-1%E8%88%AA%E7%A9%BA%E7%94%B5%E5%AD%90%E6%88%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%92%8C%E4%B8%BB%E8%A6%81%E6%89%8B%E6%AE%B5"><span class="toc-text">9.3.1航空电子战系统的基本原理和主要手段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-3-2%E5%86%9B%E7%94%A8%E9%A3%9E%E6%9C%BA%E6%9C%BA%E8%BD%BD%E8%87%AA%E5%8D%AB%E7%94%B5%E5%AD%90%E6%88%98%E7%B3%BB%E7%BB%9F"><span class="toc-text">9.3.2军用飞机机载自卫电子战系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-3-3%E8%88%AA%E7%A9%BA%E7%94%B5%E5%AD%90%E6%88%98%E7%9A%84%E5%85%B6%E4%BB%96%E6%89%8B%E6%AE%B5%E4%B8%8E%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF"><span class="toc-text">9.3.3航空电子战的其他手段与发展趋势</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-4%E8%88%AA%E7%A9%BA%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%9C%A8%E9%A3%9E%E6%9C%BA%E4%B8%8A%E7%9A%84%E7%BB%BC%E5%90%88"><span class="toc-text">9.4航空电子系统在飞机上的综合</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#9-4-1%E7%BB%BC%E5%90%88%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%84%8F%E4%B9%89"><span class="toc-text">9.4.1综合设计的意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-4-2%E8%88%AA%E7%A9%BA%E7%94%B5%E5%AD%90%E7%BB%BC%E5%90%88%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%8F%E8%A7%82%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%B9%E7%82%B9"><span class="toc-text">9.4.2航空电子综合系统的宏观结构与特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-4-3%E8%88%AA%E7%A9%BA%E7%94%B5%E5%AD%90%E7%BB%BC%E5%90%88%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%A1%B6%E5%B1%82%E8%AE%BE%E8%AE%A1"><span class="toc-text">9.4.3航空电子综合系统的顶层设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-4-4%E8%88%AA%E7%A9%BA%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87%E6%9C%BA%E4%B8%8A%E5%B8%83%E7%BD%AE%E5%92%8C%E5%AE%89%E8%A3%85%E7%9A%84%E7%BB%BC%E5%90%88%E8%AE%BE%E8%AE%A1"><span class="toc-text">9.4.4航空电子设备机上布置和安装的综合设计</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC10%E7%AB%A0-%E9%87%8D%E9%87%8F%E7%89%B9%E6%80%A7%E4%BC%B0%E7%AE%97%E5%92%8C%E6%8E%A7%E5%88%B6"><span class="toc-text">第10章 重量特性估算和控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%88%86%E7%B1%BB"><span class="toc-text">10.1基本概念与分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#10-1-1%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">10.1.1基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-1-2%E9%A3%9E%E6%9C%BA%E9%87%8D%E9%87%8F%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">10.1.2飞机重量的分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2%E9%87%8D%E9%87%8F%E4%BC%B0%E7%AE%97"><span class="toc-text">10.2重量估算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#10-2-1%E9%87%8D%E9%87%8F%E4%BC%B0%E7%AE%97%E7%9A%84%E6%A6%82%E8%BF%B0"><span class="toc-text">10.2.1重量估算的概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-2-2%E6%88%98%E6%96%97%E6%9C%BA%E9%87%8D%E9%87%8F%E4%BC%B0%E7%AE%97"><span class="toc-text">10.2.2战斗机重量估算</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3%E9%87%8D%E5%BF%83%E4%BD%8D%E7%BD%AE%E5%8F%8A%E6%83%AF%E7%9F%A9%E4%BC%B0%E7%AE%97"><span class="toc-text">10.3重心位置及惯矩估算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#10-3-1%E9%87%8D%E5%BF%83%E4%BD%8D%E7%BD%AE%E4%BC%B0%E7%AE%97"><span class="toc-text">10.3.1重心位置估算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-3-2%E6%83%AF%E7%9F%A9%E4%BC%B0%E7%AE%97"><span class="toc-text">10.3.2惯矩估算</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-4%E9%87%8D%E9%87%8F%E6%8E%A7%E5%88%B6%E7%9A%84%E4%B8%BB%E8%A6%81%E6%8E%AA%E6%96%BD"><span class="toc-text">10.4重量控制的主要措施</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/27/%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95/" title="无题"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202211201406804.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/11/27/%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95/" title="无题">无题</a><time datetime="2022-11-27T08:51:48.389Z" title="发表于 2022-11-27 16:51:48">2022-11-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/18/%E5%8D%97%E8%88%AA%E2%80%94%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B%E5%90%8E%E7%AB%A0/" title="飞行器总体设计与系统工程后章"><img src="/./img/10.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="飞行器总体设计与系统工程后章"/></a><div class="content"><a class="title" href="/2022/11/18/%E5%8D%97%E8%88%AA%E2%80%94%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B%E5%90%8E%E7%AB%A0/" title="飞行器总体设计与系统工程后章">飞行器总体设计与系统工程后章</a><time datetime="2022-11-18T14:06:44.170Z" title="发表于 2022-11-18 22:06:44">2022-11-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/12/%E5%8D%97%E8%88%AA%E2%80%94%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B%E5%89%8D%E7%AB%A0/" title="飞行器总体设计与系统工程前章"><img src="/./img/10.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="飞行器总体设计与系统工程前章"/></a><div class="content"><a class="title" href="/2022/11/12/%E5%8D%97%E8%88%AA%E2%80%94%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B%E5%89%8D%E7%AB%A0/" title="飞行器总体设计与系统工程前章">飞行器总体设计与系统工程前章</a><time datetime="2022-11-12T11:18:46.246Z" title="发表于 2022-11-12 19:18:46">2022-11-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/29/EDEM%E7%90%83%E7%A3%A8%E7%A0%B4%E7%A2%8E%E4%BB%BF%E7%9C%9F%E6%96%B9%E6%B3%95/" title="《EDEM离散元仿真》学习笔记"><img src="/./img/11.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《EDEM离散元仿真》学习笔记"/></a><div class="content"><a class="title" href="/2022/10/29/EDEM%E7%90%83%E7%A3%A8%E7%A0%B4%E7%A2%8E%E4%BB%BF%E7%9C%9F%E6%96%B9%E6%B3%95/" title="《EDEM离散元仿真》学习笔记">《EDEM离散元仿真》学习笔记</a><time datetime="2022-10-29T00:00:00.000Z" title="发表于 2022-10-29 08:00:00">2022-10-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/29/EDEM%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="《EDEM离散元仿真》学习笔记"><img src="/./img/11.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《EDEM离散元仿真》学习笔记"/></a><div class="content"><a class="title" href="/2022/10/29/EDEM%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="《EDEM离散元仿真》学习笔记">《EDEM离散元仿真》学习笔记</a><time datetime="2022-10-29T00:00:00.000Z" title="发表于 2022-10-29 08:00:00">2022-10-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/./img/5.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 By David.Li</div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://119davidli.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><script src="https://unpkg.com/algoliasearch/dist/algoliasearch-lite.umd.js"></script><script src="https://unpkg.com/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://unpkg.com/katex/dist/katex.min.css"><script src="https://unpkg.com/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
