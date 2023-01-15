@@ -1,0 +1,944 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Fluent仿真学习笔记 | 戴威的Blog</title><meta name="keywords" content="学习,研究生知识积累"><meta name="author" content="David.Li"><meta name="copyright" content="David.Li"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Fluent具有丰富的物理模型、先进的数值方法和强大的前后处理功能，在航空航天、汽车设计、石油天然气和涡轮机设计等方面都有着广泛的应用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fluent仿真学习笔记">
+<meta property="og:url" content="https://lidaiwei.top/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%BD%AF%E4%BB%B6%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="戴威的Blog">
+<meta property="og:description" content="Fluent具有丰富的物理模型、先进的数值方法和强大的前后处理功能，在航空航天、汽车设计、石油天然气和涡轮机设计等方面都有着广泛的应用。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lidaiwei.top/img/20.jpeg">
+<meta property="article:published_time" content="2022-12-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-01-15T09:08:54.199Z">
+<meta property="article:author" content="David.Li">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="研究生知识积累">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lidaiwei.top/img/20.jpeg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lidaiwei.top/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%BD%AF%E4%BB%B6%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"S8VXMWI0SN","apiKey":"53f1a244da26e96e8249b78dbad4a7e7","indexName":"David","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: David.Li","link":"链接: ","source":"来源: 戴威的Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Fluent仿真学习笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-01-15 17:08:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="referrer" content="no-referrer" /><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.postimg.cc/yNgHD8Yp/k-L4co-QHVj-A.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/20.jpeg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">戴威的Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Fluent仿真学习笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-31T16:00:00.000Z" title="发表于 2023-01-01 00:00:00">2023-01-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-15T09:08:54.199Z" title="更新于 2023-01-15 17:08:54">2023-01-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0/">软件学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0/%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6/">流体力学仿真软件</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0/%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6/Fluent/">Fluent</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">10.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>32分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Fluent仿真学习笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>Fluent软件总体介绍</h1>
+<h2 id="1-基础仿真流程介绍">1.基础仿真流程介绍</h2>
+<h3 id="1-1前处理与网格划分">1.1前处理与网格划分</h3>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202212302001230.png" alt="前处理与网格划分" style="zoom: 33%;">
+<p>先处理三维CAD几何模型，再进行网格划分，是CFD前处理的最优路径。</p>
+<h4 id="1-1-1前处理工具（Ansys系列）">1.1.1前处理工具（Ansys系列）</h4>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>主要技术与优势</th>
+<th>主要缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCDI（推荐）</td>
+<td>又称Spaceclaim,近几年ANSYS主推的几何直接建模工具。优势巨大，非常适合CFD仿真几何处理。</td>
+<td>无历史特征记录，容易引发误操作。</td>
+</tr>
+<tr>
+<td>DM</td>
+<td>全名Design Modeler,是传统的ANSYS几何处理模块具备几何模型结构树，能够较好的支持参数化建模技术。</td>
+<td>几何模型的约束较大、对于CAE仿真前处理自由度较低，创建草图、特征等技术工作效率较低。</td>
+</tr>
+<tr>
+<td>Discovery modeling（推荐）</td>
+<td>与SCDM功能基本一致，但是界面与后台运行引擎略有差别，是ANSYS计划在未来主要推广的几何工具。</td>
+<td>运行流场程度与硬件关联较大，部分功能位置不如SCDM便捷，暂无ICEPAK简化功能模块。</td>
+</tr>
+<tr>
+<td>ICEM CFD</td>
+<td>同时具备几何与网格功能，具备结构树</td>
+<td>无草图功能，无实体建模功能，不支持布尔运算等：</td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-1-2Ansys前处理中的网格划分工具">1.1.2Ansys前处理中的网格划分工具</h4>
+<ul>
+<li><strong>Workbench Meshing：</strong></li>
+</ul>
+<p>缺点：</p>
+<ol>
+<li>高度自动化：简单的网格输入控制就能快速实现分析</li>
+<li>参数化：参数驱动/模型更新贯穿整个系统</li>
+<li>灵活性：添加网格控制措施，不会使工作流变复杂</li>
+<li>物理场相关：根据不同的物理场进行自动建模和仿真</li>
+<li>针对简单几何：易于上手、可以生成混合网格、工作效率高</li>
+<li>官方推荐：17.0版本之后多项改进</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>几何依赖：不能独自处理几何问题</li>
+<li>高级功能缺失：网格质量微调、节点控制、网格操作…</li>
+</ol>
+<p>适用：</p>
+<p>新手、简单的几何模型处理</p>
+<ul>
+<li><strong>ICEM CFD：</strong></li>
+</ul>
+<p>优点：</p>
+<ol>
+<li>丰富的网格模型：（多块）结构化网格、非结构化网格、二维(平面&amp;壳)、四面体、<br>
+六面体、棱柱层；混合网格；棱柱边界层网；格笛卡尔网格</li>
+<li>几何、网格模型的诊断与修复技术</li>
+<li>支持操作过程的记录与回放(replay),脚本二次开发技术</li>
+<li>网格编辑功能、自动网格光顺技术</li>
+<li>具备结构树与几何建模功能、完善的CAD数据接口</li>
+<li>部分内置的结构求解器功能</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>网格划分效率较低</li>
+<li>六面体网格使用人员较少</li>
+</ol>
+<ul>
+<li><strong>Fluent Meshing：</strong></li>
+</ul>
+<p>优点：</p>
+<ol>
+<li>内嵌在Fluent求解器的GUI中</li>
+<li>基于TGid算法，超高的网格划分效率，极其稳定的网格工作进程，能够处理多达数十亿的超大规模网格</li>
+<li>丰富完善高级网格功能，支持几乎所有的网格处理方法</li>
+<li>新版本包含官方的二次开发模板：工作流技术</li>
+<li>全新的Ribbon风格界面，支持中文界面</li>
+<li>能够通过脚本&amp;Workbench实现参数化网格处理</li>
+<li>基于mosaic技术的多面体-六面体核心网格</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>软件难度较大，上手较为困难</li>
+<li>不支持二维网格，不支持纯六面体网格的划分与修改</li>
+</ol>
+<h4 id="1-1-3网格类型与网格选择">1.1.3网格类型与网格选择</h4>
+<table>
+<thead>
+<tr>
+<th>网格类型</th>
+<th>特点</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>四面体</td>
+<td>体积小，数量多<br>适合复杂表面，可自动生成</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202212302039681.png" alt="四面体" style="zoom:50%;"></td>
+</tr>
+<tr>
+<td>六面体</td>
+<td>同等尺寸下，数量少<br>无法自动处理，复杂几何工作量大</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202212302039757.png" alt="六面体" style="zoom:50%;"></td>
+</tr>
+<tr>
+<td>五面体</td>
+<td>六面体与四面体的过渡<br>混合网格、自动生成<br>不能作为主要填充网格</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202212302039284.png" alt="五面体" style="zoom:50%;"></td>
+</tr>
+<tr>
+<td>三棱柱</td>
+<td>四面体表面的边界层<br>用于边界层等速度梯度较大的位置，保证数据捕获质量<br>自动生成、描述表面<br>不能作为主要填充网格</td>
+<td><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202212302039491.png" alt="三棱柱" style="zoom: 50%;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>纯六面体网格：</strong></p>
+<p>纯六面体网格的优势在于对<u>空间网格分布的精准控制</u>，尤其是壁面附近的网格控制，对于<u>内存的利用效率</u>是所有网格类型中最高的，求解速度通常也更快。当网格方向能够沿着流动方向布置的时候，计算精度更高，收敛速度也更快。</p>
+<p>其劣势在于对复杂的几何模型，生成纯六面体网格非常<u>耗费人工时间</u>，<u>自动化程度较低</u>，甚至对于特别复杂的一些几何模型根本无法生成纯六面体网格。</p>
+<p><strong>四面体、金字塔加楔形网格的混合网格：</strong></p>
+<p>是一种<u>经典的非结构化网格类型</u>。四面体网格高度的自动填充能力极大地简化了人工操作和参与时间，楔形网格在壁面附近对剪切层的分辨力也较高，仅次于纯六面体网格。因此，这也是工程仿真中最常用的一种网格类型。</p>
+<p>其缺点在于对内存资源的占用较同等数量的纯六面体网格要高，而且计算速度也相对较慢。由于网格方向和流动方向相比是杂乱无章的，离散误差通常较大，但可以通过减小网格尺寸以及使用更高阶精度的差分格式来弥补。</p>
+<p><strong>多面体网格加底面为多边形的楔形网格的混合网格：</strong></p>
+<p>是近年来大热的一种较新的网格类型。它和四面体网格一样拥有<u>较强的自动化生成能力</u>，无需过多的人工操作。多面体网格的最大的优点是它有很多相邻单元，所以能<u>更精确地计算控制体的梯度</u>，甚至在边部和角部，多面体网格通常也会有多个邻居单元，这样可以正常计算梯度和局部流动的分布。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202212302201069.png" alt="Fluent中支持的网格形式" style="zoom: 80%;">
+<p><strong>Hexcore网格：</strong></p>
+<p>是一种<u>六面体网格占优的网格划分技术</u>，在壁面上是和四面体网格相同的三角形表面网格，在远离壁面的空间中是边长呈1：2关系渐变的六面体网格，而且在壁面附近还可以生成楔形网格以提升对剪切层的分辨力。其综合了六面体网格的<u>高效内存利用率</u>，以及四面体、金字塔和楔形网格的<u>自动化生成优势</u>，在<u>外流计算等领域也有着广泛的用途</u>。</p>
+<p><strong>CutCell网格：</strong></p>
+<p>也是一种<u>六面体网格占优的网格划分技术</u>，在壁面上是空间中六面体网格的部分节点向壁面投影形成的表面网格，在远离壁面的空间中是边长呈1：2关系渐变的六面体网格，而且在壁面附近还可以生成楔形网格以提升对剪切层的分辨力。其综合了六面体网格的<u>高效内存利用率</u>，以及壁面投影法<u>对原始几何模型质量的低依赖性</u>的优势，在外流计算等领域也有着广泛的用途。</p>
+<p><strong>Mosaic技术：</strong></p>
+<p>是ANSYS Fluent最新推出的网格生成技术，能够<u>将各种类型的网格连接起来</u>，包括六面体、四面体、金字塔、楔形以及多面体网格，形成共节点（Conformal）的体网格。Mosaic技术使得用户能够充分利用各种网格类型的优势，帮助用户实现快速、高保真度、高精度的CFD仿真。</p>
+<p><strong>六面体网格VS四面体网格：</strong></p>
+<ol>
+<li>采用六面体网格可以减小网格数量</li>
+<li>对于流动方向沿着网格的问题，六面体网格可以减小数值误差</li>
+<li>几何形状复杂时，六面体网格划分工作量极大</li>
+<li>几何曲率较大时，六面体网格质量难以有效控制</li>
+</ol>
+<p><strong>多面体(Polyhedral)网格介绍：</strong></p>
+<ol>
+<li>网格数量减少为四面体的1/3左右</li>
+<li>有效提高网格质量</li>
+<li>更精确的计算控制体的梯度</li>
+<li>更高的收敛效率</li>
+<li>不支持逆转化</li>
+<li>不支持光顺、合并、自适应等网格编辑操作</li>
+</ol>
+<h4 id="1-1-4网格划分案例（注射器）">1.1.4网格划分案例（注射器）</h4>
+<p><strong>初始启动界面：</strong></p>
+<p>确定工作目录，打开Fluent工作页面</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202212301720086.png" alt="启动界面" style="zoom: 33%;">
+<p>左侧边栏新建【Watertight Geometry（水密几何工作流）】</p>
+<p>导入几何模型——左下角选择对应文件名称</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202212302058044.png" alt="几何模型" style="zoom: 45%;">
+<p>添加局部尺寸——可以在下拉选项中选择添加与否——设置好后点击更新</p>
+<p>生成表面网格——设置最小尺寸、最大尺寸、增长率、尺寸函数、曲率法向角、每个间隙的单元、对…施加临近探测等信息</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202212302105007.png" alt="生成表面网格" style="zoom: 50%;">
+<p>描述几何结构——确定“几何结构类型；希望封堵开口并抽取流动区域；是否将所有流体-流体区域交界面类型从“壁面”改为“内部”‘是否需要应用共享拓扑“这几个选项信息</p>
+<p>希望封堵开口并抽取流动区域：若不添加封口无法正常抽取流体区域</p>
+<p>封闭流体区域（封盖）：选择需要封闭的管路——确认封闭位置——创建封堵面——完成封堵面的创建<br>
+压力出口创建：回到封闭流体区域（封盖）——选择需要设置为压力出口的面——改变区域类型【pressure-outlet】——创建封堵面</p>
+<p>创建流体区域：设置流体区域预估数量——创建区域</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202212302148220.png" alt="完成封闭和创建过程" style="zoom: 50%;">
+<p>更新区域</p>
+<p>添加边界层——可以选择”偏移方法类型、层数、转换比例、增长率、添加、在…上增长“等信息</p>
+<p>生成体网格——选择网格类型——设置网格详细情况（缓冲层、剥离层、最小单元长度、最大单元长度）</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202212302209622.png" alt="image-20221230220916530" style="zoom:50%;">
+<h3 id="1-2求解器基本功能">1.2求解器基本功能</h3>
+<h4 id="1-2-1设置">1.2.1设置</h4>
+<p><strong>通用：</strong></p>
+<p>【比例】——可以用于网格缩放，改变模型几何尺寸</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202212310035043.png" alt="网格缩放" style="zoom: 50%;">
+<p>【单位】——进行各项物理量单位的修改</p>
+<p>**模型：**用于设置求解问题时用到的数学方程，包括：多相流、能量、粘性、辐射换热器、组份、离散相、凝固和熔化、声学、结构、Eulerian壁面液膜、电场/锂离子、电池电池模型</p>
+<p>**单元区域条件（cell-zone）：**包括流体、固体两大类。<br>
+但其中流体又包括多孔介质（一种特殊的流体域），可以通过用户输入的各方向的粘性系数和惯性阻力系数来确定流动方向的压降。<br>
+常被用于堆积床、过滤纸 、多孔板、流量分配器、管束的研究。</p>
+<p>**材料：**软件提供Fluent自带数据库和Granta企业数据库<br>
+所选择的物理模型将决定可采用的材料，以及该材料必须设定哪些参数<br>
+材料属性可以设置为函数属性（关于温度、压力的函数方程）</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202212310103200.png" alt="材料编辑" style="zoom: 33%;">
+<p><strong>边界条件（boundary condition）：</strong></p>
+<p>【边界条件类型】可以被分为内部与外部；<br>
+【内部边界（两侧都分布有体网格）】：·Fan(风扇)·Interior(内部)·Wall(壁面)<br>
+【外部边界（仅一侧分布有体网格）】：通用·Pressure Inlet(压力-入口)·Pressure Outlet(压力-出口)；不可压缩流·Velocity Inlet(速度入口)·Outflow(出流边界)；压缩流·Mass Flow Inlet(质量流入口)·Mass Flow Outlet(质量流出口)·Pressure Far Field(压力远场)；其他·Wall(壁面)·Symmetry(对称)·Axis(轴)</p>
+<p>边界类型更改：选择对应边界——【右键】——【type】选择更改壁面进行修改</p>
+<p>【速度入口】：</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202212310118410.png" alt="image-20221231011829342" style="zoom:55%;">
+<p>【压力进口】:<br>
+需要的输入：总压（表压），超音速/初始化表压（非超音速忽略），入口流动方向，湍流量（如是湍流的话），总温</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202212310120182.png" alt="image-20221231012044100" style="zoom: 33%;">
+<p>各种压力：<br>
+【动压】“动压”就是由于气流相对运动导致构件受到相对于静压的增加量。<br>
+【静压】“静压”就是没有气流的相对运动时作用于构件表面的压力，“静压”是不受来流速度影响测得的构件表面压力值 。<br>
+【总压】又称驻点压力，指气流速度等熵滞止到零时的压力，是气流中<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%9D%99%E5%8E%8B/2433711?fromModule=lemma_inlink">静压</a>与<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8A%A8%E5%8E%8B/2774292?fromModule=lemma_inlink">动压</a>之和，当流体静止时总压等于静压。<br>
+【表压】流体的绝对压力与测量地点大气压力值的差。</p>
+<p>【质量流入口】：流量入口是为可压缩流设计的，但也可以用于不可压流动</p>
+<p>需要的输入：质量流量或流率（除以时间）；超音速初始化表压；总温（在Thermal面板），对不可压缩流取静温；指定方向；湍流量（如是湍流的话）</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202212310139600.png" alt="质量流入口" style="zoom: 33%;">
+<p>【压力出口】：表压指静压</p>
+<ul>
+<li>适用于压缩和不可压流动</li>
+</ul>
+<p>如果流动在出口是超音速的，指定的压力被忽略<br>
+在外流或非封闭区域流动，作为自由边界条件</p>
+<ul>
+<li>要求输入</li>
+</ul>
+<p>表压（流体流入环境的静压）<br>
+回流量（当有回流发生时，起到进口的作用<br>
+湍流量(如是湍流的话)</p>
+<ul>
+<li>对于大多数问题是首选的出口条件</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202212310143702.png" alt="压力出口" style="zoom:33%;">
+<p>【质量流出口】：如果流动在出口的质量流率是已知的，且没有任何回流的情况下可以使用。通常用于旋转机械的下游出口。</p>
+<p>【壁面边界条件】：</p>
+<ul>
+<li>粘性流动中，壁面采用无滑移边界条件</li>
+</ul>
+<p>也可以指定剪切应力</p>
+<ul>
+<li>热边界条件</li>
+</ul>
+<p>有几种类型的热边界条件(区分内部和外部边界类型)<br>
+对一维或薄壳导热计算，可以指定壁面材料和厚度</p>
+<ul>
+<li>
+<p>壁面可以设置平移或旋转速度</p>
+</li>
+<li>
+<p>对湍流可以指定壁面粗糙度</p>
+</li>
+</ul>
+<p>基于局部流场的壁面剪切应力和传热</p>
+<h4 id="1-2-2求解">1.2.2求解</h4>
+<p><strong>求解器选择：</strong></p>
+<ul>
+<li>
+<p>FLUENT中有两种求解器-压力基和密度基</p>
+</li>
+<li>
+<p>压力基求解器以动量和压力为基本变量<br>
+通过连续性方程导出压力和速度的耦合算法（半迭代、半试探，求解收敛速度较低）</p>
+</li>
+<li>
+<p>压力基求解器有两种算法<br>
+分离求解器一压力修正和动量方程顺序求解（占用内存较小，收敛的效率和稳定性较差）<br>
+耦合求解器(PBCS)-压力和动量方程同时求解（占用内存更大，收敛的效率和稳定性更好）</p>
+</li>
+</ul>
+<p>对于初学者可以直接用求解方法中的【默认】选项，软件将根据物理模型、边界条件给出推荐的求解器设定</p>
+<p><strong>FLUENT中的求解设定：</strong></p>
+<p>非常的复杂，包括压力速度耦合方法、输运方程的空间离散方法、扩散方程的梯度项设定以及压力离散格式等<br>
+另外，不同的求解方法还涉及到其他的扩展设定：如松弛因子、库郎数、伪扩散时间推进方法、自动时间步长等。</p>
+<p><strong>收敛性：</strong></p>
+<ul>
+<li>计算收敛时应该满足（稳态）</li>
+</ul>
+<p>所有离散的守恒方程（动量、能量等）在所有的单元中满足指定的误差或者结果随计算不再改变<br>
+全局的质量、动量、能量和标量达到平衡<br>
+感兴趣（监测）量的值保持不变，通过定义报告创建相关报告进行检测</p>
+<ul>
+<li>使用残差曲线来监测收敛</li>
+</ul>
+<p>一般地，残差下降三个量级表示至少达到定性的收敛，流场的主要特征已经形成<br>
+压力基求解器的能量残差应下降到<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>6</mn></mrow></msup></mrow><annotation encoding="application/x-tex">10^{-6}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span></span><br>
+组分残差应下降到<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>5</mn></mrow></msup></mrow><annotation encoding="application/x-tex">10^{-5}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<ul>
+<li>检查全局通量守恒</li>
+</ul>
+<p>除了监测残差和变量外，也可以检查全局热和质量平衡<br>
+净通量差值(Net Results)及流入口质量与流出口质量的差值应该小于通过边界最小通量的1%</p>
+<h4 id="1-2-3求解结束与文件保存">1.2.3求解结束与文件保存</h4>
+<p><strong>Fluent文件类型介绍：</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>扩展名</th>
+<th>简要介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>网格(msh)</td>
+<td>*.msh</td>
+<td>网格文件，可通过任意前处理工具生成</td>
+</tr>
+<tr>
+<td>案例(cas)</td>
+<td>*.cas</td>
+<td>网格+设置文件，文件大小略大于网格文件</td>
+</tr>
+<tr>
+<td>数据(dat)</td>
+<td>*.dat</td>
+<td>变量数据文件，储存每个网格、面和节点的变量数值</td>
+</tr>
+<tr>
+<td>脚本(journal))</td>
+<td>*.txt *jou *.log</td>
+<td>操作记录文件，通常用于批做处理和二次开发</td>
+</tr>
+<tr>
+<td>分布文件(profile)</td>
+<td>*.prof *.csv</td>
+<td>用于分布式边界条件给定、时间相关变量赋值等</td>
+</tr>
+</tbody>
+</table>
+<p><strong>文件压缩格式：</strong>（在对应格式后面加上压缩的附加扩展名即可压缩）</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202212310225122.png" alt="image-20221231022502950" style="zoom: 33%;">
+<p>==求解结束后，若结果完成收敛，需要把结果的Data文件保存，以防之后的操作使结果文件丢失==</p>
+<h3 id="1-3后处理">1.3后处理</h3>
+<h4 id="1-3-1后处理概述">1.3.1后处理概述</h4>
+<p><strong>后处理两种方法：</strong></p>
+<ol>
+<li>Fluent后处理工具-整合在Fluent求解器中的工具</li>
+<li>应用ANSYS CFD-Post</li>
+</ol>
+<p><strong>常见的CFD结果分析方法：</strong></p>
+<ol>
+<li>Iso-surfaces(等值面)</li>
+<li>Vector plots(矢量图)〉</li>
+<li>Contour plots(等值图-云图)</li>
+<li>Streamlines and pathlines(流线和迹线)</li>
+<li>XY plotting(XY曲线图)</li>
+<li>Animation creation（创建动画)</li>
+</ol>
+<p><strong>Fluent后处理的基本工作流程：</strong></p>
+<ol>
+<li>确定位置<br>
+常见的位置有点、线、面，部分后处理内容涉及到体。<br>
+已有的边界条件（网格划分过程中命名的体和面)<br>
+根据后处理需求，临时自定义的几何位置，包括（点、线、面、等值面、ISO-Clip)</li>
+<li>如需要，创建变量/表达式来提取数据<br>
+【设置】——【已命名的表达式】——【新建】（创建软件中无法直接给出的数据结果）</li>
+<li>在给定位置处生成数据（定量数据、定性数据）</li>
+<li>生成报告（新版本功能）</li>
+</ol>
+<h4 id="1-3-2数据分析">1.3.2数据分析</h4>
+<ul>
+<li><strong>定量数据：</strong></li>
+</ul>
+<p>【结果】——【报告】——</p>
+<ol>
+<li>【表面积分】——设置“报告类型”、“场变量”、“检测表面位置”</li>
+<li>【通量报告】——可以检测包括质量流率在内的总传热速率、辐射传热速率、Viscous Work Rate等数值，<u>通常用于判断守恒</u></li>
+<li>【XY图绘制】在感兴趣的特征区域绘制直线——在直线上得到沿直线变化的物理量数据——绘制成XY图</li>
+</ol>
+<ul>
+<li><strong>定性数据：</strong></li>
+</ul>
+<p>【结果】——【绘图】——</p>
+<ol>
+<li>【云图】：只能创建在线、面上</li>
+<li>【矢量图】：（可以创建在壁面）</li>
+<li>【迹线图】：（需要选择起始点）</li>
+<li>【场景】：视图叠加显示。同时，可以通过点击绘图窗口，嵌入（Embed In），令图形信息和图像信息同时显示）</li>
+</ol>
+<h4 id="1-3-3报告功能">1.3.3报告功能</h4>
+<p>【结果】——【仿真报告】——【报告大纲】——其中可以选择报告模板（这决定了报告中包含的内容及其排版形式）；报告将自动进行内容填充和图片截取，最后生成一份全英文报告文档，可以按照需要输出PDF文档。</p>
+<h2 id="2-Fluent仿真知识">2.Fluent仿真知识</h2>
+<h3 id="2-1Fluent基础湍流模型介绍">2.1Fluent基础湍流模型介绍</h3>
+<h4 id="2-1-1基础知识">2.1.1基础知识</h4>
+<p><strong>圆管流动实验：</strong></p>
+<p>流体在一圆管中流动，于管一端增加一带颜色的小细流，观察不同雷诺数（Reynolds Number)）下管中流体的流动状态。</p>
+<p>低雷诺数，管中的细流保持稳定沿出口方向直线向前流动，称为“层流”。</p>
+<p>雷诺数增加，速度增加，层与层之间的流体开始发生交换，细流在沿出口方向直线的周边开始摆动，称为“转捩流”。</p>
+<p>高雷诺数细流进去圆管之后较快地在层级之间交换，并最终充满整个圆管空间 ，称为“湍流”。</p>
+<p><strong>雷诺数与湍流：</strong></p>
+<p>雷诺数（Reynolds number）一种可用来表征流体流动情况的无量纲数。</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>R</mi><mi>e</mi><mo>=</mo><mfrac><mrow><mi>ρ</mi><mi>U</mi><mi>L</mi></mrow><mi>μ</mi></mfrac></mrow><annotation encoding="application/x-tex">Re=\frac{\rho U L }{\mu }
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2408em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">μ</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">ρ</span><span class="mord mathnormal">UL</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>其中：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi></mrow><annotation encoding="application/x-tex">\rho</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ρ</span></span></span></span>——流体密度；<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi></mrow><annotation encoding="application/x-tex">U</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span></span></span></span>——流体流速；<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span>——特征尺寸（例如机翼弦长或圆球直径）；<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">μ</span></span></span></span>——粘性系数</p>
+<p>雷诺数物理上表示惯性力（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mi>U</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">\rho U L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ρ</span><span class="mord mathnormal">UL</span></span></span></span>）和粘性力量级（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">μ</span></span></span></span>）的比。</p>
+<p>雷诺数较小时，粘滞力对流场的影响大于惯性，流场中流速的扰动会因粘滞力而衰减，流体流动稳定，为<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B1%82%E6%B5%81?fromModule=lemma_inlink">层流</a>；反之，若雷诺数较大时，惯性对流场的影响大于粘滞力，流体流动较不稳定，流速的微小变化容易发展、增强，形成紊乱、不规则的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%B4%8A%E6%B5%81?fromModule=lemma_inlink">紊流</a>流场。</p>
+<p>湍流的界定：</p>
+<table>
+<thead>
+<tr>
+<th>流场</th>
+<th>流动情况</th>
+<th>界定数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>外流场</td>
+<td>沿着一个表面</td>
+<td>500000</td>
+</tr>
+<tr>
+<td>外流场</td>
+<td>绕过一个障碍物</td>
+<td>20000</td>
+</tr>
+<tr>
+<td>内流场</td>
+<td></td>
+<td>2300</td>
+</tr>
+<tr>
+<td>自然对流</td>
+<td>需要利用流体的瑞利数(Ra)和普朗特数（Pr）的比值判断流动情况</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-1-1模拟湍流的方法">2.1.1模拟湍流的方法</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>求解思路</th>
+<th>评价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>直接数值模拟(DNS)</td>
+<td>理论上，所有湍流（和层流/转捩）都可以通过求解完全的Navier-Stokes方程进行数值求解</td>
+<td>求解整个尺度谱.无模型要求，计算代价过大！</td>
+</tr>
+<tr>
+<td>大涡模拟(LES)类模型</td>
+<td>求解空间平均的N-S方程<br>直接模拟大的涡，而比网格小的涡通过模型模化</td>
+<td>较DNS计算代价小，但是对大多数运用来说，计算资源及计算代价依然较高</td>
+</tr>
+<tr>
+<td>雷诺平均Navier-Stokes(RANS)模型</td>
+<td>求解时均的Navier-Stokes方程<br>在RANS中模拟湍流的所有长度尺度</td>
+<td>通过平均的方法能够多可靠的预测出对工业应用具有充分精度的所有流动。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>时均的Navier-Stokes方程：</strong></p>
+<p>时均速度和瞬时速度</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301032116800.png" alt="时均速度和瞬时速度" style="zoom: 50%;">
+<p>瞬时速度表示为真实的流动速度；时均速度是速度的统计学处理；波动速度是二者的差值。</p>
+<p>时间平均可以定义为：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>f</mi><mo>ˉ</mo></mover><mo>=</mo><msub><mrow><mi>lim</mi><mo>⁡</mo></mrow><mrow><mi>T</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></msub><msubsup><mo>∫</mo><mi>T</mi><mn>0</mn></msubsup><mi>f</mi><mrow><mo fence="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo separator="true">,</mo><mi>t</mi><mo fence="true">)</mo></mrow><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\bar{f}=\lim_{T\rightarrow \infty }\int_{T}^{0}f\left ( x_{i},t \right )dt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0257em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8312em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span><span style="top:-3.2634em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.0833em;"><span class="mord">ˉ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.3648em;vertical-align:-0.3558em;"></span><span class="mop"><span class="mop">lim</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span><span class="mrel mtight">→</span><span class="mord mtight">∞</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="margin-right:0.19445em;position:relative;top:-0.0006em;">∫</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.009em;"><span style="top:-2.3442em;margin-left:-0.1945em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span style="top:-3.2579em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3558em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">t</span></span></span></span></p>
+<p>由此，瞬时场拆分为平均量和脉动量之和：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mover accent="true"><mi>p</mi><mo>ˉ</mo></mover><mo>+</mo><msup><mi>p</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo separator="true">,</mo><msub><mi>u</mi><mi>i</mi></msub><mo>=</mo><mover accent="true"><msub><mi>u</mi><mi>i</mi></msub><mo>ˉ</mo></mover><mo>+</mo><msup><msub><mi>u</mi><mi>i</mi></msub><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup></mrow><annotation encoding="application/x-tex">p=\bar{p}+{p}&#x27;,u_{i}=\bar{u_{i}}+{u_{i}}&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">p</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">ˉ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9463em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">p</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˉ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9019em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>对NS方程进行平均，得到雷诺平均的NS方程(RANS)。</p>
+<p><strong>求解RANS 时均模型分类：雷诺应力模型和涡粘模型：</strong></p>
+<ul>
+<li>雷诺应力模型：求解六个雷诺应力项(加上耗散率方程)的偏微分输运方程组。RSM在具有大流线曲率和漩涡的复杂3D湍流中是有利的，但是该模型比涡黏模型更复杂，计算更密集，更难收敛</li>
+<li>涡粘模型：基于Boussinesq假设，即雷诺应力正比于时均速度的应变，比例常数为涡粘系数（湍流黏性)，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mi>T</mi></msub></mrow><annotation encoding="application/x-tex">\mu_T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">μ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。对于边界层、圆形射流、混合层、通道流等简单的湍流剪切流是合理的。</li>
+</ul>
+<h4 id="2-1-3壁面附近的湍流">2.1.3壁面附近的湍流</h4>
+<p>对于粘性流体，无滑移壁面(No slip)，第一层流体网格的相对速度永远是零。</p>
+<p>在壁面附近的流体分布情况较为复杂，简单理解可认为是<u>零—层流—转捩—湍流</u>的分布。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301032137627.png" alt="壁面附近的湍流" style="zoom:33%;">
+<p>两个无量纲数的概念被引入：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>+</mo><mo separator="true">,</mo><mi>Y</mi><mo>+</mo></mrow><annotation encoding="application/x-tex">U+,Y+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord">+</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mord">+</span></span></span></span><br>
+其中，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>+</mo></mrow><annotation encoding="application/x-tex">Y+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mord">+</span></span></span></span>：近壁面第一层网格的（等效）高度，单位是1，表示m。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>+</mo></mrow><annotation encoding="application/x-tex">U+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord">+</span></span></span></span>：等效速度，单位是1，表示m/s</p>
+<p>对于这两个无量纲数，在近壁面较近处满足线性规律，在较远处满足对数定律</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301032143551.png" alt="无量纲数在近壁面的关系" style="zoom: 50%;">
+<p>由于数学关系的存在，这使得近壁面处的流动求解变得有法可依。<br>
+提出了两种壁面模型的求解方法：</p>
+<ul>
+<li>壁面函数法，要求第一层网格应当距离壁面30-30的位置上，给出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>+</mo></mrow><annotation encoding="application/x-tex">Y+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mord">+</span></span></span></span>的同时根据数学关系可以完成<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>+</mo></mrow><annotation encoding="application/x-tex">U+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord">+</span></span></span></span>的求解。</li>
+<li>求解粘性底层，要求<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>+</mo></mrow><annotation encoding="application/x-tex">Y+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mord">+</span></span></span></span>近似于1，层之间的增长比率小于1.2，适用于混合流动和近壁面现象复杂的流动。</li>
+</ul>
+<p>在Fluent求解中，常将<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>+</mo></mrow><annotation encoding="application/x-tex">Y+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mord">+</span></span></span></span>表示为壁面的流动模拟结果，因而可以形成壁面的云图效果</p>
+<p><strong>近壁面网格尺寸预估：</strong></p>
+<p>当湍流通过入口或出口（回流）进入流体域时，必须设置湍流参数。</p>
+<p>设置方式：</p>
+<ol>
+<li>直接输入$k,\varepsilon ,\omega $或雷诺应力分量（仅此方法支持<strong>分布</strong>输入）。</li>
+<li>湍流强度和长度尺度。</li>
+<li>湍流强度和粘性比（默认方法，适合外流和内流）</li>
+<li>湍流强度和水力直径（主要适合内流）</li>
+</ol>
+<p>其中：湍流强度的范围通常为1%~5%，其中5%可以适用大多数的问题。粘性比的值推荐使用1-100，默认为10。对于内流场，粘性比通常为10-100。对于内流场，粘性比通常为1-10。</p>
+<h4 id="2-1-4湍流模拟初学者指南">2.1.4湍流模拟初学者指南</h4>
+<p>Fluent开始仿真之前，先评估整个流动系统的雷诺数，用以判断是否是湍流。</p>
+<p>在前处理（网格划分）之前，明确想要选择的壁面处理方式：解析粘性底层(y+≈1)or使用壁面函数(y+≈30~300)</p>
+<p>当<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>+</mo><mo>&gt;</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">Y+&gt;5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mord">+</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5</span></span></span></span>，选择k-epsilon (2 eqn)——Realizable——可扩展避面函数(SWF)。若<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>+</mo></mrow><annotation encoding="application/x-tex">Y+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mord">+</span></span></span></span>在1附近，则选用SST&amp;(k-E增强壁面函数)。<br>
+（scalable wall function)该模型可以无视Y+的数值使用壁面函数，用以处理近壁面速度梯度与分布，可以有效减轻前处理的工作负担。</p>
+<p>针对wall y+的范围进行试算（y+计算器&amp;Fluent试算)，从而确定近壁面（第一层边界层）网格尺寸。<br>
+y+计算器，在CFD Online（<a target="_blank" rel="noopener" href="http://www.cfd-online.com">www.cfd-online.com</a>）网站有。</p>
+<h3 id="2-2传热模型介绍">2.2传热模型介绍</h3>
+<h4 id="2-2-1总体介绍">2.2.1总体介绍</h4>
+<p><strong>热传递形式：</strong></p>
+<ul>
+<li>热传导<br>
+在介质（流体或固体）中发生<br>
+与原子和分子振动或电子运动有关<br>
+在介质中由于温度梯度的热扩散</li>
+<li>热对流<br>
+流体流动导致热量交换</li>
+<li>热辐射<br>
+通过电磁波辐射产生热量交换</li>
+<li>相变<br>
+因相变而发生的热量交换，本质是物质吸收或放出热量</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301072104732.png" alt="热传递形式" style="zoom:33%;">
+<p><strong>CFD模拟可以考虑所有的传热模式：</strong></p>
+<ol>
+<li>热传导(Conduction)</li>
+<li>对流：强制和自然(Convection forced and natural)</li>
+<li>辐射(Radiation)</li>
+<li>相间能量源（相变）</li>
+<li>流固耦合传热</li>
+<li>黏性耗散</li>
+<li>组分扩散</li>
+</ol>
+<p>为了模拟传热，需激活能量方程：在【Setting Up Physics】物理模型选项卡选中【Energy】能量</p>
+<h4 id="2-2-2热传递不同形式的仿真">2.2.2热传递不同形式的仿真</h4>
+<h5 id="【热传导】">【热传导】</h5>
+<p><strong>热传导由傅里叶定律决定：</strong></p>
+<p>当能量方程被激活时，在所有流体和固体区域中，Fluent计算热传导。</p>
+<p>傅里叶定律指出，<u>传热率与温度梯度成正比</u>：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mrow><mi>c</mi><mi>o</mi><mi>n</mi><mi>d</mi><mi>u</mi><mi>c</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi></mrow></msub><mo>=</mo><mo>−</mo><mi>k</mi><mi mathvariant="normal">Δ</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">q_{conduction}=-k\Delta T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">co</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord">Δ</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span></p>
+<p>式中：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo stretchy="false">[</mo><mi>w</mi><mi mathvariant="normal">/</mi><mo stretchy="false">(</mo><mi>m</mi><mo>⋅</mo><mi>k</mi><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">k[w/(m\cdot k)]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord">/</span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">)]</span></span></span></span>——热导率，材料属性，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>可能是温度、空间等的函数；<br>
+对于各向同性材料，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>是一个常数；	<br>
+对于各向异性材料，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>是一个矩阵。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301072114447.png" alt="热传导模型的设定" style="zoom:50%;">
+<p>热导率的输入形式可以是常数；分段线性；分段多项式；多项式；表达式；动力学理论；自定义；新输入参数</p>
+<h5 id="【热对流】">【热对流】</h5>
+<p>随着流体的移动，它会带走热量，这就是对流现象；<br>
+热传递与流体流动相耦合<br>
+能量+流动方程激活时→求解对流传热<br>
+能量方程激活时，流体中热传导也将求解</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>q</mi><mo>=</mo><mover accent="true"><mi>h</mi><mo>ˉ</mo></mover><mo stretchy="false">(</mo><msub><mi>T</mi><mrow><mi>b</mi><mi>o</mi><mi>d</mi><mi>y</mi></mrow></msub><mo>−</mo><msub><mi>T</mi><mi mathvariant="normal">∞</mi></msub><mo stretchy="false">)</mo><mo>=</mo><mover accent="true"><mi>h</mi><mo>ˉ</mo></mover><mo>⋅</mo><mi mathvariant="normal">Δ</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">q=\bar{h}(T_{body}-T_\infty )=\bar{h}\cdot \Delta T
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1173em;vertical-align:-0.2861em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8312em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">h</span></span><span style="top:-3.2634em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">∞</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8312em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8312em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">h</span></span><span style="top:-3.2634em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Δ</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span></span></p>
+<p>式中：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span>——物体颗粒热量；<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>h</mi><mo>ˉ</mo></mover></mrow><annotation encoding="application/x-tex">\bar{h}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8312em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8312em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">h</span></span><span style="top:-3.2634em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˉ</span></span></span></span></span></span></span></span></span></span>——对流传热系数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>W</mi><mi mathvariant="normal">/</mi><mo stretchy="false">(</mo><msup><mi>m</mi><mn>2</mn></msup><mo>⋅</mo><mi>K</mi><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[W/(m^2\cdot K)]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord">/</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mclose">)]</span></span></span></span></p>
+<p>软件计算中需要同时划分来流流体网格和固体边界网格</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301072222942.png" alt="对流传热" style="zoom:50%;">
+<p>对流传热速率很大程度上取决于流体速度</p>
+<p>流体性质可能随温度（例如空气）而显著变化</p>
+<p>壁面处传热系数通过湍流热壁函数计算</p>
+<h5 id="【自然对流】">【自然对流】</h5>
+<p>对流按照外界作用可以分为：强制对流（例如风扇吹动，可以给定仿真速度入口，处理较简单）和自然对流（不依靠泵或风机等外力推动，由流体自身<u>温度场的不均匀</u>所引起的流动	）</p>
+<p><u>当流体密度与温度有关时</u>，被加热后密度变化，就会发生自然对流：</p>
+<p>流动是由密度差引起的重力驱动的；</p>
+<p><strong>常用的描述自然对流的方法有：</strong></p>
+<ul>
+<li>Boussinesq密度模型<br>
+假定密度不变，重力直接与温度挂钩。增加了处理方程的线性，方便获得结果收敛。适用于温度变化较小（10°左右），不可压缩理想气体（密度变化与温度无关只与压力有关）</li>
+<li>Incompressible Idea Gas密度模型</li>
+</ul>
+<p>**不可压缩流体：**密度不随压力变化而变化。对于不可压缩流体可以选择以下几种设置</p>
+<ul>
+<li>Constant(固定值)：如果不考虑密度随压力和温度变化，可以设置为固定值。对于一般工况下的液态介质的模拟，可选择恒定密度。</li>
+<li>Impressible Ideal-gas-model(不可压缩理想气体)：对于密度随压力变化很小的工况，我们可以近似将气体视为不可压缩，密度仅随温度变化而变化，二者之间的关系遵循理想气体方程。</li>
+<li>Piecewise-linear,piecewise-polynomial 这两个选项可以自定义密度与温度的关系式（线性、多项式形式）</li>
+<li>Boussinesq : 对于温度变化很小的自然对流工况中，可以使用Boussinesq 模型。</li>
+<li>Compressible liquid: 对于高压下的液体介质，可以选用compressible liguid 定义密度。</li>
+</ul>
+<h5 id="【热辐射-Radiation-】">【热辐射(Radiation)】</h5>
+<p>辐射传热是一种通过<u>电磁波传输能量</u>的能量传递方式：热辐射覆盖电磁频谱的一部分，从0.1到100μm</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301072255087.png" alt="辐射波长范围" style="zoom: 50%;">
+<p>对于半透明物体（例如玻璃，燃烧产物气体），辐射是<u>体积现象</u>：因为辐射可以从体内逸出</p>
+<p>对于不透明的物体来说，辐射本质上是一种<u>表面现象</u>：因为几乎所有的内部辐射都在体内被吸收</p>
+<p><strong>何时考虑辐射？</strong></p>
+<p>当辐射热通量：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mrow><mi>r</mi><mi>a</mi><mi>d</mi></mrow></msub><mo>=</mo><mi>σ</mi><mo stretchy="false">(</mo><msubsup><mi>T</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow><mn>4</mn></msubsup><mo>−</mo><msubsup><mi>T</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow><mn>4</mn></msubsup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">q_{rad}=\sigma (T_{max}^4 -T_{min}^4)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.453em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ma</span><span class="mord mathnormal mtight">x</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0728em;vertical-align:-0.2587em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.4413em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">min</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2587em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>与对流及导热的传热速率相比时，二者数量级相当时，应该考虑辐射效应；<br>
+式中：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">σ</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span></span></span></span>——Stefan-Boltzmann常数，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5.6704</mn><mo>×</mo><mn>10</mn><mo>−</mo><mn>8</mn><mi>W</mi><mi mathvariant="normal">/</mi><mo stretchy="false">(</mo><msup><mi>m</mi><mn>2</mn></msup><mi mathvariant="normal">.</mi><msup><mi>K</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">5.6704×10-8W/(m^2. K^4)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5.6704</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">10</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">8</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord">/</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord">.</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
+<p>估计系统中传导或对流传热的大小：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mrow><mi>c</mi><mi>o</mi><mi>n</mi><mi>v</mi></mrow></msub><mo>=</mo><mo stretchy="false">(</mo><msub><mi>T</mi><mrow><mi>w</mi><mi>a</mi><mi>l</mi><mi>l</mi></mrow></msub><mo>−</mo><msub><mi>T</mi><mrow><mi>b</mi><mi>u</mi><mi>l</mi><mi>k</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">q_{conv}=(T_{wall}-T_{bulk})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">co</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">ll</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
+<p><strong>Fluent中的热辐射模型：</strong></p>
+<ol>
+<li>关闭</li>
+<li>Rosseland</li>
+<li>P1</li>
+<li>Discrete Transfer (DTRM)</li>
+<li>表面到表面(S2S)，适用于电子产品散热</li>
+<li>离散坐标(D0)</li>
+<li>Monte Carlo (MC)</li>
+</ol>
+<h5 id="【相变】">【相变】</h5>
+<p>当物质改变状态时，会释放或吸收热量；</p>
+<p><strong>相变的多种形式：</strong></p>
+<ol>
+<li>冷凝-Condensation</li>
+<li>蒸发-Evaporation</li>
+<li>沸腾-Boiling</li>
+<li>融化/疑固-Melting/Solidification</li>
+</ol>
+<p>仿真中需要综合掌握“多相流”技术以及“传热”方法，需要多相模型和/或UDF来正确地模拟这些现象</p>
+<h4 id="2-2-3共轭换热-CHT">2.2.3共轭换热(CHT)</h4>
+<p>在流体与固体区域之间的壁面或两侧有流体的壁面，在读取网格文件时，Fluent会自动创建wall与wall_shadow</p>
+<p>默认情况下，<u>耦合(Coupled)</u>（【壁面】——【热量】——【耦合】）边界条件自动平衡墙两侧的能量</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301072251768.png" alt="冷却液流过加热棒" style="zoom:33%;">
+<h4 id="2-2-4壁面热边界条件">2.2.4壁面热边界条件</h4>
+<p>当壁面条件为<u>外部边界</u>时，其<strong>热边界条件为：</strong></p>
+<ul>
+<li>热通量（默认选项，热通量为0，表示该表面绝热处理）</li>
+<li>温度（恒定的温度）</li>
+<li>对流（模拟外部环境的对流，用户定义换热系数。来流温度高，吸热；来流温度低，散热）<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mrow><mi>c</mi><mi>o</mi><mi>n</mi><mi>v</mi></mrow></msub><mo>=</mo><msub><mi>h</mi><mrow><mi>e</mi><mi>x</mi><mi>t</mi></mrow></msub><mo stretchy="false">(</mo><msub><mi>T</mi><mrow><mi>e</mi><mi>x</mi><mi>t</mi></mrow></msub><mo>−</mo><msub><mi>T</mi><mi>w</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">q_{conv}=h_{ext}(T_{ext}-T_{w})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">co</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
+<li>辐射（模拟外部环境的辐射，用户定义内部发射率和辐射温度）<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mrow><mi>r</mi><mi>a</mi><mi>d</mi></mrow></msub><mo>=</mo><msub><mi>ε</mi><mrow><mi>e</mi><mi>x</mi><mi>t</mi></mrow></msub><mi>σ</mi><mo stretchy="false">(</mo><msubsup><mi>T</mi><mi mathvariant="normal">∞</mi><mn>4</mn></msubsup><mo>−</mo><msubsup><mi>T</mi><mi>w</mi><mn>4</mn></msubsup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">q_{rad}=\varepsilon_{ext}\sigma(T_{\infty }^4-T_{w}^4)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">ε</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.453em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∞</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.453em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
+<li>混合（对流和辐射边界的结合）<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mrow><mi>m</mi><mi>i</mi><mi>x</mi><mi>e</mi><mi>d</mi></mrow></msub><mo>=</mo><msub><mi>h</mi><mrow><mi>e</mi><mi>x</mi><mi>t</mi></mrow></msub><mo stretchy="false">(</mo><msub><mi>T</mi><mrow><mi>e</mi><mi>x</mi><mi>t</mi></mrow></msub><mo>−</mo><msub><mi>T</mi><mi>w</mi></msub><mo stretchy="false">)</mo><mo>+</mo><msub><mi>ε</mi><mrow><mi>e</mi><mi>x</mi><mi>t</mi></mrow></msub><mi>σ</mi><mo stretchy="false">(</mo><msubsup><mi>T</mi><mi mathvariant="normal">∞</mi><mn>4</mn></msubsup><mo>−</mo><msubsup><mi>T</mi><mi>w</mi><mn>4</mn></msubsup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">q_{mixed}=h_{ext}(T_{ext}-T_{w})+\varepsilon_{ext}\sigma(T_{\infty }^4-T_{w}^4)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">mi</span><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">ε</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.453em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∞</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.453em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
+<li>通过系统耦合（当Fluent与Workbench中其他系统耦合时，可以使用“System Couplings&quot;）</li>
+<li>通过映射交界面</li>
+</ul>
+<p>当壁面条件为<u>内部边界</u>时，其<strong>热边界条件为：</strong></p>
+<ul>
+<li>恒定热通量或温度</li>
+<li>耦合(couple)</li>
+</ul>
+<p>不管壁面条件为外部还是内部边界时，其<strong>热边界条件都包含：</strong></p>
+<ul>
+<li>壁面厚度</li>
+<li>热源功率</li>
+<li>材料</li>
+<li>薄壳传热(壳导热)</li>
+</ul>
+<h4 id="2-2-5壁面传热和网格">2.2.5壁面传热和网格</h4>
+<p>通常，模拟壁面热效应是很重要的，但可能不需要对其进行网格化</p>
+<ul>
+<li>选项1：对固体划分网格<br>
+在固体域求解能量方程，需要网格离散，网格数量大<br>
+最精确方法，使用耦合热边界条件计算</li>
+<li>选项2：薄壁模型<br>
+只划分流体域，需指定壁面厚度；<br>
+考虑了壁面热传导，常会导致计算的不准确。</li>
+<li>选项3：壳导热模型<br>
+如选项2，但是打开&quot;Shell Conduction<br>
+将创建1层或更多层“虚拟单元”</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301081348555.png" alt="壁面传热和网格" style="zoom:40%;">
+<p><strong>薄壁方法：</strong></p>
+<ul>
+<li>壁面需要必要的数据输入（<u>材料导热系数，厚度</u>）</li>
+<li>只有对内部边界用耦合边界条件<br>
+利用输入壁厚和材料类型，通过假定厚度-温度分布为线性计算墙体热阻<br>
+热传导仅在壁面==法向==方向计算，除非使用壳传导方法</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301081350144.png" alt="薄壁方法" style="zoom:33%;">
+<p><strong>壳导热方法：</strong></p>
+<ul>
+<li>壳导热模型处理板内部的导热，求解器创建额外的导热单元，但不能显示，也不能通过UDF获得；</li>
+<li>固体属性必须是常数，不能和温度相关：<br>
+启用“<u>薄壳传热</u>”；<br>
+选择“薄壳传热”，单击“编辑”，并输入层的数量，以及每层的材料和厚度。</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301081352031.png" alt="壳导热方法设定" style="zoom: 33%;">
+<p>壳导热可以设置多层壳，不同层壳之间允许使用不同的厚度和材料</p>
+<h4 id="2-2-6传热计算后处理">2.2.6传热计算后处理</h4>
+<p><strong>热通量报告：</strong></p>
+<ul>
+<li><u>总热传递速率</u>：计算对流和辐射通量<br>
+计算收敛时，静热平衡应为0或与所有外部能源相反(UDF或恒源项，DPM)）<br>
+新增了用户源项(User Source)</li>
+<li><u>辐射热传递速率</u>：仅计算辐射净通量<br>
+该通量的总和一般不为0，它可以代表被介质吸收的能量的量</li>
+</ul>
+<p><strong>壁面对流换热系数：</strong><br>
+Fluent变量包含这一概念；<br>
+仅作定性判断<br>
+数值和参考温度相关</p>
+<h3 id="2-3瞬态模型">2.3瞬态模型</h3>
+<h4 id="2-3-1概述">2.3.1概述</h4>
+<p>自然界几乎所有流动都是瞬态的</p>
+<p>CFD中使用稳态方法的好处：更少的计算资源，更容易后处理和分析</p>
+<p>使用瞬态求解的工况：</p>
+<ol>
+<li>气动（飞机、机车等）涡脱落</li>
+<li>旋转机械：动静干涉、失速、颤振</li>
+<li>多相流：自由液面、气泡动力学</li>
+<li>变形域：内燃机燃烧、机弹分离</li>
+<li>瞬态换热：瞬态加热或冷却</li>
+</ol>
+<h4 id="2-3-2瞬态CFD分析">2.3.2瞬态CFD分析</h4>
+<p><strong>模拟指定时间内的瞬态流场：</strong></p>
+<p>可以通过以下方法求解</p>
+<ul>
+<li>稳态解一流场不再随时间变化</li>
+<li>时间周期解一流场形态随时间脉动重复出现</li>
+</ul>
+<p>可以简化为分析预定时间间隔的流动</p>
+<ul>
+<li>自由表面流</li>
+</ul>
+<p><strong>抽取特征的变量：</strong></p>
+<ul>
+<li>特征频率（如：斯德鲁哈尔数）</li>
+<li>时间平均或/RMS值（有效值）</li>
+<li>时间相关的参数（如，热固体的冷却时间，污染物的停留时间)</li>
+<li>特殊数据（快速傅立叶变换）</li>
+</ul>
+<p><strong>瞬态计算离散思想：</strong></p>
+<p>类似离散时间，将总时间离散成多个时间步长（Time steps）。使用某个特定的时间点代表该时间步内周围时间间隔的状态。</p>
+<p>Time steps=2s；Initial Time=0 s；Total Time=20 s</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301081638039.png" alt="瞬态计算离散思想" style="zoom:33%;">
+<p><strong>瞬态时间步长选择：</strong></p>
+<ul>
+<li>时间步长是瞬态模拟中的一个重要参数；<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\Delta t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Δ</span><span class="mord mathnormal">t</span></span></span></span>必须足够小以解决与时间相关的特征</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301081639909.png" alt="瞬态时间步长选择" style="zoom:33%;">
+<ul>
+<li>时间步长必须足够小以保持求解器的稳定性</li>
+</ul>
+<p>若时间步长过大，可能导致结算结果发散</p>
+<p>感兴趣的量可能非常缓慢地变化（如固体中温度）；但如果其他量（如速度）具有较小的时间尺度，则无法使用大的时间步长</p>
+<ul>
+<li>Courant数通常用于估计时间步长：</li>
+</ul>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>o</mi><mi>u</mi><mi>r</mi><mi>a</mi><mi>n</mi><mi>t</mi><mi>n</mi><mi>u</mi><mi>m</mi><mi>b</mi><mi>e</mi><mi>r</mi><mo>=</mo><mfrac><mrow><mi>C</mi><mi>h</mi><mi>a</mi><mi>r</mi><mi>a</mi><mi>c</mi><mi>t</mi><mi>e</mi><mi>r</mi><mi>i</mi><mi>s</mi><mi>t</mi><mi>i</mi><mi>c</mi><mi>f</mi><mi>l</mi><mi>o</mi><mi>w</mi><mi>v</mi><mi>e</mi><mi>l</mi><mi>o</mi><mi>c</mi><mi>i</mi><mi>t</mi><mi>y</mi><mo>×</mo><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow><mrow><mi>T</mi><mi>y</mi><mi>p</mi><mi>i</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>C</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>S</mi><mi>i</mi><mi>z</mi><mi>e</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">Courant number=\frac{Characteri stic flow velocity×\Delta t}{Typical Cell Size}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">an</span><span class="mord mathnormal">t</span><span class="mord mathnormal">n</span><span class="mord mathnormal">u</span><span class="mord mathnormal">mb</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.4133em;vertical-align:-0.4811em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9322em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.07153em;">lC</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.05764em;">llS</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">ze</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4461em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span><span class="mord mathnormal mtight">ha</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">er</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">oc</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span><span class="mbin mtight">×</span><span class="mord mtight">Δ</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4811em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<p>给出了流体在一个时间步长中通过网格单元的数量。典型值为：1一10，但是某些情况下更高的值是可以接受的</p>
+<ul>
+<li>估计时间步的提示和技巧：</li>
+</ul>
+<p>通常案例：L=网格特征尺寸，限制但收敛性好。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mfrac><mi>L</mi><mi>V</mi></mfrac></mrow><annotation encoding="application/x-tex">\Delta t=\frac{1}{3}\frac{L}{V}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Δ</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.22222em;">V</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">L</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>。式中：L——特征长度，V——特征速度</p>
+<p>旋转机械：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mfrac><mrow><mi>N</mi><mi>u</mi><mi>m</mi><mi>b</mi><mi>e</mi><mi>r</mi><mi>o</mi><mi>f</mi><mi>B</mi><mi>l</mi><mi>a</mi><mi>d</mi><mi>e</mi><mi>s</mi></mrow><mrow><mi>R</mi><mi>o</mi><mi>t</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>a</mi><mi>l</mi><mi>V</mi><mi>e</mi><mi>l</mi><mi>o</mi><mi>c</mi><mi>i</mi><mi>t</mi><mi>y</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\Delta t=\frac{1}{3}\frac{Number of Blades}{Rotational Velocity}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Δ</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.4133em;vertical-align:-0.4811em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9322em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">na</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight" style="margin-right:0.22222em;">V</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">oc</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4461em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">mb</span><span class="mord mathnormal mtight">ero</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">Bl</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">es</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4811em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<p>自然对流：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>=</mo><mfrac><mi>L</mi><mrow><mo stretchy="false">(</mo><mi>g</mi><mo>⋅</mo><mi>β</mi><mo>⋅</mo><mi mathvariant="normal">Δ</mi><mi>T</mi><mo>⋅</mo><mi>L</mi><msup><mo stretchy="false">)</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\Delta t=\frac{L}{(g\cdot \beta \cdot \Delta T\cdot L)^\frac{1}{2}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Δ</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.7145em;vertical-align:-0.8421em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.3329em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span><span class="mbin mtight">⋅</span><span class="mord mathnormal mtight" style="margin-right:0.05278em;">β</span><span class="mbin mtight">⋅</span><span class="mord mtight">Δ</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span><span class="mbin mtight">⋅</span><span class="mord mathnormal mtight">L</span><span class="mclose mtight"><span class="mclose mtight">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.2245em;"><span style="top:-3.4878em;margin-right:0.0714em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size1 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0314em;"><span style="top:-2.468em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight"><span class="mord mtight">2</span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.387em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.532em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size1 size6"></span></span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">L</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8421em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<p>固体导热：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>=</mo><mfrac><msup><mi>L</mi><mn>2</mn></msup><mfrac><mi>λ</mi><mrow><mi>ρ</mi><mo>⋅</mo><msub><mi>C</mi><mi>p</mi></msub></mrow></mfrac></mfrac></mrow><annotation encoding="application/x-tex">\Delta t=\frac{L^{2}}{\frac{\lambda }{\rho \cdot C_{p}}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Δ</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.882em;vertical-align:-0.864em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0179em;"><span style="top:-2.574em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.88em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ρ</span><span class="mbin mtight">⋅</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2306em;"><span style="top:-2.3em;margin-left:-0.0715em;margin-right:0.1em;"><span class="pstrut" style="height:2.5em;"></span><span class="mord mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3944em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">λ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.6257em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">L</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913em;"><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.864em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<h4 id="2-3-3瞬态问题模拟流程">2.3.3瞬态问题模拟流程</h4>
+<p><strong>总体流程：</strong></p>
+<p>1.激活瞬态求解器</p>
+<p>2.设置物理模型和边界条件<br>
+·允许设置瞬态边界条件：UDF或者分布文件；</p>
+<p>3.指定初始流场<br>
+·最好用物理意义的初场，如稳态流场；</p>
+<p>4.求解器设置，监测求解设置</p>
+<p>5.设置动画（重要的后处理手段）和数据输出选择</p>
+<p>6.选择时间步和每个时间步最大迭代次数</p>
+<p>7.设定时间步数</p>
+<p>8.计算迭代</p>
+<p><strong>激活瞬态求解器：</strong></p>
+<p>在物理模型标签栏中，选择通用按钮（或者双击下方菜单中的通用)，随后在时间选项中选择瞬态，即可激活瞬态仿真求解器；</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301081657592.png" alt="激活瞬态求解器" style="zoom:33%;">
+<p><strong>瞬态仿真中的边界条件：</strong></p>
+<ul>
+<li>瞬态模拟中的边界条件与稳态类似</li>
+<li>新增了与时间相关的边界条件</li>
+</ul>
+<p>通过<u>UDF程序</u>来描述</p>
+<p>新版本支持<u>表达式</u>功能，可以直接定义与时间相关的边界条件</p>
+<p><strong>求解器设置：</strong></p>
+<p>在“时间项离散格式”中定义瞬态项的数值格式</p>
+<p>First Order Implicit为默认选项，因为它更稳定<br>
+对于精度要求较高的问题，推荐使用Bounded Second Order Implicit</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301081659632.png" alt="求解器设置" style="zoom: 50%;">
+<p><strong>设置时间步长：</strong></p>
+<p>在求解面板中直接输入时间步长与时间步数</p>
+<p>也可双击运行计算，并设置时间步长与时间步数</p>
+<p>时间步长X时间步数=总仿真时间</p>
+<p>最大迭代数/时间步是一个重要的概念<br>
+通常保持20不要更改；对于某些问题可以降低到15用以控制更稳定的时间步长；同时，建议最多不超过30</p>
+<p><strong>初始化：</strong></p>
+<p>瞬态计算中，初始值会直接影响求解结果</p>
+<p>使用符合物理条件的初始条件<br>
+稳态收敛解常被用作初始值</p>
+<p>如果从近似初始猜想开始瞬态模拟，初始瞬态结果将不准确。需要将前几个时间步，步长需要很小（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mo>−</mo></msup><mn>5</mn></mrow><annotation encoding="application/x-tex">10^-5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7713em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7713em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">−</span></span></span></span></span></span></span></span><span class="mord">5</span></span></span></span>）,虽不收敛，但依旧可以保持稳定。待前几步结果稳定，再逐步增加仿真步长（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mo>−</mo></msup><mn>4</mn></mrow><annotation encoding="application/x-tex">10^-4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7713em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7713em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">−</span></span></span></span></span></span></span></span><span class="mord">4</span></span></span></span>）。最后增加到由Courant数得到的时间步长。前几个时间步可能不收敛<br>
+较小的时间步长有利于维持求解器的稳定性<br>
+对于周期性重复问题，忽略前几个周期，直至获得可重复的结果</p>
+<h4 id="2-3-4瞬态仿真的收敛判定与设置策略">2.3.4瞬态仿真的收敛判定与设置策略</h4>
+<p><strong>创建动画：</strong></p>
+<p>必须在计算前设置动画，动画帧在计算中写出并储存</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301081712908.png" alt="创建动画" style="zoom:33%;">
+<p><strong>收敛行为：</strong></p>
+<p>瞬态模拟的残差图并不总是表明收敛的解</p>
+<p>应该选择时间步长，使得残差<u>在一个时间步长内减少大约三个数量级</u>；<br>
+保证瞬态行为被精确解析。对于较小的时间步长，残差可能仅下降1~2个数量级，在整个时间步中需要单调减少</p>
+<p><strong>瞬态摸拟的技巧：</strong></p>
+<ul>
+<li>
+<p><u>压力-速度耦合采用PISO格式</u>，比标准SIMPLE格式更易收敛</p>
+</li>
+<li>
+<p>每个时间步的迭代次数大约20次<br>
+减少时间步长比增加每步的迭代次数效果要好；</p>
+</li>
+<li>
+<p>记住对瞬态问题，精确的初场和边界条件一样重要</p>
+<p>初场一定要符合真实物理条件！</p>
+</li>
+<li>
+<p>可以指定零时间步长，表示只收敛当前时间步<br>
+在计算前定义希望得到的动画</p>
+</li>
+</ul>
+<h2 id="3-外部知识援助">3.外部知识援助</h2>
+<h3 id="3-1网格划分阶段">3.1网格划分阶段</h3>
+<h4 id="3-1-1模型边界条件">3.1.1模型边界条件</h4>
+<p><strong>ANSYS Fluent里的各种边界条件（汇总）：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/528203426">https://zhuanlan.zhihu.com/p/528203426</a></strong></p>
+<h3 id="3-2求解阶段">3.2求解阶段</h3>
+<h4 id="3-2-1模型初始化方式选择">3.2.1模型初始化方式选择</h4>
+<p><strong>Fluent中的各种初始化：<a target="_blank" rel="noopener" href="https://blog.csdn.net/wsxww11/article/details/124378279">https://blog.csdn.net/wsxww11/article/details/124378279</a></strong></p>
+<p><strong>混合初始化的介绍和不收敛状况时的相关设置方法：<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv20360706">https://www.bilibili.com/read/cv20360706</a></strong></p>
+<h4 id="3-2-2流体材料给定CFD中的密度模型">3.2.2流体材料给定CFD中的密度模型</h4>
+<p><strong>CFD中的密度模型：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/539920569">https://zhuanlan.zhihu.com/p/539920569</a></strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://lidaiwei.top">David.Li</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://lidaiwei.top/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%BD%AF%E4%BB%B6%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D/">https://lidaiwei.top/2023/01/01/Fluent流体仿真/Fluent软件总体介绍/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://lidaiwei.top" target="_blank">戴威的Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a><a class="post-meta__tags" href="/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/">研究生知识积累</a></div><div class="post_share"><div class="social-share" data-image="/./img/20.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/01/08/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%A7%86%E9%A2%91%E6%B1%87%E6%80%BB/"><img class="prev-cover" src="/./img/20.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Fluent软件总体介绍</div></div></a></div><div class="next-post pull-right"><a href="/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E4%BB%BF%E7%9C%9F%E5%9F%BA%E7%A1%80%E6%A1%88%E4%BE%8B/"><img class="next-cover" src="/./img/20.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Fluent仿真学习笔记</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/10/29/EDEM%E7%A6%BB%E6%95%A3%E5%85%83%E4%BB%BF%E7%9C%9F/EDEM%E7%A6%BB%E6%95%A3%E5%85%83%E4%BB%BF%E7%9C%9F%E8%BF%9B%E9%98%B6%E6%93%8D%E4%BD%9C/" title="《EDEM离散元仿真》学习笔记"><img class="cover" src="/./img/11.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">《EDEM离散元仿真》学习笔记</div></div></a></div><div><a href="/2023/01/08/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%A7%86%E9%A2%91%E6%B1%87%E6%80%BB/" title="Fluent软件总体介绍"><img class="cover" src="/./img/20.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-08</div><div class="title">Fluent软件总体介绍</div></div></a></div><div><a href="/2022/10/29/%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E5%8C%97%E8%88%AA%E2%80%94%E8%88%AA%E5%A4%A9%E8%88%AA%E7%A9%BA%E6%A6%82%E8%AE%BA/" title="《航天航空概论》学习笔记"><img class="cover" src="/./img/4.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">《航天航空概论》学习笔记</div></div></a></div><div><a href="/2022/11/22/%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E5%8D%97%E8%88%AA%E2%80%94%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B%E5%89%8D%E7%AB%A0/" title="飞行器总体设计与系统工程前章"><img class="cover" src="/./img/10.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-22</div><div class="title">飞行器总体设计与系统工程前章</div></div></a></div><div><a href="/2022/10/29/%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E9%A1%BE%E8%AF%B5%E8%8A%AC%E2%80%94%E9%A3%9E%E6%9C%BA%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E4%B8%80%E8%87%B3%E5%85%AD%E7%AB%A0%EF%BC%89/" title="《飞机总体设计》学习笔记"><img class="cover" src="/./img/1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">《飞机总体设计》学习笔记</div></div></a></div><div><a href="/2022/11/22/%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E5%8D%97%E8%88%AA%E2%80%94%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B%E5%90%8E%E7%AB%A0/" title="飞行器总体设计与系统工程后章"><img class="cover" src="/./img/10.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-22</div><div class="title">飞行器总体设计与系统工程后章</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.postimg.cc/yNgHD8Yp/k-L4co-QHVj-A.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">David.Li</div><div class="author-info__description">生命啊, 它璀璨如歌！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/119DavidLi"><i class="fab fa-github"></i><span>一起玩吧</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/119DavidLi" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/daiwei_li119@163.com" target="_blank" title="邮箱"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://119davidli.github.io/" target="_blank" title="博客"><i class="fa-solid fa-robot"></i></a><a class="social-icon" href="https://space.bilibili.com/504053268?spm_id_from=333.1007.0.0" target="_blank" title="Bilibili"><i class="fa-solid fa-desktop-arrow-down"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到David.Li的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Fluent软件总体介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%9F%BA%E7%A1%80%E4%BB%BF%E7%9C%9F%E6%B5%81%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="toc-text">1.基础仿真流程介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E5%89%8D%E5%A4%84%E7%90%86%E4%B8%8E%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86"><span class="toc-text">1.1前处理与网格划分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1%E5%89%8D%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7%EF%BC%88Ansys%E7%B3%BB%E5%88%97%EF%BC%89"><span class="toc-text">1.1.1前处理工具（Ansys系列）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-2Ansys%E5%89%8D%E5%A4%84%E7%90%86%E4%B8%AD%E7%9A%84%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86%E5%B7%A5%E5%85%B7"><span class="toc-text">1.1.2Ansys前处理中的网格划分工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-3%E7%BD%91%E6%A0%BC%E7%B1%BB%E5%9E%8B%E4%B8%8E%E7%BD%91%E6%A0%BC%E9%80%89%E6%8B%A9"><span class="toc-text">1.1.3网格类型与网格选择</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-4%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86%E6%A1%88%E4%BE%8B%EF%BC%88%E6%B3%A8%E5%B0%84%E5%99%A8%EF%BC%89"><span class="toc-text">1.1.4网格划分案例（注射器）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2%E6%B1%82%E8%A7%A3%E5%99%A8%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD"><span class="toc-text">1.2求解器基本功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1%E8%AE%BE%E7%BD%AE"><span class="toc-text">1.2.1设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2%E6%B1%82%E8%A7%A3"><span class="toc-text">1.2.2求解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-3%E6%B1%82%E8%A7%A3%E7%BB%93%E6%9D%9F%E4%B8%8E%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98"><span class="toc-text">1.2.3求解结束与文件保存</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3%E5%90%8E%E5%A4%84%E7%90%86"><span class="toc-text">1.3后处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-1%E5%90%8E%E5%A4%84%E7%90%86%E6%A6%82%E8%BF%B0"><span class="toc-text">1.3.1后处理概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-2%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90"><span class="toc-text">1.3.2数据分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3%E6%8A%A5%E5%91%8A%E5%8A%9F%E8%83%BD"><span class="toc-text">1.3.3报告功能</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Fluent%E4%BB%BF%E7%9C%9F%E7%9F%A5%E8%AF%86"><span class="toc-text">2.Fluent仿真知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1Fluent%E5%9F%BA%E7%A1%80%E6%B9%8D%E6%B5%81%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="toc-text">2.1Fluent基础湍流模型介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">2.1.1基础知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1%E6%A8%A1%E6%8B%9F%E6%B9%8D%E6%B5%81%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">2.1.1模拟湍流的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3%E5%A3%81%E9%9D%A2%E9%99%84%E8%BF%91%E7%9A%84%E6%B9%8D%E6%B5%81"><span class="toc-text">2.1.3壁面附近的湍流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-4%E6%B9%8D%E6%B5%81%E6%A8%A1%E6%8B%9F%E5%88%9D%E5%AD%A6%E8%80%85%E6%8C%87%E5%8D%97"><span class="toc-text">2.1.4湍流模拟初学者指南</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2%E4%BC%A0%E7%83%AD%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="toc-text">2.2传热模型介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D"><span class="toc-text">2.2.1总体介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2%E7%83%AD%E4%BC%A0%E9%80%92%E4%B8%8D%E5%90%8C%E5%BD%A2%E5%BC%8F%E7%9A%84%E4%BB%BF%E7%9C%9F"><span class="toc-text">2.2.2热传递不同形式的仿真</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E3%80%90%E7%83%AD%E4%BC%A0%E5%AF%BC%E3%80%91"><span class="toc-text">【热传导】</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E3%80%90%E7%83%AD%E5%AF%B9%E6%B5%81%E3%80%91"><span class="toc-text">【热对流】</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E3%80%90%E8%87%AA%E7%84%B6%E5%AF%B9%E6%B5%81%E3%80%91"><span class="toc-text">【自然对流】</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E3%80%90%E7%83%AD%E8%BE%90%E5%B0%84-Radiation-%E3%80%91"><span class="toc-text">【热辐射(Radiation)】</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E3%80%90%E7%9B%B8%E5%8F%98%E3%80%91"><span class="toc-text">【相变】</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-3%E5%85%B1%E8%BD%AD%E6%8D%A2%E7%83%AD-CHT"><span class="toc-text">2.2.3共轭换热(CHT)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-4%E5%A3%81%E9%9D%A2%E7%83%AD%E8%BE%B9%E7%95%8C%E6%9D%A1%E4%BB%B6"><span class="toc-text">2.2.4壁面热边界条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-5%E5%A3%81%E9%9D%A2%E4%BC%A0%E7%83%AD%E5%92%8C%E7%BD%91%E6%A0%BC"><span class="toc-text">2.2.5壁面传热和网格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-6%E4%BC%A0%E7%83%AD%E8%AE%A1%E7%AE%97%E5%90%8E%E5%A4%84%E7%90%86"><span class="toc-text">2.2.6传热计算后处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3%E7%9E%AC%E6%80%81%E6%A8%A1%E5%9E%8B"><span class="toc-text">2.3瞬态模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1%E6%A6%82%E8%BF%B0"><span class="toc-text">2.3.1概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2%E7%9E%AC%E6%80%81CFD%E5%88%86%E6%9E%90"><span class="toc-text">2.3.2瞬态CFD分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3%E7%9E%AC%E6%80%81%E9%97%AE%E9%A2%98%E6%A8%A1%E6%8B%9F%E6%B5%81%E7%A8%8B"><span class="toc-text">2.3.3瞬态问题模拟流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-4%E7%9E%AC%E6%80%81%E4%BB%BF%E7%9C%9F%E7%9A%84%E6%94%B6%E6%95%9B%E5%88%A4%E5%AE%9A%E4%B8%8E%E8%AE%BE%E7%BD%AE%E7%AD%96%E7%95%A5"><span class="toc-text">2.3.4瞬态仿真的收敛判定与设置策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%A4%96%E9%83%A8%E7%9F%A5%E8%AF%86%E6%8F%B4%E5%8A%A9"><span class="toc-text">3.外部知识援助</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86%E9%98%B6%E6%AE%B5"><span class="toc-text">3.1网格划分阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1%E6%A8%A1%E5%9E%8B%E8%BE%B9%E7%95%8C%E6%9D%A1%E4%BB%B6"><span class="toc-text">3.1.1模型边界条件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2%E6%B1%82%E8%A7%A3%E9%98%B6%E6%AE%B5"><span class="toc-text">3.2求解阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1%E6%A8%A1%E5%9E%8B%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%80%89%E6%8B%A9"><span class="toc-text">3.2.1模型初始化方式选择</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2%E6%B5%81%E4%BD%93%E6%9D%90%E6%96%99%E7%BB%99%E5%AE%9ACFD%E4%B8%AD%E7%9A%84%E5%AF%86%E5%BA%A6%E6%A8%A1%E5%9E%8B"><span class="toc-text">3.2.2流体材料给定CFD中的密度模型</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/01/08/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%A7%86%E9%A2%91%E6%B1%87%E6%80%BB/" title="Fluent软件总体介绍"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent软件总体介绍"/></a><div class="content"><a class="title" href="/2023/01/08/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%A7%86%E9%A2%91%E6%B1%87%E6%80%BB/" title="Fluent软件总体介绍">Fluent软件总体介绍</a><time datetime="2023-01-07T16:00:00.000Z" title="发表于 2023-01-08 00:00:00">2023-01-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%BD%AF%E4%BB%B6%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D/" title="Fluent仿真学习笔记"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent仿真学习笔记"/></a><div class="content"><a class="title" href="/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%BD%AF%E4%BB%B6%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D/" title="Fluent仿真学习笔记">Fluent仿真学习笔记</a><time datetime="2022-12-31T16:00:00.000Z" title="发表于 2023-01-01 00:00:00">2023-01-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E4%BB%BF%E7%9C%9F%E5%9F%BA%E7%A1%80%E6%A1%88%E4%BE%8B/" title="Fluent仿真学习笔记"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent仿真学习笔记"/></a><div class="content"><a class="title" href="/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E4%BB%BF%E7%9C%9F%E5%9F%BA%E7%A1%80%E6%A1%88%E4%BE%8B/" title="Fluent仿真学习笔记">Fluent仿真学习笔记</a><time datetime="2022-12-31T16:00:00.000Z" title="发表于 2023-01-01 00:00:00">2023-01-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/25/%E9%A3%9E%E8%A1%8C%E5%99%A8%E7%A9%BA%E6%B0%94%E5%8A%A8%E5%8A%9B%E5%AD%A6/%E6%9D%8E%E6%A1%A6-%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%B0%94%E5%8A%A8%E8%AE%BE%E8%AE%A1/" title="《飞行器气动设计》学习笔记"><img src="/./img/19.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《飞行器气动设计》学习笔记"/></a><div class="content"><a class="title" href="/2022/12/25/%E9%A3%9E%E8%A1%8C%E5%99%A8%E7%A9%BA%E6%B0%94%E5%8A%A8%E5%8A%9B%E5%AD%A6/%E6%9D%8E%E6%A1%A6-%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%B0%94%E5%8A%A8%E8%AE%BE%E8%AE%A1/" title="《飞行器气动设计》学习笔记">《飞行器气动设计》学习笔记</a><time datetime="2022-12-25T00:00:00.000Z" title="发表于 2022-12-25 08:00:00">2022-12-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/11/%E9%A3%9E%E8%A1%8C%E5%99%A8%E7%A9%BA%E6%B0%94%E5%8A%A8%E5%8A%9B%E5%AD%A6/%E5%8C%97%E8%88%AA%E2%80%94%E7%A9%BA%E6%B0%94%E5%8A%A8%E5%8A%9B%E5%AD%A6%EF%BC%88%E4%B8%8A%EF%BC%89/" title="空气动力学（上）"><img src="/./img/21.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="空气动力学（上）"/></a><div class="content"><a class="title" href="/2022/12/11/%E9%A3%9E%E8%A1%8C%E5%99%A8%E7%A9%BA%E6%B0%94%E5%8A%A8%E5%8A%9B%E5%AD%A6/%E5%8C%97%E8%88%AA%E2%80%94%E7%A9%BA%E6%B0%94%E5%8A%A8%E5%8A%9B%E5%AD%A6%EF%BC%88%E4%B8%8A%EF%BC%89/" title="空气动力学（上）">空气动力学（上）</a><time datetime="2022-12-11T00:00:00.000Z" title="发表于 2022-12-11 08:00:00">2022-12-11</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/./img/20.jpeg')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By David.Li</div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://119davidli.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><script src="https://unpkg.com/algoliasearch/dist/algoliasearch-lite.umd.js"></script><script src="https://unpkg.com/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://unpkg.com/katex/dist/katex.min.css"><script src="https://unpkg.com/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
