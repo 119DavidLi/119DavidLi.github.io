@@ -1,0 +1,476 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Fluent前处理_SCDM | 戴威的Blog</title><meta name="keywords" content="学习,研究生知识积累"><meta name="author" content="David.Li"><meta name="copyright" content="David.Li"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="ANSYS SpaceClaim Direct Modeler(简称 SCDM)是基于直接建模思想的新一代3D建模和几何处理软件。可用于CFD前处理、几何修复、准备和优化。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fluent前处理_SCDM">
+<meta property="og:url" content="https://lidaiwei.top/2023/02/05/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E5%89%8D%E5%A4%84%E7%90%86_SCDM/index.html">
+<meta property="og:site_name" content="戴威的Blog">
+<meta property="og:description" content="ANSYS SpaceClaim Direct Modeler(简称 SCDM)是基于直接建模思想的新一代3D建模和几何处理软件。可用于CFD前处理、几何修复、准备和优化。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lidaiwei.top/img/20.jpeg">
+<meta property="article:published_time" content="2023-02-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-02-05T10:10:27.336Z">
+<meta property="article:author" content="David.Li">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="研究生知识积累">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lidaiwei.top/img/20.jpeg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lidaiwei.top/2023/02/05/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E5%89%8D%E5%A4%84%E7%90%86_SCDM/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"S8VXMWI0SN","apiKey":"53f1a244da26e96e8249b78dbad4a7e7","indexName":"David","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: David.Li","link":"链接: ","source":"来源: 戴威的Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Fluent前处理_SCDM',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-05 18:10:27'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="referrer" content="no-referrer" /><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.postimg.cc/yNgHD8Yp/k-L4co-QHVj-A.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/20.jpeg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">戴威的Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Fluent前处理_SCDM</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-04T16:00:00.000Z" title="发表于 2023-02-05 00:00:00">2023-02-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-05T10:10:27.336Z" title="更新于 2023-02-05 18:10:27">2023-02-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0/">软件学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0/%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6/">流体力学仿真软件</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0/%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6/SCDM/">SCDM</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Fluent前处理_SCDM"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="SpaceClaim-Direct-Moeler-SCDM">SpaceClaim Direct Moeler(SCDM)</h2>
+<p>案例讲解与相关知识来源：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ZF411g7mP?p=1&amp;vd_source=3d05655e912261bce2a9d4c7d27ab69d">https://www.bilibili.com/video/BV1ZF411g7mP?p=1&amp;vd_source=3d05655e912261bce2a9d4c7d27ab69d</a></p>
+<h3 id="1-SCDM基本介绍">1.SCDM基本介绍</h3>
+<p><strong>基本界面：</strong></p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302041602042.png" alt="操作界面"></p>
+<p><strong>基本操作：</strong></p>
+<table>
+<thead>
+<tr>
+<th>基本功能</th>
+<th>操作方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>选择</strong></td>
+<td>单击——选择点、线、面<br>双击——选择环边<br>三击——选择实体<br>框选（从左往右）——框住可以被选中<br>框选（从右往左）——框接触就可以被选中<br>”Ctrl+A“——全选<br>”选择“面板——可以根据大小、颜色、特征选择几何体上的面</td>
+</tr>
+<tr>
+<td><strong>旋转与移动</strong></td>
+<td>按住鼠标中间拖动鼠标——旋转<br>移动鼠标位置滚动鼠标滚轮——缩放<br>点击界面右下方的”转动“和”平移“<br>“Shift+滚轮”移动鼠标——缩放<br>“Ctrl+滚不论”移动鼠标——平移</td>
+</tr>
+<tr>
+<td><strong>视角调整</strong></td>
+<td>”V“——正视选中的面<br>”H“——主窗口（类似于等轴测视角）<br>点击左下方的视角选择工具，正视于某一面</td>
+</tr>
+<tr>
+<td><strong>几何体和组件结构面板操作</strong></td>
+<td>选中几何体“激活”——仅对选中几何体进行操作<br>选中几何体中的子项并拖动——分组，形成组件<br>选择单个零件，右键“打开几何体”——新生成一个零件，可进行单独操作，并实时同步到大装配体中</td>
+</tr>
+<tr>
+<td><strong>几何体显示操作</strong></td>
+<td>选中几何体“显示”，“图形”——显示形式带阴影、线框、隐藏虚线<br>选中几何体“显示”，“图形”右边的圆球——渲染<br>选中几何体“显示”，“图形”右边的带色方块——透明与不透明<br>选中几何体“显示”，“颜色”——修改面、实体的颜色<br>选中几何体“显示”，“显示”——图例、点线面、辅助信息<br>选中几何体“右键”——同一结构树下几何体或面的隐藏与显示</td>
+</tr>
+<tr>
+<td><strong>撤销与恢复</strong></td>
+<td>撤销——取消上一步的操作（Ctrl+z）<br>回复——重复刚取消的操作（Ctrl+y）</td>
+</tr>
+<tr>
+<td><strong>测量</strong></td>
+<td>“测量窗口”，测量。选择时按住Ctrl可以测量多目标之间的关系</td>
+</tr>
+<tr>
+<td><strong>文件打开</strong></td>
+<td>外部文件拖动至几何显示面板——几何体增加在现有文件中<br>外部文件拖动至上方工具栏——几何体构成单独新增文件</td>
+</tr>
+<tr>
+<td><strong>剖面图显示</strong></td>
+<td>选择生成剖面的参考特征，设计——转换到“剖面模式”</td>
+</tr>
+</tbody>
+</table>
+<p><strong>设计面板下的功能介绍：</strong></p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>实体的复制与粘贴</strong></td>
+<td>设计——剪贴板——复制与粘贴；复制几何体并粘贴到对象组内</td>
+</tr>
+<tr>
+<td><strong>草图绘制</strong></td>
+<td>选择草图平面——选择草图类型（矩形、圆形）——选择特征点绘制形状——输入约束尺寸（点击Tab切换至下一特征尺寸）</td>
+</tr>
+<tr>
+<td><strong>拉动工具：</strong></td>
+<td>设计——打开”三维模式“——选中绘制的草图——选择拉动方向——输入需要拉动的厚度<br>面可以拉动成实体；线可以拉动成面（实体上的线拉动会形成圆角或倒角）；点可以拉动成线<br>拉动功能同时包含<u>拉伸</u>、<u>旋转</u>、<u>脱模</u>、<u>扫掠</u>、<u>缩放</u>等功能。拉动方式包含：“直到”和“完全拉动”。<br><code>”拉动“选项的具体功能可以在左侧选项面板调节（包含添加、剪切、不合并）</code><br><code>拉动方向根据选择面的法线方向指定</code><br><code>等截面拉动：优先选择该截面上的外层包边，按下Ctrl，选择截面后拉动</code><br><code>软件中被选中作为参考几何体（平移方向的边、旋转中心的轴）的特征将被显示为蓝色</code></td>
+</tr>
+<tr>
+<td><strong>移动工具</strong></td>
+<td>左键框选需要移动的结合体——点击”移动“——选择需要移动的方向轴，拖动<br>移动包括：沿直线方向移动、沿迹线移动、绕一轴进行移动<br><code>注：按住“Ctrl”同时拖动，实现几何体复制功能</code></td>
+</tr>
+<tr>
+<td><strong>融合工具</strong></td>
+<td>两个表面融合，类似于拔模，构建连接起始两端的几何体<br>两根线融合形成一个平面，若再增加一根曲线则会形成以该线段为母线的曲面<br><code>融合可以直接选择对象进项，也可以采用添加中心线的方式（类似于扫掠）</code></td>
+</tr>
+<tr>
+<td><strong>圆角与倒角</strong></td>
+<td>设计、在“拉动“命令下——选中几何体的边——选择”圆角“、”倒角“、”拉伸边条“等功能——输入圆角半径——生成圆角</td>
+</tr>
+<tr>
+<td><strong>几何体分割</strong></td>
+<td>设计、点击”分割主体“——可以在左侧”结构“面板查看到分离后的几何体</td>
+</tr>
+<tr>
+<td><strong>填充工具</strong></td>
+<td>修补缺口、孔、洞等几何信息。<br>不完整的几何进行填充，修复工作</td>
+</tr>
+<tr>
+<td><strong>组合工具</strong></td>
+<td>选中一个几何体，选择功能“合并”或“移除”，再选择下一个几何体。完成操作<br>可以实现布尔加或者布尔减</td>
+</tr>
+</tbody>
+</table>
+<p><strong>组件面板下的功能介绍：</strong></p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>相切</strong></td>
+<td>可以对多个圆柱外表面进行操作</td>
+</tr>
+<tr>
+<td><strong>对齐</strong></td>
+<td>对于圆柱体，重合轴线<br>对于平面，重合平面</td>
+</tr>
+<tr>
+<td><strong>定向</strong></td>
+<td>对于圆柱体，轴线平行</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-SCDM中模型处理与流场划分">2.SCDM中模型处理与流场划分</h3>
+<h4 id="2-1模型处理功能介绍">2.1模型处理功能介绍</h4>
+<p><strong>导入外部几何文件会引发的问题：</strong></p>
+<ul>
+<li>缺失的面、孔</li>
+<li>自由面（多个本应连起来的面分开了）</li>
+<li>小面、边</li>
+<li>锋利的尖角</li>
+<li>独立的边缘（本无边的平面出现新增的边线）</li>
+</ul>
+<p><code>这些缺陷或导致模型错误、仿真失败，或导致网格划分质量降低、数量过多</code></p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302042027690.png" alt="几何缺陷" style="zoom:33%;">
+<p><strong>修复面板下的功能介绍：</strong></p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>拼接（Stitch）：</strong></td>
+<td>将多个面拼接成为一个（在结构树中）面<br>在结构树中将多个紫色的面最终拼接为体</td>
+</tr>
+<tr>
+<td><strong>间隙（Gaps）：</strong></td>
+<td>细小的相隔区域，通过定义的最大的角度和距离判断</td>
+</tr>
+<tr>
+<td><strong>缺失的面（Missing Faces）：</strong></td>
+<td>几何不封闭、不水密，数据传递的过程中出现了面缺失的情况<br>并且为较大的相隔区域，通过定义的最小的角度和距离判断<br>包含：填充、Patch（修补）、Try both等多种修补方式<br><code>通过”缩放至屏幕大小“进行各缺陷之前的转换显示与定位</code></td>
+</tr>
+<tr>
+<td><strong>分割边（Split Edges）：</strong></td>
+<td>修补几何中的小段的边线</td>
+</tr>
+<tr>
+<td><strong>额外边（Extra Edges）：</strong></td>
+<td>采用“缺失的面”进行修补后常会留下缺陷<br>此时需要该功能修补几何中独立的边缘</td>
+</tr>
+<tr>
+<td><strong>合并面（Merge Faces）：</strong></td>
+<td>合并多个狭小的表面，用单个面代替多个小表面</td>
+</tr>
+<tr>
+<td><strong>小型面（Small Faces）：</strong></td>
+<td>自动地合并大表面中间向夹的小表面</td>
+</tr>
+<tr>
+<td><strong>全局检验：</strong></td>
+<td>右侧结构树几何体右键“检查几何”，<br>可以在同时找到结合体多有位置的缺陷（存在不完全、不准确的可能）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>准备面板下的功能介绍：</strong></p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>圆角（Round）</strong></td>
+<td>重置先前设定的圆角区域。</td>
+</tr>
+<tr>
+<td><strong>干涉（Interfrernce）</strong></td>
+<td>检测壳体重叠情况，默认从较大的几何体上删去重叠部分。<br>一般不能直接采用软件默认操作方式修复，而需要经过查看后确定。</td>
+</tr>
+<tr>
+<td><strong>短边（Short Edges）</strong></td>
+<td>自动检测短边，并重合两端点进行修复</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-2模型简化与修复思想">2.2模型简化与修复思想</h4>
+<p><strong>简化的依据：</strong></p>
+<ul>
+<li>简化掉特别细小的特征</li>
+<li>简化与主要流场区域不相关的小特征</li>
+<li>简化尖角区域</li>
+<li>适当的简化狭缝区域</li>
+<li>处理流场内部的薄壁挡板</li>
+<li>其他需要简化（或几何修改）的情况</li>
+</ul>
+<p><strong>通常意义上，简化几何的最终目的是：</strong></p>
+<ul>
+<li>减小网格总数量</li>
+<li>避免出现网格质量太差的区域</li>
+</ul>
+<p><strong>处理外部STL格式文件的方法：</strong></p>
+<p>1.导入几何文件后全选模型，右键单击“转变为实体（Convert tosolid）”，转变为一个实体<br>
+同时，又有合并平面（合并大部分同一平面上被分割的部分）与不合并平面两个选项</p>
+<p>2.在“工具”标签中，点击“抽取曲面”，通过设置多个相交面截取几何上的轮廓线，再利用几何“融合”的方式构建光滑的几何模型</p>
+<p>3.“表面曲面（Skin Surface）”功能，鼠标在STL格式文件表面绘制框选区域，复现几何特征</p>
+<p>4.在“面片”工具栏下，采用”自动修复“、“孔”、“相交”、“修复尖角”、“过度连接”等功能进行处理</p>
+<p><strong>简化模型中常采用的功能：</strong></p>
+<ul>
+<li>填充：</li>
+</ul>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302042302494.png" alt="填充修复"></p>
+<p>填充是去除独立额外特征的利器，但需要对实体上的面进行操作；填充的本质是删除掉选中的面，随后对未选中的面进行延伸来封闭实体。</p>
+<ul>
+<li>拉动：</li>
+</ul>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302042302344.png" alt="拉动修复"></p>
+<p>当有一些特征不太容易使用填充去除的时候，拉动可能会更容易的产生希望的效果；当然，如果我们的目的不是去除特征，而是对几何进行一些修改的时候（如增加缝隙的距离），拉动还是一个必要的操作。</p>
+<ul>
+<li>合并表面：</li>
+</ul>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302042303099.png" alt="合并表面修复"></p>
+<p>实体的表面上会有很多特征边，如果这些边之间的夹角很尖锐，那么往往会降低网格的质量，合并表面可以去除掉这些尖锐的特征；当然，也有改变面形状的风险，这些可以通过测量功能进行定性的判断。</p>
+<p>还包括移动、对齐、组合等手段。</p>
+<h4 id="2-3流体区域的获取">2.3流体区域的获取</h4>
+<ul>
+<li><strong>内流场：体积抽取</strong></li>
+</ul>
+<p>”准备”标签下的“体积抽取”</p>
+<p>方法一：在界面右上角的小图标群里面，选择要封闭一个区域的边环。选择口琴管进出口的两条圆形边（内径上的)，随后选择矢量表面。</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302042314219.png" alt="方法一"></p>
+<p>方法二：在界面右上角的小图标群里面，选择要封闭一个体积的一个面。</p>
+<ul>
+<li>选择口琴管的内表面，软件识别需要抽取体内表面。</li>
+<li>在左侧常规的菜单中，选择预览内表面</li>
+<li>通过拖动预览内面命名下面的滚动条预览内面选择和检查泄露。<br>
+预览结果正确点击ok，隐藏固体区域，得到内部流体。</li>
+</ul>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302042314688.png" alt="方法二"></p>
+<p>方法三：通过准备菜单栏下面的外壳命令按钮去创建一个具有预定义的包围对象的外壳.</p>
+<ul>
+<li>第一步拉动填充的命令先把外壳内部填充。填充后就是一个长方体。</li>
+<li>下一步利用测量下面的体积干涉命令显示我们干涉区域，其实就是我们的固体区域，</li>
+<li>利用准备菜单栏下面的干涉命名剔除干涉的区域，其实就是固体区域，那么流下来就是内部流体和外部流体合并的区域，此时我们只需要利用分割命令去切开它们。</li>
+<li>通过创建切割的面，然后删去外部的区域，就得到固体内部的流体。</li>
+</ul>
+<p>方法四：</p>
+<ul>
+<li>
+<p>选中主要边界面，鼠标右键单击后选择“分离”选项。实体即被分成多个面体；</p>
+</li>
+<li>
+<p>如我们演示的模型，直接删除进出口的面，整个固体即被分内外面，删除外表面，仅显示内流畅内表面；</p>
+</li>
+<li>
+<p>使用用“修复”菜单下的“缺失的面”操作将其自动缝合成实体，点击对号，完成实体创建</p>
+</li>
+<li>
+<p><strong>外流场：外壳</strong></p>
+</li>
+</ul>
+<p>常见的外流场形状有以下几种：长方体、圆柱、球、其他自定义的形状</p>
+<p>通过左侧“选项—外壳”面板可以同步进行尺寸参数给定和区域大小修改的设置。</p>
+<p>完成尺寸设置后，点击“确定”，左侧“结构“列表出现“外壳”标签，取消实体勾选即可得到流体区域。</p>
+<p>对于圆柱形的外流场区域，圆柱轴线方向可以通过图形显示面板左上方”设置方位“进行给定。</p>
+<ul>
+<li><strong>中面抽取：中间面</strong></li>
+</ul>
+<p>流体仿真中常需要使用到<u>无厚度面</u>，流体只能沿着这一壁面移动而不能穿越他。</p>
+<p>中面抽取可以实现将建模时的薄三维模型面抽取成薄的二维壁面。</p>
+<p>抽取时可以单个进行（依次选择需要抽取的两个面，软件将自动得到中面），也可以框选几何体对于几何体中符合要求（厚度在一定数值之内）的面进行抽取。</p>
+<p>操作中的Group midsurfaces(组中间面)，勾选后创建的中间面被单独存放在额外的工作组中</p>
+<p>延伸曲面，针对两相较壁面抽取后中间存在间隙的情况进行修复。</p>
+<p><strong>延伸：</strong></p>
+<p>针对面或者草图当中的曲线，自动侦测和修复缝隙。</p>
+<h3 id="3-内、外流场的模型处理案例">3.内、外流场的模型处理案例</h3>
+<h4 id="3-1外流场模型处理">3.1外流场模型处理</h4>
+<p>初始导入模型为分开的两个实体：其一是车体（由两个面组成）；其二是尾翼。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302051420769.png" alt="两个几何模型" style="zoom: 33%;">
+<p>选择”修复“标签下的”拼接“，将车身拼接成一个实体。随后依次点击”间隙“与”缺失的面“进行检查与修复。<br>
+<code>变为实体几何后，模型将由透密变为不透明。</code></p>
+<p>修复因补充缺失的面而形成于尾翼接口处的样条曲面，将曲面变为平面。在车身接口处创建平面（用于装配）。并采用”相切“约束和”移动“将两者进行装配。<br>
+<code>注：此处采用替换功能</code></p>
+<p>再采用”准备“标签下的”面“功能，删除尾翼接口处因修复产生的多余的小面。</p>
+<p>由于模型由两个几何组成，因此需要检查”干涉“的情况。进行检查与修复。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302051446815.png" alt="修复后的几何" style="zoom:33%;">
+<p>多几何模型的”共享拓扑“</p>
+<p>当时保留各自的形状,划分网格的时候,可以共享边界的节点。<br>
+点击”Workbench“中的”共享“标签，软件会自动识别和标注需要共享拓扑的区域。</p>
+<p>外流场的获取</p>
+<p>通过外壳创建外流场，并修改相关尺寸调整外流场大小。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302051604222.png" alt="外流场区域" style="zoom:40%;">
+<h4 id="3-2内流场模型处理">3.2内流场模型处理</h4>
+<p>外部导入的几何文件发现除实体外还存在面区域。依次点击”拼接“——”间隙“——”缺失的面“将模型完全转化为几何体。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302042246000.png" alt="外部导入几何" style="zoom: 25%;">
+<p>再检查模型干问题：切换至”准备“工具栏，点击“干涉”进行检查，发现两处干涉区域。通过剖面更仔细地查看干涉区域，发现两处问题。不直接采用软件处理（删除方式）解决，而通过”组件“中的”对齐“进行修复。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302042252474.png" alt="模型的干涉问题" style="zoom: 30%;">
+<p>此处，直接进行内流场获取的案例。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302051519518.png" alt="image-20230205151924205" style="zoom: 33%;">
+<p>该案例中流体的进出口有四个，打开”准备“标签下的”体积抽取“，选择四个流体进出口的截面，点击&quot;选择矢量面&quot;确定流体的进口内表面。选项栏”预览内面“，进行流体区域选择正确性的判断。</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302051521173.png" alt="选择面的方式" style="zoom:25%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302051526590.png" alt="选择边的方式" style="zoom:25%;"></p>
+<p>或采用，选择各进出口区域的环边再添加矢量面，完成内流场的创建。</p>
+<p>得到内流场区域</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302051526861.png" alt="内流场区域" style="zoom:33%;">
+<p><strong>流场区域命名</strong></p>
+<p>在“选择”功能下，选中需要命名的几何体，在群组界面中点击”创建NS“完成新的组创建。</p>
+<p><strong>参数化设置</strong></p>
+<p>使用”拉动“工具调整几何区域，在调整和尺寸标注的同时，<br>
+点击尺寸右侧的”P”按钮，或快捷键“Ctrl+G”，或直接在“群组”面板点击“创建参数”。</p>
+<p>对平面的操作，需要在“拉动”工具选中指定面后点击鼠标选项面板中“标尺”选定基准面，完成尺寸参数化设置。</p>
+<p><strong>Workbench联动</strong></p>
+<p>在“Workbench”标签下找到“WB”，点击执行跳转。在WB中找到“Parameter Set”同步参数设定。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://lidaiwei.top">David.Li</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://lidaiwei.top/2023/02/05/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E5%89%8D%E5%A4%84%E7%90%86_SCDM/">https://lidaiwei.top/2023/02/05/Fluent流体仿真/Fluent前处理_SCDM/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://lidaiwei.top" target="_blank">戴威的Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a><a class="post-meta__tags" href="/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/">研究生知识积累</a></div><div class="post_share"><div class="social-share" data-image="/./img/20.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/01/29/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E4%BB%BF%E7%9C%9F%E6%A1%88%E4%BE%8B%E6%89%A9%E5%B1%95/"><img class="next-cover" src="/./img/20.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Fluent 仿真案例扩展</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/10/29/EDEM%E7%A6%BB%E6%95%A3%E5%85%83%E4%BB%BF%E7%9C%9F/EDEM%E7%A6%BB%E6%95%A3%E5%85%83%E4%BB%BF%E7%9C%9F%E8%BF%9B%E9%98%B6%E6%93%8D%E4%BD%9C/" title="《EDEM离散元仿真》学习笔记"><img class="cover" src="/./img/11.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">《EDEM离散元仿真》学习笔记</div></div></a></div><div><a href="/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%BD%AF%E4%BB%B6%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D/" title="Fluent软件总体介绍"><img class="cover" src="/./img/20.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-01</div><div class="title">Fluent软件总体介绍</div></div></a></div><div><a href="/2023/01/08/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%A7%86%E9%A2%91%E6%B1%87%E6%80%BB/" title="Fluent软件总体介绍"><img class="cover" src="/./img/20.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-08</div><div class="title">Fluent软件总体介绍</div></div></a></div><div><a href="/2022/10/29/%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E5%8C%97%E8%88%AA%E2%80%94%E8%88%AA%E5%A4%A9%E8%88%AA%E7%A9%BA%E6%A6%82%E8%AE%BA/" title="北航——《航天航空概论》学习笔记"><img class="cover" src="/./img/4.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">北航——《航天航空概论》学习笔记</div></div></a></div><div><a href="/2022/11/22/%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E5%8D%97%E8%88%AA%E2%80%94%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B%E5%89%8D%E7%AB%A0/" title="南航——飞行器总体设计与系统工程前章"><img class="cover" src="/./img/10.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-22</div><div class="title">南航——飞行器总体设计与系统工程前章</div></div></a></div><div><a href="/2022/10/29/%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E9%A1%BE%E8%AF%B5%E8%8A%AC%E2%80%94%E9%A3%9E%E6%9C%BA%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E4%B8%80%E8%87%B3%E5%85%AD%E7%AB%A0%EF%BC%89/" title="《飞机总体设计》学习笔记"><img class="cover" src="/./img/1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">《飞机总体设计》学习笔记</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.postimg.cc/yNgHD8Yp/k-L4co-QHVj-A.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">David.Li</div><div class="author-info__description">生命啊, 它璀璨如歌！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/119DavidLi"><i class="fab fa-github"></i><span>一起玩吧</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/119DavidLi" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/daiwei_li119@163.com" target="_blank" title="邮箱"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://119davidli.github.io/" target="_blank" title="博客"><i class="fa-solid fa-robot"></i></a><a class="social-icon" href="https://space.bilibili.com/504053268?spm_id_from=333.1007.0.0" target="_blank" title="Bilibili"><i class="fa-solid fa-desktop-arrow-down"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到David.Li的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SpaceClaim-Direct-Moeler-SCDM"><span class="toc-text">SpaceClaim Direct Moeler(SCDM)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-SCDM%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-text">1.SCDM基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-SCDM%E4%B8%AD%E6%A8%A1%E5%9E%8B%E5%A4%84%E7%90%86%E4%B8%8E%E6%B5%81%E5%9C%BA%E5%88%92%E5%88%86"><span class="toc-text">2.SCDM中模型处理与流场划分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1%E6%A8%A1%E5%9E%8B%E5%A4%84%E7%90%86%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D"><span class="toc-text">2.1模型处理功能介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2%E6%A8%A1%E5%9E%8B%E7%AE%80%E5%8C%96%E4%B8%8E%E4%BF%AE%E5%A4%8D%E6%80%9D%E6%83%B3"><span class="toc-text">2.2模型简化与修复思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3%E6%B5%81%E4%BD%93%E5%8C%BA%E5%9F%9F%E7%9A%84%E8%8E%B7%E5%8F%96"><span class="toc-text">2.3流体区域的获取</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%86%85%E3%80%81%E5%A4%96%E6%B5%81%E5%9C%BA%E7%9A%84%E6%A8%A1%E5%9E%8B%E5%A4%84%E7%90%86%E6%A1%88%E4%BE%8B"><span class="toc-text">3.内、外流场的模型处理案例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1%E5%A4%96%E6%B5%81%E5%9C%BA%E6%A8%A1%E5%9E%8B%E5%A4%84%E7%90%86"><span class="toc-text">3.1外流场模型处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2%E5%86%85%E6%B5%81%E5%9C%BA%E6%A8%A1%E5%9E%8B%E5%A4%84%E7%90%86"><span class="toc-text">3.2内流场模型处理</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/02/05/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E5%89%8D%E5%A4%84%E7%90%86_SCDM/" title="Fluent前处理_SCDM"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent前处理_SCDM"/></a><div class="content"><a class="title" href="/2023/02/05/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E5%89%8D%E5%A4%84%E7%90%86_SCDM/" title="Fluent前处理_SCDM">Fluent前处理_SCDM</a><time datetime="2023-02-04T16:00:00.000Z" title="发表于 2023-02-05 00:00:00">2023-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/29/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E4%BB%BF%E7%9C%9F%E6%A1%88%E4%BE%8B%E6%89%A9%E5%B1%95/" title="Fluent 仿真案例扩展"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent 仿真案例扩展"/></a><div class="content"><a class="title" href="/2023/01/29/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E4%BB%BF%E7%9C%9F%E6%A1%88%E4%BE%8B%E6%89%A9%E5%B1%95/" title="Fluent 仿真案例扩展">Fluent 仿真案例扩展</a><time datetime="2023-01-28T16:00:00.000Z" title="发表于 2023-01-29 00:00:00">2023-01-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/22/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%20Meshing%E4%B8%93%E9%A2%98/" title="Fluent Meshing专题"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent Meshing专题"/></a><div class="content"><a class="title" href="/2023/01/22/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%20Meshing%E4%B8%93%E9%A2%98/" title="Fluent Meshing专题">Fluent Meshing专题</a><time datetime="2023-01-21T16:00:00.000Z" title="发表于 2023-01-22 00:00:00">2023-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/08/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%A7%86%E9%A2%91%E6%B1%87%E6%80%BB/" title="Fluent软件总体介绍"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent软件总体介绍"/></a><div class="content"><a class="title" href="/2023/01/08/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%A7%86%E9%A2%91%E6%B1%87%E6%80%BB/" title="Fluent软件总体介绍">Fluent软件总体介绍</a><time datetime="2023-01-07T16:00:00.000Z" title="发表于 2023-01-08 00:00:00">2023-01-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%BD%AF%E4%BB%B6%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D/" title="Fluent软件总体介绍"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent软件总体介绍"/></a><div class="content"><a class="title" href="/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%BD%AF%E4%BB%B6%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D/" title="Fluent软件总体介绍">Fluent软件总体介绍</a><time datetime="2022-12-31T16:00:00.000Z" title="发表于 2023-01-01 00:00:00">2023-01-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/./img/20.jpeg')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By David.Li</div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://119davidli.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><script src="https://unpkg.com/algoliasearch/dist/algoliasearch-lite.umd.js"></script><script src="https://unpkg.com/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://unpkg.com/katex/dist/katex.min.css"><script src="https://unpkg.com/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

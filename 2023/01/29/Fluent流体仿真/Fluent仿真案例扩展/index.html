@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Fluent仿真案例扩展 | 戴威的Blog</title><meta name="keywords" content="学习,研究生知识积累"><meta name="author" content="David.Li"><meta name="copyright" content="David.Li"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="覆盖Flen软件几何前处理、网格划分、流体仿真、后处理的各个环节。">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Fluent 仿真案例扩展 | 戴威的Blog</title><meta name="keywords" content="学习,研究生知识积累"><meta name="author" content="David.Li"><meta name="copyright" content="David.Li"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Fluen软件使用的进阶操作记录与相关案例演示">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Fluent仿真案例扩展">
+<meta property="og:title" content="Fluent 仿真案例扩展">
 <meta property="og:url" content="https://lidaiwei.top/2023/01/29/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E4%BB%BF%E7%9C%9F%E6%A1%88%E4%BE%8B%E6%89%A9%E5%B1%95/index.html">
 <meta property="og:site_name" content="戴威的Blog">
-<meta property="og:description" content="覆盖Flen软件几何前处理、网格划分、流体仿真、后处理的各个环节。">
+<meta property="og:description" content="Fluen软件使用的进阶操作记录与相关案例演示">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lidaiwei.top/img/20.jpeg">
 <meta property="article:published_time" content="2023-01-28T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-01-29T09:38:58.889Z">
+<meta property="article:modified_time" content="2023-02-05T10:13:03.247Z">
 <meta property="article:author" content="David.Li">
 <meta property="article:tag" content="学习">
 <meta property="article:tag" content="研究生知识积累">
@@ -49,12 +49,12 @@
   islazyload: false,
   isAnchor: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'Fluent仿真案例扩展',
+  title: 'Fluent 仿真案例扩展',
   isPost: true,
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2023-01-29 17:38:58'
+  postUpdate: '2023-02-05 18:13:03'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -143,7 +143,7 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="referrer" content="no-referrer" /><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.postimg.cc/yNgHD8Yp/k-L4co-QHVj-A.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/20.jpeg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">戴威的Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Fluent仿真案例扩展</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-28T16:00:00.000Z" title="发表于 2023-01-29 00:00:00">2023-01-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-29T09:38:58.889Z" title="更新于 2023-01-29 17:38:58">2023-01-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0/">软件学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0/%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6/">流体力学仿真软件</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0/%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6/Fluent/">Fluent</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Fluent仿真案例扩展"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>Fluent仿真案例扩展</h1>
+    })(window)</script><meta name="referrer" content="no-referrer" /><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.postimg.cc/yNgHD8Yp/k-L4co-QHVj-A.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/20.jpeg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">戴威的Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Fluent 仿真案例扩展</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-28T16:00:00.000Z" title="发表于 2023-01-29 00:00:00">2023-01-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-05T10:13:03.247Z" title="更新于 2023-02-05 18:13:03">2023-02-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0/">软件学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0/%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6/">流体力学仿真软件</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0/%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6/Fluent/">Fluent</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">9.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>33分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Fluent 仿真案例扩展"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>Fluent仿真案例扩展</h1>
 <p>本案例中的大部分内容来自于微信公众号：<u>CFD之道</u>，所使用的案例文档保存在D:\Project\Fluent Simulation\Practice\Resources\CFD_dao目录下</p>
 <h2 id="1-液体喷雾">1.液体喷雾</h2>
 <p>本文演示在Fluent中利用雾化喷嘴构造液滴喷雾的仿真过程。</p>
@@ -476,7 +476,7 @@
 <h4 id="3-1案例介绍">3.1案例介绍</h4>
 <p>流动腔体内包含有一个薄板。计算薄板在流体压力下产生的变形以及板上的应力分布。当板的变形量很小时，可以忽略板的变形对流体流场的影响，此时可以采用单向流固耦合计算。若板的变形大到会对流场产生不可忽略的影响，则必须使用双向耦合计算。</p>
 <img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301291618691.png" alt="几何模型" style="zoom:33%;">
-<h3 id="3-2Fluent设置">3.2Fluent设置</h3>
+<h4 id="3-2Fluent设置">3.2Fluent设置</h4>
 <p><strong>通用设置</strong></p>
 <ul>
 <li>采用稳态计算</li>
@@ -524,6 +524,7 @@
 <h2 id="4-汽车风阻计算">4.汽车风阻计算</h2>
 <p>案例来源https://www.topcfd.cn/17394/，胡坤_析模界</p>
 <p>本算例演示利用Fluent计算Audi R8空气动力学特性的基本流程。</p>
+<p><code>注：该案例的车体模型被更改为“SCDM章节“中外部流场处理案例的车体</code></p>
 <h4 id="4-1几何处理">4.1<strong>几何处理</strong></h4>
 <p>汽车几何模型如下图所示。现实车身长4425mm，宽1940mm，高1236mm，几何模型与现实尺寸存在细微差异。</p>
 <img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301291716355.png" alt="几何模型" style="zoom:33%;">
@@ -539,12 +540,844 @@
 <p><strong>添加BOI</strong></p>
 <p>添加BOI的目的是为了方便控制网格质量。本算例在车头部及尾部进行BOI控制。BOI仅用于控制网格尺寸，因此BOI几何的形状与尺寸可以随意。</p>
 <img src="https://www.topcfd.cn/wp-content/uploads/2022/10/9ae2098a88a2be9.png" alt="添加BOI" style="zoom: 67%;">
-<h2 id="4-2网格划分">4.2网格划分</h2>
+<h4 id="4-2网格划分">4.2网格划分</h4>
 <p>采用Fluent Meshing中的Watertight Geometry工作流程进行网格划分。</p>
 <ul>
-<li>进行BOI尺寸控制。这里采用默认尺寸，对boi1及boi2区域进行尺寸控制</li>
+<li>进入Fluent Meshing，选择使用<strong>Watertight Geometry</strong>工作流程</li>
 </ul>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://lidaiwei.top">David.Li</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://lidaiwei.top/2023/01/29/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E4%BB%BF%E7%9C%9F%E6%A1%88%E4%BE%8B%E6%89%A9%E5%B1%95/">https://lidaiwei.top/2023/01/29/Fluent流体仿真/Fluent仿真案例扩展/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://lidaiwei.top" target="_blank">戴威的Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a><a class="post-meta__tags" href="/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/">研究生知识积累</a></div><div class="post_share"><div class="social-share" data-image="/./img/20.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/01/22/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%20Meshing%E4%B8%93%E9%A2%98/"><img class="next-cover" src="/./img/20.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Fluent Meshing专题</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/10/29/EDEM%E7%A6%BB%E6%95%A3%E5%85%83%E4%BB%BF%E7%9C%9F/EDEM%E7%A6%BB%E6%95%A3%E5%85%83%E4%BB%BF%E7%9C%9F%E8%BF%9B%E9%98%B6%E6%93%8D%E4%BD%9C/" title="《EDEM离散元仿真》学习笔记"><img class="cover" src="/./img/11.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">《EDEM离散元仿真》学习笔记</div></div></a></div><div><a href="/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%BD%AF%E4%BB%B6%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D/" title="Fluent软件总体介绍"><img class="cover" src="/./img/20.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-01</div><div class="title">Fluent软件总体介绍</div></div></a></div><div><a href="/2023/01/08/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%A7%86%E9%A2%91%E6%B1%87%E6%80%BB/" title="Fluent软件总体介绍"><img class="cover" src="/./img/20.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-08</div><div class="title">Fluent软件总体介绍</div></div></a></div><div><a href="/2022/10/29/%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E5%8C%97%E8%88%AA%E2%80%94%E8%88%AA%E5%A4%A9%E8%88%AA%E7%A9%BA%E6%A6%82%E8%AE%BA/" title="北航——《航天航空概论》学习笔记"><img class="cover" src="/./img/4.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">北航——《航天航空概论》学习笔记</div></div></a></div><div><a href="/2022/11/22/%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E5%8D%97%E8%88%AA%E2%80%94%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B%E5%89%8D%E7%AB%A0/" title="南航——飞行器总体设计与系统工程前章"><img class="cover" src="/./img/10.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-22</div><div class="title">南航——飞行器总体设计与系统工程前章</div></div></a></div><div><a href="/2022/10/29/%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E9%A1%BE%E8%AF%B5%E8%8A%AC%E2%80%94%E9%A3%9E%E6%9C%BA%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E4%B8%80%E8%87%B3%E5%85%AD%E7%AB%A0%EF%BC%89/" title="《飞机总体设计》学习笔记"><img class="cover" src="/./img/1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">《飞机总体设计》学习笔记</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.postimg.cc/yNgHD8Yp/k-L4co-QHVj-A.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">David.Li</div><div class="author-info__description">生命啊, 它璀璨如歌！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/119DavidLi"><i class="fab fa-github"></i><span>一起玩吧</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/119DavidLi" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/daiwei_li119@163.com" target="_blank" title="邮箱"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://119davidli.github.io/" target="_blank" title="博客"><i class="fa-solid fa-robot"></i></a><a class="social-icon" href="https://space.bilibili.com/504053268?spm_id_from=333.1007.0.0" target="_blank" title="Bilibili"><i class="fa-solid fa-desktop-arrow-down"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到David.Li的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Fluent仿真案例扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%B6%B2%E4%BD%93%E5%96%B7%E9%9B%BE"><span class="toc-text">1.液体喷雾</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">1.1问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-Fluent%E8%AE%BE%E7%BD%AE"><span class="toc-text">1.2 Fluent设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%9C"><span class="toc-text">1.3计算结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%86%8D%E5%85%A5%E8%88%B1%E9%AB%98%E8%B6%85%E5%A3%B0%E9%80%9F%E6%B5%81%E5%8A%A8"><span class="toc-text">2.再入舱高超声速流动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">2.1问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2%E8%AE%A1%E7%AE%97%E7%BD%91%E6%A0%BC%E7%94%9F%E6%88%90"><span class="toc-text">2.2计算网格生成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3%E6%B1%82%E8%A7%A3%E8%AE%BE%E7%BD%AE"><span class="toc-text">2.3求解设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%9C"><span class="toc-text">2.4计算结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%AB%8B%E6%9D%BF%E5%8D%95%E5%90%91%E6%B5%81%E5%9B%BA%E8%80%A6%E5%90%88"><span class="toc-text">3.立板单向流固耦合</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1%E6%A1%88%E4%BE%8B%E4%BB%8B%E7%BB%8D"><span class="toc-text">3.1案例介绍</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2Fluent%E8%AE%BE%E7%BD%AE"><span class="toc-text">3.2Fluent设置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3%E7%BB%93%E6%9E%9C%E5%90%8E%E5%A4%84%E7%90%86"><span class="toc-text">3.3结果后处理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%B1%BD%E8%BD%A6%E9%A3%8E%E9%98%BB%E8%AE%A1%E7%AE%97"><span class="toc-text">4.汽车风阻计算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1%E5%87%A0%E4%BD%95%E5%A4%84%E7%90%86"><span class="toc-text">4.1几何处理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86"><span class="toc-text">4.2网格划分</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/01/29/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E4%BB%BF%E7%9C%9F%E6%A1%88%E4%BE%8B%E6%89%A9%E5%B1%95/" title="Fluent仿真案例扩展"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent仿真案例扩展"/></a><div class="content"><a class="title" href="/2023/01/29/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E4%BB%BF%E7%9C%9F%E6%A1%88%E4%BE%8B%E6%89%A9%E5%B1%95/" title="Fluent仿真案例扩展">Fluent仿真案例扩展</a><time datetime="2023-01-28T16:00:00.000Z" title="发表于 2023-01-29 00:00:00">2023-01-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/22/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%20Meshing%E4%B8%93%E9%A2%98/" title="Fluent Meshing专题"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent Meshing专题"/></a><div class="content"><a class="title" href="/2023/01/22/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%20Meshing%E4%B8%93%E9%A2%98/" title="Fluent Meshing专题">Fluent Meshing专题</a><time datetime="2023-01-21T16:00:00.000Z" title="发表于 2023-01-22 00:00:00">2023-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/08/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%A7%86%E9%A2%91%E6%B1%87%E6%80%BB/" title="Fluent软件总体介绍"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent软件总体介绍"/></a><div class="content"><a class="title" href="/2023/01/08/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%A7%86%E9%A2%91%E6%B1%87%E6%80%BB/" title="Fluent软件总体介绍">Fluent软件总体介绍</a><time datetime="2023-01-07T16:00:00.000Z" title="发表于 2023-01-08 00:00:00">2023-01-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%BD%AF%E4%BB%B6%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D/" title="Fluent软件总体介绍"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent软件总体介绍"/></a><div class="content"><a class="title" href="/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%BD%AF%E4%BB%B6%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D/" title="Fluent软件总体介绍">Fluent软件总体介绍</a><time datetime="2022-12-31T16:00:00.000Z" title="发表于 2023-01-01 00:00:00">2023-01-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E4%BB%BF%E7%9C%9F%E5%9F%BA%E7%A1%80%E6%A1%88%E4%BE%8B/" title="Fluent仿真基础案例练习"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent仿真基础案例练习"/></a><div class="content"><a class="title" href="/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E4%BB%BF%E7%9C%9F%E5%9F%BA%E7%A1%80%E6%A1%88%E4%BE%8B/" title="Fluent仿真基础案例练习">Fluent仿真基础案例练习</a><time datetime="2022-12-31T16:00:00.000Z" title="发表于 2023-01-01 00:00:00">2023-01-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/./img/20.jpeg')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By David.Li</div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://119davidli.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><script src="https://unpkg.com/algoliasearch/dist/algoliasearch-lite.umd.js"></script><script src="https://unpkg.com/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://unpkg.com/katex/dist/katex.min.css"><script src="https://unpkg.com/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+<p><strong>导入几何模型</strong></p>
+<ul>
+<li>选择模型树节点<code>Import Geometry</code></li>
+<li>选择<code>Units</code>为<strong>mm</strong></li>
+<li>选择几何模型文件</li>
+</ul>
+<p><strong>利用BOI进行局部尺寸设置</strong></p>
+<ul>
+<li>进入<code>Add Local Sizing</code>面板</li>
+<li>指定<code>Target Mesh Szie</code>为<strong>默认</strong></li>
+<li>尺寸函数类型选择<code>Body of Influence</code></li>
+<li>指定几何面为<strong>boi_1</strong>与<strong>boi_2</strong></li>
+<li>点击按钮<code>Add Local Sizing</code>创建局部尺寸</li>
+</ul>
+<p><code>注：默认尺寸是软件根据几何模型尺寸计算得到的，大多数情况下是合适的。</code></p>
+<p><strong>设置车身的局部尺寸</strong></p>
+<ul>
+<li>指定局部尺寸区域为<strong>car</strong></li>
+<li>尺寸函数类型选择<code>Face Size</code></li>
+<li>指定<code>Target Mesh Size</code>为<strong>默认</strong></li>
+</ul>
+<p><strong>创建表面网格</strong></p>
+<ul>
+<li>进入节点<code>Generate the Surface Mesh</code></li>
+<li>设置<code>Minimum Size</code>为<strong>12</strong></li>
+<li>设置<code>Maximum Size</code>为<strong>150</strong></li>
+<li>点击按钮<strong>Generate the Surface Mesh</strong>生成面网格</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302051730813.png" alt="表面网格" style="zoom:33%;">
+<p><strong>描述几何结构</strong></p>
+<ul>
+<li>进入<code>Describe Geometry</code>节点</li>
+<li>几何图形仅由没有空隙的流体区域组成</li>
+<li>无需修改交界面类型</li>
+<li>无需应用共享拓扑</li>
+</ul>
+<p><strong>更新边界</strong></p>
+<ul>
+<li>进入<code>Update Boundaries</code>节点</li>
+<li>调整Car界面为wall，其余默认</li>
+</ul>
+<p><strong>更新区域</strong></p>
+<ul>
+<li>进入<code>Update Regions</code>节点</li>
+<li>采用默认设置</li>
+</ul>
+<p><strong>添加边界层</strong></p>
+<ul>
+<li>进入<code>Add Boundary Layers</code>节点</li>
+<li>指定参数<code>Number of Layers</code>为<strong>12</strong></li>
+<li>其他参数采用默认设置</li>
+</ul>
+<p><strong>生成体网格</strong></p>
+<ul>
+<li>
+<p>进入节点<code>Generate the Volume Mesh</code></p>
+</li>
+<li>
+<p>设置<code>Fill With</code>为<strong>poly-hexcore</strong></p>
+</li>
+<li>
+<p>指定<code>Max Cell Length</code>为<strong>100</strong></p>
+</li>
+<li>
+<p>点击按钮<strong>Generate the Volume Mesh</strong>生成体网格</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302051739744.png" alt="体网格"></p>
+<p>---------------- 4781922 cells were created in :  2.10 minutes</p>
+<p>---------------- The mesh has a minimum Orthogonal Quality of:  0.05</p>
+<h4 id="5-3求解设置">5.3求解设置</h4>
+<p><strong>General设置</strong></p>
+<ul>
+<li>General面板采用默认设置</li>
+</ul>
+<p><strong>Models设置</strong></p>
+<ul>
+<li>选择使用<strong>SST k-omega</strong>湍流模型</li>
+<li>其余默认</li>
+</ul>
+<p><strong>Materials设置</strong></p>
+<ul>
+<li>使用默认的材料air，介质属性保持默认</li>
+</ul>
+<p><code>注：对于低速行驶的汽车，其流场计算中可以忽略空气的可压缩性。</code></p>
+<p><strong>边界条件设置</strong></p>
+<ul>
+<li>指定<code>intel</code>的边界条件</li>
+<li>指定<code>速度大小</code>为<strong>30m/s</strong></li>
+<li>设置湍流属性为<strong>湍流强度（5%）与粘度比（5）</strong></li>
+<li>出口边界<code>outlet</code>保持默认设置</li>
+<li>指定边界<code>side、top、symmetry</code> 的边界类型为<strong>symmetry</strong></li>
+</ul>
+<p><strong>参考值设置</strong></p>
+<ul>
+<li>采用inlet边界设置参考值，指定<strong>Area</strong>为<strong>1.142123 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">m^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></strong></li>
+</ul>
+<p><code>注意：参考值对于前期计算没有影响，其主要用于后处理过程中各种系数的计算。如本算例中计算阻力系数，需要用到参考面积、密度及速度等。投影面积Area可以通过模型树节点Results → Projected Areas 来计算</code></p>
+<p><strong>监测物理量</strong></p>
+<ul>
+<li>选择模型树节点<strong>Report Definitions → New → Force Report → Drag…</strong> 定义阻力系数</li>
+</ul>
+<p><strong>初始化计算</strong></p>
+<ul>
+<li>采用Hybrid Initialization进行初始化</li>
+<li>采用下面的TUI命令进行FMG初始化，<br>
+<code>/solve/initialize/fmg-initialization</code><br>
+对于复杂的流场结构，FMG初始化对计算收敛性非常有帮助</li>
+</ul>
+<p><strong>计算参数</strong></p>
+<ul>
+<li>迭代计算300次</li>
+</ul>
+<h2 id="5-非零攻角跨音速机翼的紊流计算">5.非零攻角跨音速机翼的紊流计算</h2>
+<p>本教程将演示使用k-ω SST湍流模型计算非零攻角跨音速机翼紊流的操作过程</p>
+<h4 id="5-1问题描述">5.1问题描述</h4>
+<p>该问题考虑了<u>迎角α=3.06</u>，自由流马赫数为0.8395 (<u><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi mathvariant="normal">∞</mi></msub></mrow><annotation encoding="application/x-tex">M_∞</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">∞</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>=0.8395)</u>时机翼周围的流动。流动是跨音速的，并且在上(吸力)侧的中间弦(x/c 0.20)附近有一个激波。机翼的平均气动弦长为0.64607m，翼展为1.1963m，展弦比(aspect ratio，表征固定翼飞机的翼展与平均弦长之比)为3.8，跟梢比（taper ratio，翼根弦长与翼尖弦长的比值）为0.562。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301312318245.png" alt="翼型几何形状" style="zoom:33%;">
+<p><strong>本案例包括：</strong></p>
+<p>使用<code>Watertight Geometry</code>工作流创建网格。</p>
+<p>模拟可压缩流(使用<code>密度的理想气体定律</code>)。</p>
+<p>设定<code>外部空气动力学</code>的边界条件。</p>
+<p>使用<code>k-ω SST湍流模型</code>。</p>
+<p>使用<code>基于压力的耦合求解器</code>和<code>伪瞬态</code>选项计算解决方案。</p>
+<p>通过绘制Y+的分布检查近壁网格分辨率。</p>
+<h4 id="5-2网格划分">5.2网格划分</h4>
+<p>本算例利用Fluent Meshing生成计算网格。</p>
+<ul>
+<li>进入Fluent Meshing，选择使用<strong>Watertight Geometry</strong>工作流程</li>
+</ul>
+<p><strong>导入几何模型</strong></p>
+<ul>
+<li>选择模型树节点<code>Import Geometry</code></li>
+<li>选择<code>Units</code>为<strong>mm</strong></li>
+<li>选择几何模型文件<strong>wing.scdoc</strong></li>
+</ul>
+<p><strong>设置上下翼面的局部尺寸</strong></p>
+<ul>
+<li>进入<code>Add Local Sizing</code>面板</li>
+<li>设置<code>Name</code>为<strong>wing-facesize</strong></li>
+<li>指定<code>Target Mesh Szie</code>为<strong>10</strong></li>
+<li>指定几何面为<strong>wing_bottom</strong>与<strong>wing_top</strong></li>
+<li>点击按钮<code>Add Local Sizing</code>创建局部尺寸</li>
+</ul>
+<p><strong>设置机翼后缘边线的局部尺寸</strong></p>
+<ul>
+<li>指定局部尺寸wing-edge-facesize</li>
+<li>指定<code>Name</code>为<strong>wing-edge-facesize</strong></li>
+<li>指定<code>Target Mesh Size</code>为<strong>2</strong></li>
+<li>指定加密边界为<strong>wing-edge</strong></li>
+</ul>
+<p><strong>设置指定翼型后方BOI局部尺寸</strong></p>
+<ul>
+<li>指定<code>Name</code>为<strong>wing-boi</strong></li>
+<li>指定<code>Size Control Type</code>为<strong>Body Of Influence</strong></li>
+<li>指定<code>Target Mesh Size</code>为<strong>5</strong></li>
+<li>指定区域为<strong>wing-boi</strong></li>
+</ul>
+<p><strong>创建表面网格</strong></p>
+<ul>
+<li>进入节点<code>Generate the Surface Mesh</code></li>
+<li>设置<code>Minimum Size</code>为<strong>2</strong></li>
+<li>设置<code>Maximum Size</code>为<strong>1000</strong></li>
+<li>点击按钮<strong>Generate the Surface Mesh</strong>生成面网格</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301312332054.png" alt="表面网格" style="zoom:33%;">
+<p><strong>描述几何结构</strong></p>
+<ul>
+<li>进入<code>Describe Geometry</code>节点</li>
+<li>几何图形仅由没有空隙的流体区域组成</li>
+<li>无需修改交界面类型</li>
+<li>无需应用共享拓扑</li>
+</ul>
+<p><strong>更新边界</strong></p>
+<ul>
+<li>进入<code>Update Boundaries</code>节点</li>
+<li>fluid symmetry——symmetry</li>
+<li>pressure farfield——pressure-far-field</li>
+<li>wing bottom——wall</li>
+<li>wing edge——wall</li>
+<li>wing_top——wall</li>
+</ul>
+<p><strong>更新区域</strong></p>
+<ul>
+<li>进入<code>Update Regions</code>节点</li>
+<li>采用默认设置</li>
+</ul>
+<p><strong>添加边界层</strong></p>
+<ul>
+<li>进入<code>Add Boundary Layers</code>节点</li>
+<li>指定参数<code>Number of Layers</code>为<strong>12</strong></li>
+<li>其他参数采用默认设置</li>
+</ul>
+<p><strong>生成体网格</strong></p>
+<ul>
+<li>
+<p>进入节点<code>Generate the Volume Mesh</code></p>
+</li>
+<li>
+<p>设置<code>Fill With</code>为<strong>poly-hexcore</strong></p>
+</li>
+<li>
+<p>指定<code>Max Cell Length</code>为<strong>512</strong></p>
+</li>
+<li>
+<p>打开高级选项，设置<code>Check Self Proximity</code>为<strong>yes</strong></p>
+</li>
+<li>
+<p>点击按钮<strong>Generate the Volume Mesh</strong>生成体网格</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202301312348013.png" alt="体网格"></p>
+<ul>
+<li>利用菜单**File→ Write → Mesh…**保存网格文件</li>
+<li><strong>Switch to Solution</strong>进入求解模式</li>
+</ul>
+<h4 id="5-3求解设置-2">5.3求解设置</h4>
+<p><strong>General设置</strong></p>
+<ul>
+<li>General面板采用默认设置</li>
+</ul>
+<p><code>注：涉及到高速空气动力学与激波问题时，常采用密度基求解器。不过也可以使用压力基求解器配合Coupled算法进行计算。</code></p>
+<p><strong>Models设置</strong></p>
+<ul>
+<li>选择使用<strong>SST k-omega</strong>湍流模型</li>
+<li>其余默认</li>
+</ul>
+<p><strong>Materials设置</strong></p>
+<ul>
+<li>指定<code>Density</code>为<strong>ideal-gas</strong></li>
+<li>指定<code>Viscosity</code>为<strong>sutherland</strong>，采用默认参数</li>
+</ul>
+<p><code>注：对于高速流动，常将物性设置为温度的函数。</code></p>
+<p><strong>边界条件设置</strong></p>
+<ul>
+<li>指定<code>pressure_farfield</code>的边界条件</li>
+<li>指定<code>Gauge Pressure</code>为<strong>0 Pa</strong></li>
+<li>指定<code>Mach Number</code>为<strong>0.8395</strong></li>
+<li>指定<code>X-Component of Flow Direction</code>为<strong>0.998574</strong></li>
+<li>指定<code>Z-Component of Flow Direction</code>为<strong>0.053382</strong></li>
+</ul>
+<p><code>注：这里x方向向量为cos(3.06)，z方向向量为sin(3.06)</code></p>
+<ul>
+<li>指定边界温度为<strong>255.56 K</strong></li>
+</ul>
+<p><strong>指定操作压力</strong></p>
+<ul>
+<li>指定操作压力为<strong>80600 Pa</strong></li>
+</ul>
+<p><code>注：操作压力应设置为有意义的值，以避免舍入误差。对于可压缩流，绝对压力必须大于零。如果要用绝对压力来指定边界条件，可以将操作压力设置为零。</code></p>
+<p><strong>设置参考值</strong></p>
+<ul>
+<li>如下图所示设置参考值</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302022028134.png" alt="参考值设置" style="zoom: 50%;">
+<p><strong>Methods设置</strong></p>
+<ul>
+<li>采用默认设置</li>
+</ul>
+<p><strong>监测升阻力</strong></p>
+<ul>
+<li>右键选择模型树节点<code>Report Definitions</code>，点击弹出菜单项**New → Force Report → Drag…**打开定义对话框</li>
+</ul>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302010013010.png" alt="输出阻力" style="zoom: 25%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302010017334.png" alt="输出升力" style="zoom:33%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302010013010.png" alt="输出阻力" style="zoom: 25%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302010017334.png" alt="输出升力" style="zoom:33%;"></p>
+<p><strong>初始化</strong></p>
+<ul>
+<li>采用<code>Hybrid Initialization</code>方法进行初始化</li>
+</ul>
+<p><strong>设置迭代参数</strong></p>
+<ul>
+<li>设置迭代计算<strong>150</strong>步，进行计算</li>
+</ul>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302022042989.png" alt="升力系数" style="zoom: 25%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302022042854.png" alt="阻力系数" style="zoom: 25%;"></p>
+<h4 id="5-4后处理">5.4后处理</h4>
+<p><strong>在机翼上绘制Y+的分布图</strong></p>
+<p>Y+的值取决于网格的分辨率和流动的雷诺数，并且仅在邻近壁的单元中定义</p>
+<ul>
+<li>打开Results → Graphics → Contours → New…</li>
+<li>输入<code>contour-yplus</code>作为等高线名称</li>
+<li>禁用选项组框中的节点值</li>
+<li>选择<code>Turbulence</code>和<code>Wall Yplus</code>从下拉列表的轮廓</li>
+<li>从曲面选择列表中选择wing_bottom、wing_edge和wing_top</li>
+<li>单击<code>Save/Display</code>并关闭等值线对话框</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302022051164.png" alt="叶片上Y+的分布" style="zoom: 33%;">
+<p><strong>绘制机翼上的压力分布图</strong></p>
+<ul>
+<li>创建对称穿越机翼的截面</li>
+<li>打开Results → Graphics → Contours → New…</li>
+<li>输入contour-pressure作为等高线名称</li>
+<li>启用着色组框中的<code>Banded</code>（带状）</li>
+<li>选择<code>Pressure</code>以及来自下拉列表轮廓的<code>Static Pressure</code>（静态压力）</li>
+<li>从“曲面”选择列表中选择新创建的对称机翼剖面和机翼上表面</li>
+<li>单击<code>Save/Display</code></li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302022058050.png" alt="翼面的压力云图" style="zoom:33%;">
+<ul>
+<li>从<code>Colormap</code>表组框中<code>Currently Defined</code>的下拉列表中选择<code>bgr-pink</code></li>
+<li>单击Apply （应用）并关闭色彩映射表对话框</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302022103229.png" alt="翼面压力云图优化" style="zoom: 33%;">
+<p><strong>飞机马赫数输出</strong></p>
+<ul>
+<li>打开Results → Surface → Create → Plane…</li>
+<li>创建一个新曲面</li>
+<li>从方法下拉列表中选择ZX平面</li>
+<li>为y输入1.11米。<br>
+<code>注：这个值对应于靠近翼尖的激波区域周围的y坐标</code></li>
+<li>点击Create并关闭Plane Surface dialog box.</li>
+<li>创建马赫数云图</li>
+<li>输入contour-mach作为轮廓名称</li>
+<li>启用着色组框中的带状</li>
+<li>选择<code>Velocity</code>和<code>Mach Number</code>从等高线下拉列表中选择</li>
+<li>从<code>From Surface</code>列表中选择新建平面</li>
+<li>单击保存/显示并关闭等值线对话框</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302022115591.png" alt="马赫数" style="zoom: 33%;">
+<p><strong>显示速度分量的云图</strong></p>
+<ul>
+<li>打开Results → Graphics → Contours → New…</li>
+<li>输入contour-x-vel作为等高线名称</li>
+<li>确保在选项组框中启用已填充</li>
+<li>启用<code>Coloring</code>组框中的<code>Banded</code></li>
+<li>选择<code>velocity</code>和<code>X velocity</code>的值</li>
+<li>从<code>From Surface</code>列表中选择<code>plane-zx</code></li>
+<li>单击<code>Save/Display</code>并关闭等值线对话框</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302022119088.png" alt="速度云图" style="zoom: 33%;">
+<p><strong>绘制速度向量</strong></p>
+<ul>
+<li>打开Results → Graphics → Vectors → New…</li>
+<li>输入vector-vel作为向量名称</li>
+<li>输入0.05作为<code>Scale</code></li>
+<li>选择<code>velocity</code>和<code>X velocity</code>的值</li>
+<li>从<code>From Surface</code>列表中选择新建平面</li>
+<li>单击<code>Save/Display</code>并关闭矢量对话框</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302022122626.png" alt="image-20230202212250520" style="zoom: 33%;">
+<p><strong>激波区附近机翼上的壁面剪应力分量</strong></p>
+<ul>
+<li>打开Results → Surface → Create → Iso-Surface…</li>
+<li>输入<code>iso-y-bottom</code>作为新曲面名称。</li>
+<li>选择<code>Mesh... </code>和 <code>Y-Coordinate</code>的值。</li>
+<li>从<code>From Surface</code>列表中选择<code>wing_bottom</code>。</li>
+<li>单击<code>Compute</code>并输入1.11 m作为<code>Iso-Values</code>。</li>
+<li>这个值对应于靠近翼尖的激波区的y坐标。</li>
+<li>单击<code>Create</code>。</li>
+<li>同样，从<code>wing_top</code>曲面创建一个曲面<code>iso-y-top</code>。</li>
+<li>关闭“平面曲面”对话框。</li>
+<li>打开Results → Plots → XY Plot → New…</li>
+<li>输入<code>xy-x-shear-stress</code>作为XY绘图名称。</li>
+<li>选择<code>Wall Fluxes...</code>和<code>X-Wall Shear Stress </code>从<code>Y Axis Function</code>下拉列表中选择。</li>
+<li>从“曲面”选择列表中选择<code>iso-y-buttom</code>和<code>iso-y-top</code>。</li>
+<li>单击<code>Save/Plot</code>并关闭<code>Solution XY Plot</code>对话框。</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302022134317.png" alt="激波区附近机翼上的壁面剪应力分量" style="zoom: 33%;">
+<h2 id="6-混合弯管中的流体流动和传热">6.混合弯管中的流体流动和传热</h2>
+<h4 id="6-1问题描述">6.1问题描述</h4>
+<p>本教程说明了混合弯管中三维湍流流体流动和传热问题的设置和解决方案。在发电厂和加工工业的管道系统中会遇到混合弯管结构。为了正确地设计接合部，预测混合区域中的流场和温度场通常是重要的。</p>
+<p>本教程演示了如何执行以下操作:</p>
+<ul>
+<li>使用<code>Watertight Geometry</code>引导的工作流来构建网格模型</li>
+<li>将现有网格文件读入Ansys Fluent。</li>
+<li>使用混合单位来定义几何形状和流体属性。</li>
+<li>为湍流强制对流问题设置材料属性和边界条件。</li>
+<li>创建表面报告定义，并将其用作收敛标准。</li>
+<li>使用基于压力的求解器计算解决方案。</li>
+<li>使用Ansys Fluent中的后处理工具直观检查流场和温度场。</li>
+<li>将求解器方法更改为耦合，以提高收敛速度。</li>
+<li>根据温度梯度调整网格，以进一步改善温度场的预测。</li>
+</ul>
+<p>要考虑的问题：温度为20°C的冷流体通过一个大的入口流入管道，并与温度为40°C的热流体混合，后者通过弯管处的一个小入口进入管道。管道尺寸以英寸为单位，流体属性和边界条件以国际单位制为单位。较大入口处的流动雷诺数为50，800，因此需要湍流模型。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302022220901.png" alt="问题模型" style="zoom:50%;">
+<h4 id="6-2构建网格模型">6.2构建网格模型</h4>
+<p><strong>打开软件导入模型</strong></p>
+<ul>
+<li>本案例网格采用Fluent Meshing生成。</li>
+<li>以<strong>Double Precision</strong>方式启动Fluent Meshing</li>
+<li>启用<strong>Watertight Geometry</strong>工作流程</li>
+<li>点击模型树节点<code>Import Geometry</code></li>
+<li>设置<code>Units</code>为<strong>in</strong></li>
+<li>指定<code>File Name</code>为<strong>elbow.scdoc</strong></li>
+<li>软件自动导入几何文件</li>
+</ul>
+<p><strong>添加局部尺寸</strong></p>
+<ul>
+<li>保持默认参数，点击Update按钮</li>
+</ul>
+<p><strong>创建表面网格</strong></p>
+<ul>
+<li>进入面网格参数设置面板，保持默认参数，点击按钮<strong>Generate the Surface Mesh</strong>生成面网格</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302022240083.png" alt="表面网格" style="zoom:33%;">
+<p><strong>描述网格结构</strong></p>
+<ul>
+<li>进入几何描述面板，设置<code>Geometry Type</code>为<strong>The geometry consists of only fluid regions with no voids</strong>，如下图所示，点击按钮<strong>Describe Geometry</strong></li>
+</ul>
+<p><strong>更新边界</strong></p>
+<p>进入边界类型确认面板</p>
+<ul>
+<li>cold-inlet——velocity-inlet</li>
+<li>hot-inlet——velocity-inlet</li>
+<li>outlet——pressure-outlet</li>
+<li>symmetry-xyplane——symmetry</li>
+<li>wall-elbow——wall</li>
+<li>wall-inlet——wall</li>
+</ul>
+<p><strong>更新区域</strong></p>
+<ul>
+<li>进入计算区域类型设置面板，设置计算区域类型为<strong>fluid</strong></li>
+</ul>
+<p><strong>添加边界层</strong></p>
+<ul>
+<li>保持默认参数</li>
+</ul>
+<p><strong>体网格生成</strong></p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302022242863.png" alt="体网格" style="zoom:33%;">
+<ul>
+<li>利用菜单<strong>File → Write → Mesh…</strong> 保存网格文件<strong>elbow.msh</strong></li>
+<li>点击按钮<strong>Switch to Solution</strong>切换到求解模式</li>
+</ul>
+<h4 id="6-3求解设置">6.3求解设置</h4>
+<p><strong>General设置</strong></p>
+<ul>
+<li><strong>Domain → Mesh → Scale…</strong> 打开网格缩放对话框，设置<code>View Length Unit In</code>为<strong>in</strong></li>
+<li>General面板其余内容保持默认设置</li>
+</ul>
+<p><strong>Models设置</strong></p>
+<ul>
+<li>开启能量方程</li>
+<li>指定使用<strong>SST k-omega</strong>湍流模型</li>
+</ul>
+<p><strong>Materials设置</strong></p>
+<ul>
+<li>从材料数据库中添加材料介质<strong>water-liquid</strong></li>
+</ul>
+<p><strong>设置计算区域</strong></p>
+<ul>
+<li>指定计算区域中的材料介质为<strong>water-liquid</strong></li>
+</ul>
+<p><strong>边界条件设置</strong></p>
+<ul>
+<li>指定入口边界<code>cold-inlet</code>的入口速度为<strong>0.5 m/s</strong></li>
+<li>湍流设置采用<code>Intensity and Hydraulic Diameter</code>，其中湍流强度为5%，水力直径是0.4</li>
+<li>指定边界<code>cold-inlet</code>的温度为<strong>293.15 K</strong></li>
+<li>指定边界<code>hot-inlet</code>的入口速度为<strong>1.2 m/s</strong></li>
+<li>湍流设置采用<code>Intensity and Hydraulic Diameter</code>，其中湍流强度为5%，水力直径是1</li>
+<li>指定边界<code>hot-inlet</code>的温度为<strong>313.15 K</strong></li>
+<li>指定出口参数，湍流设置采用<code>Intensity and Viscosity Ratio</code>，回流湍流强度[%]5，回流湍流粘度比4</li>
+</ul>
+<p><strong>Methods设置</strong></p>
+<ul>
+<li>采用默认计算方法</li>
+</ul>
+<p><strong>创建出口平均温度的表面报告定义</strong></p>
+<ul>
+<li>打开Solution → Reports → Definitions → New → Surface Report → Mass-Weighted Average…</li>
+<li>输入<code>outlet-temp-avg</code>作为报告定义的名称。</li>
+<li>在创建组框中启用报告文件、报告绘图和打印到控制台</li>
+<li>选择<code>Temperature</code>和<code>Static Temperature</code>静态温度。</li>
+<li>从曲面选择列表中选择“出口”。</li>
+<li>单击“确定”保存曲面报告定义并关闭“曲面报告定义”对话框。</li>
+</ul>
+<p><strong>为出口温度平均值创建收敛条件</strong></p>
+<ul>
+<li>打开Solution → Reports → Convergence…</li>
+<li>单击添加按钮。</li>
+<li>为条件输入con-outlet-temp-avg。</li>
+<li>从报告定义下拉列表中选择出口温度平均值。</li>
+<li>输入1e-5作为停止标准。</li>
+<li>为“忽略之前的迭代次数”输入20。</li>
+<li>为“使用迭代次数”输入15。</li>
+<li>启用打印。</li>
+<li>将每次迭代设置为3。</li>
+<li>单击“确定”保存收敛条件设置并关闭“收敛条件”对话框。</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302031749843.png" alt="创建新的收敛条件" style="zoom: 40%;">
+<p><strong>初始化计算</strong></p>
+<ul>
+<li>采用Hybrid初始化</li>
+</ul>
+<p><strong>迭代计算</strong></p>
+<ul>
+<li>设置迭代计算150 步</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302031752590.png" alt="监测得到的出口平均温度变化" style="zoom: 33%;">
+<p><strong>使用结果功能区选项卡检查质量流量报告的收敛性</strong></p>
+<ul>
+<li>打开Results → Reports → Fluxes…</li>
+<li>确保从选项列表中选择质量流率。</li>
+<li>从“边界”选择列表中选择“冷入口”、“热入口”和“出口”。</li>
+<li>单击计算。</li>
+<li>关闭通量报告对话框。</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302031756373.png" alt="image-20230203175627292" style="zoom: 40%;">
+<p><code>注：入口的流量总和应该非常接近出口的流量总和。最终结果显示，这种情况下的不平衡远远低于之前建议的0.2%标准。</code></p>
+<h4 id="6-4求解结果与后处理">6.4求解结果与后处理</h4>
+<p><strong>在对称平面上显示速度大小的填充轮廓</strong></p>
+<ul>
+<li>打开Results → Graphics → Contours → New…</li>
+<li>输入contour-vel作为云图名称。</li>
+<li>确保在“选项”组框中启用了“填充”。</li>
+<li>确保在选项组框中启用了节点值和边界值。</li>
+<li>在“着色”组框中选择“带状”。</li>
+<li>选择<code>Velocity... </code>和<code>Velocity Magnitude</code>大小。</li>
+<li>从“Surfaces”选择列表中选择“symmetry-xyplan&quot;平面。</li>
+<li>单击保存/显示，在活动图形窗口中显示轮廓。单击轴三向轴中的蓝色z轴箭头将使用z轴定向视图，然后单击“适合窗口”</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302031800064.png" alt="对称面上的速度云图" style="zoom: 33%;">
+<p><strong>在对称平面上创建并显示温度等值线</strong></p>
+<ul>
+<li>打开Results → Graphics → Contours → New…</li>
+<li>输入contour-temp作为等高线名称。</li>
+<li>选择温度…以及来自下拉列表轮廓的静态温度。</li>
+<li>从“曲面”选择列表中选择“对称-xy平面”。</li>
+<li>单击保存/显示并关闭等值线对话框。</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302031802653.png" alt="对称面上静态温度云图" style="zoom: 33%;">
+<p><strong>在对称平面上显示速度向量</strong></p>
+<ul>
+<li>打开Results → Graphics → Vectors → New…</li>
+<li>输入vector-vel作为向量名称。</li>
+<li>从样式下拉框中选择箭头。</li>
+<li>从“曲面”选择列表中选择“对称-xy平面”。</li>
+<li>输入4作为比例。</li>
+<li>将Skip设置为2。</li>
+<li>再次单击“保存/显示”以重新显示向量。</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302031805274.png" alt="对称面上的速度矢量" style="zoom:33%;">
+<p><strong>迹线、几何与矢量综合</strong></p>
+<img src="/2023/01/29/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E4%BB%BF%E7%9C%9F%E6%A1%88%E4%BE%8B%E6%89%A9%E5%B1%95/C:%5CUsers%5CDavid%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230203181904543.png" alt="image-20230203181904543" style="zoom:33%;">
+<p><strong>溶液出口对称中心线上温度分布的XY图</strong></p>
+<ul>
+<li>打开Results → Surface → Create → Iso-Surface…</li>
+<li>输入<code>z=0_outlet</code>作为新曲面名称。</li>
+<li>选择<code>Mesh</code>和<code>Z-Coordinate</code>的值。</li>
+<li>单击“计算”以获得网格在z方向上的范围。</li>
+<li>方向的值范围显示在最小值和最大值字段中。</li>
+<li>保留Iso值的默认值0英寸。</li>
+<li>从“从曲面选择”列表中选择“出水口”。</li>
+<li>单击创建。</li>
+<li>关闭“等值面”对话框。</li>
+<li>输入xy-outlet-temp作为xy绘图名称。</li>
+<li>选择<code>Temperature</code>和<code>Static Temperature</code>静态温度.</li>
+<li>从曲面选择列表中选择刚刚创建的z=0_outlet曲面。</li>
+<li>点击”绘图“。</li>
+<li>启用”写出到文件“，单击”写出“，文件名称”outlet_temp1.xy“</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302031828747.png" alt="出口对称中心线上温度分布" style="zoom:33%;">
+<p><strong>查看对称面上动压分布</strong></p>
+<ul>
+<li>打开“用户自定义”，“自定义场函数”</li>
+<li>选择<code>Density...</code>和<code>Density</code>，然后单击选择按钮将密度添加到定义字段。</li>
+<li>单击X按钮将乘法符号添加到定义字段。</li>
+<li>选择速度…和速度大小，然后单击选择按钮将|V|添加到定义字段。</li>
+<li>单击y^x将“定义”字段中的最后一项提高到幂，然后单击2获得幂。</li>
+<li>单击/按钮将除法符号添加到定义字段，然后单击2。</li>
+<li>输入<code>dynamic-head</code>作为新函数名。</li>
+<li>单击定义并关闭自定义字段函数计算器对话框。</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302031836376.png" alt="场函数定义" style="zoom:33%;">
+<ul>
+<li>打开Results → Graphics → Contours → New…</li>
+<li>输入<code>contour-dynamic-head</code>作为等高线名称。</li>
+<li>在<code>Coloring </code>组框中选择<code>Banded</code>。</li>
+<li>选择<code>Custom Field Functions... </code>和<code>dynamic-head</code>从下拉列表的轮廓。</li>
+<li>从<code>Surfacce</code>选择列表中选择“Symmetry-xyplane”。</li>
+<li>单击保存/显示并关闭等值线对话框。</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302031840465.png" alt="对称面上的动压分布" style="zoom: 33%;">
+<p><strong>写出案例与数据文件</strong></p>
+<p>打开File → Write → Case &amp; Data…</p>
+<h4 id="6-5调整网格">6.5调整网格</h4>
+<p>对于本教程的第一次运行，已经使用一个较粗糙的网格解决了问题。通过细化网格以更好地解析流动细节，可以进一步改进弯管解决方案。<br>
+Ansys Fluent提供了一种内置功能，可以根据解决方案轻松调整(局部优化)网格渐变。</p>
+<p>在以下步骤中，您将<u>根据当前解决方案中的温度梯度调整网格</u>，并将结果与以前的结果进行比较。</p>
+<p><strong>定义<code>Cell Registers</code>以适应高温度梯度区域的网格</strong></p>
+<ul>
+<li>打开Solution → Cell Registers New → Field Variable…</li>
+<li>从类型下拉列表中选择<code>Cells More Than</code>。</li>
+<li>从“导数选项”下拉列表中选择<code>Curvature</code>。</li>
+<li>选择<code>Temperature...</code>从中选择<code>Static Temperature</code>。</li>
+<li>单击计算。Ansys Fluent将更新最小值和最大值，以显示最小和最大温度梯度。</li>
+<li>对于值大于的单元格，输入值0.0015。<br>
+<code>注：一般规则是在设置优化值时使用大约10%的最大梯度</code></li>
+<li>单击保存并关闭现场变量寄存器对话框。</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302031901239.png" alt="场变量寄存器" style="zoom:50%;">
+<p><strong>使用单元寄存器设置网格自适应</strong></p>
+<ul>
+<li>打开Domain → Adapt → Manual…</li>
+<li>从<code>Refinement Criterion</code>下拉列表中选择先前定义的<code>curvature_0</code>单元寄存器。<br>
+对于三维网格，Ansys Fluent不会粗化到原始网格之外。因此，在这种情况下，没有必要选择粗化标准。</li>
+<li>单击调整</li>
+<li>点击该窗口下的设置“显示选项”，勾选”显示网格“。在模型显示中选择对称面上的”边“，”特性“。</li>
+</ul>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302031926375.png" alt="自适应网格显示" style="zoom: 25%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302031929522.png" alt="自适应网格显示" style="zoom:25%;"></p>
+<p><strong>额外计算150迭代</strong></p>
+<p>Solution → Run Calculation → Calculate</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302031930250.png" alt="函数收敛" style="zoom:25%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302031930084.png" alt="检测量收敛" style="zoom:25%;"></p>
+<ul>
+<li>打开File → Write → Case &amp; Data…</li>
+<li>为案例/数据文件输入<code>elbow2.h5</code></li>
+<li>单击确定保存文件并关闭选择文件对话框。</li>
+</ul>
+<p><strong>优化后网格求解的温度云图</strong></p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302031933067.png" alt="对称面上的温度云图" style="zoom: 33%;">
+<p><strong>出口对称线上的温度分布对比</strong></p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302031937127.png" alt="image-20230203193736922" style="zoom: 33%;">
+<p>黑色是优化后，红色是优化前</p>
+<h2 id="7-排气系统-容错网格">7.排气系统:容错网格</h2>
+<p>本教程说明了歧管排气系统中三维湍流流体流动的设置和解决方案。</p>
+<p>该案六使用容错网格引导工作流，适用于有缺陷的几何图形，如间隙和泄漏。</p>
+<p>本教程演示了如何在Ansys Fluent中执行以下操作:</p>
+<ul>
+<li>使用<code>Fault-tolerant Meshing</code>工作流</li>
+<li>计算解决方案。</li>
+<li>审查模拟结果。</li>
+</ul>
+<p>有一个已知的小泄漏，将在教程的网格划分部分解决，以演示网格划分工作流的自动泄漏检测方面。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302032038106.png" alt="几何网格模型" style="zoom: 50%;">
+<p>空气以1米/秒的均匀速度流过三个入口，然后通过出口排出。</p>
+<h4 id="7-2求解设置">7.2求解设置</h4>
+<p><strong>网格生成</strong></p>
+<ul>
+<li>启动Fluent Meshing</li>
+<li>启用FTM工作流程</li>
+</ul>
+<p><strong>导入几何模型</strong></p>
+<ul>
+<li>进入<code>Import CAD and Part Management</code>节点设置</li>
+<li>选择<code>CAD File</code>为<strong>exhaust_system.fmd</strong></li>
+<li>选择<code>Create Meshing Objects</code>为<strong>Custom</strong>（自定义）</li>
+<li>设置<code>Display Unit</code>为<strong>mm</strong></li>
+<li>点击<code>Load</code>按钮加载几何</li>
+<li>将需要划分网格的几何部件拖放到<code>Meshing Model</code>节点下</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302032045506.png" alt="导入几何模型" style="zoom: 50%;">
+<ul>
+<li>选择节点<code>Meshing Model</code>，进行如下所示</li>
+<li>设置选项<code>Create One Zone Per</code>为<strong>part</strong></li>
+<li>点击按钮<code>Create Settings to Child Objects</code></li>
+<li><code>Create Meshing Objects</code>（创建网格划分对象）</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302032049760.png" alt="导入的几何模型" style="zoom: 33%;">
+<p><strong>描述几何</strong></p>
+<ul>
+<li>进入<code>Describe Geometry and Flow</code>操作面板</li>
+<li>激活选项<code>Internal flow through the object</code></li>
+<li>设置选项<code>Do you need require feature extraction?</code>（您的几何结构是否需要特征提取？）为<strong>yes</strong></li>
+</ul>
+<p><strong>封闭流体区域（封盖）</strong></p>
+<ul>
+<li>进入<code>Enclose Fluid Regions (Capping)</code>面板</li>
+<li>选择依据<code>zone</code></li>
+<li>从列表框中选择边界<code>inlet</code>创建入口边界<strong>inlet-1</strong></li>
+<li>从列表框中选择边界<code>inlet.1</code>创建入口边界<strong>inlet-2</strong></li>
+<li>从列表框中选择边界<code>inlet.2</code>创建入口边界<strong>inlet-3</strong></li>
+<li>从列表框中选择边界<code>outlet</code>创建出口边界<strong>outlet</strong></li>
+</ul>
+<p><strong>提取边缘特征。</strong></p>
+<p>创建一个提取对象来捕捉较小管道和主管道之间的特征。基于较小管道和主管道之间的相交环创建特征提取对象。</p>
+<ul>
+<li>进入<code>Extract Edge Features</code>面板</li>
+<li>使用。。。提取方法，<code>Intersection Loops</code></li>
+<li>选择流管区域和干流区域<br>
+这将使特征提取局限于小管(流管)与总管(总管)的交叉点。</li>
+<li>单击提取边要素完成此任务并继续工作流中的下一个任务。</li>
+</ul>
+<p><strong>识别区域</strong></p>
+<ul>
+<li>进入<code> Identify Regions</code>面板，</li>
+<li>创建流体区域命名为<strong>fluid-region-1</strong></li>
+<li>选择干流区域（main.1）</li>
+<li>创建创建void区域<strong>void-region-1</strong>，区域类别选择<code>void</code></li>
+<li>选择inlet-1、inlet-2、inlet-3、main</li>
+</ul>
+<p><strong>定义泄漏阈值</strong></p>
+<ul>
+<li><code>Define Leakage Threshold</code>面板中</li>
+<li>”是否封堵区域的所有泄露“，是</li>
+<li>选择依据，<code>identified region</code></li>
+<li>选择区域，<code>void-region-1</code></li>
+</ul>
+<p><strong>更新区域信息</strong></p>
+<ul>
+<li>进入<code>Update Region Settings</code></li>
+<li>显示区域，<code>Identified Regions</code></li>
+<li>调整Volume Fill，<code>poly</code></li>
+</ul>
+<p><strong>网格尺寸控制</strong></p>
+<ul>
+<li>进入<code>Choose Mesh Control Options</code>面板</li>
+<li>采用默认设置</li>
+</ul>
+<p><strong>生成面网格</strong></p>
+<ul>
+<li>进入<code>Generate the Surface Mesh</code>面板</li>
+<li>采用默认参数生成面网格</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302032108700.png" alt="生成面网格" style="zoom: 33%;">
+<p><strong>更新边界</strong></p>
+<ul>
+<li>进入<code>Update Boundaries</code>面板</li>
+<li>采用默认的设置边界信息</li>
+</ul>
+<p><strong>设置边界层参数</strong></p>
+<ul>
+<li>进入<code>Add Boundary Layers</code>面板</li>
+<li>采用默认的设置边界信息</li>
+</ul>
+<p><strong>生成体网格</strong></p>
+<ul>
+<li>进入<code>Generate the Volume Mesh</code>面板</li>
+<li>采用默认参数生成体网格</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302032113392.png" alt="生成体网格" style="zoom:33%;">
+<p><strong>保存网格文件转换求解</strong></p>
+<ul>
+<li>利用菜单<strong>File → Write → Mesh…</strong> 保存网格文件</li>
+<li>点击按钮<strong>Switch to Solution</strong>切换到求解模式</li>
+</ul>
+<h4 id="7-3求解设置">7.3求解设置</h4>
+<p><strong>通用设置</strong></p>
+<ul>
+<li>打开Domain → Mesh → Units…</li>
+<li>在<code>Quantities</code>下选择<code>length</code> 。</li>
+<li>在单位下选择<code>mm</code>。</li>
+<li>关闭<code>Set Units</code>对话框。</li>
+</ul>
+<p><strong>规划求解设置</strong></p>
+<ul>
+<li>打开Physics → Solver</li>
+<li>保持默认设置</li>
+</ul>
+<p><strong>模型设置</strong></p>
+<ul>
+<li>打开Setup → Models → Viscous Model → SST k-omega</li>
+<li>保留默认的k-ω SST湍流模型</li>
+</ul>
+<p><strong>材料设置</strong></p>
+<ul>
+<li>保持默认</li>
+</ul>
+<p><strong>单元区域条件设置</strong></p>
+<ul>
+<li>保持默认流体，空气</li>
+</ul>
+<p><strong>边界条件设置</strong></p>
+<ul>
+<li>打开Setup → Boundary Conditions → Inlet → inlet-1 Edit…</li>
+<li>输入1米/秒作为<code>Velocity Magnitude</code></li>
+<li>保留其余的默认设置。</li>
+<li>单击<code>Apply </code>并关闭“速度入口”对话框</li>
+<li>复制条件至其余两个速度入口</li>
+<li>压力出口的设置维持默认</li>
+</ul>
+<p><strong>方法</strong></p>
+<ul>
+<li>打开Solution → Solution → Methods…</li>
+<li>保留默认设置</li>
+</ul>
+<p><strong>监控入口处的质量流量</strong></p>
+<ul>
+<li>打开Solution → Reports → Definitions → New → Flux Report → Mass Flow Rate…</li>
+<li>输入<code>mass-in</code>作为报告定义的名称。</li>
+<li>确保在选项组框中选择了<code>质量流率</code>。</li>
+<li>从“边界”选择列表中选择velo-inlet 1、velo-inlet 2、velo-inlet 3</li>
+<li>在创建组框中启用报告打印并打印到控制台。</li>
+</ul>
+<p><strong>监控通过整个区域的总质量流率</strong></p>
+<ul>
+<li>执行与上述相同的步骤</li>
+<li>将报告命名为mass-tot</li>
+<li>选择边界pres_outlet 1、velo-inlet 1、velo-inlet 2、velo-inlet 3</li>
+</ul>
+<p><strong>监控质量平衡</strong></p>
+<ul>
+<li>打开Solution → Reports → Definitions → New → Expression…</li>
+<li>输入<code>mass-bal</code>作为表达式的名称</li>
+<li>从右侧的报告定义下拉列表中选择<code>mass-tot</code></li>
+<li>键入/操作数</li>
+<li>从右侧的报告定义下拉列表中选择批量输入{mass-tot}/{mass-in}</li>
+<li>在创建组框中启用报告打印并打印到控制台</li>
+<li>单击确定保存表达式定义</li>
+</ul>
+<p><strong>初始化</strong></p>
+<ul>
+<li>选择混合初始化</li>
+<li>点击初始化</li>
+<li>保存案例文件(exhaust_system.cas.h5)。</li>
+</ul>
+<p><strong>运行计算</strong></p>
+<ul>
+<li>通过在“解决方案”功能区请求100次迭代来开始计算。</li>
+<li>点击<code>Calculate </code>开始迭代</li>
+<li>保存案例和数据文件(exhaust_system.cas.h5和exhaust_system.dat.h5)。</li>
+</ul>
+<h4 id="7-4求解结果后处理">7.4求解结果后处理</h4>
+<p><strong>高亮显示流场的路径线</strong></p>
+<ul>
+<li>打开Results → Graphics → Pathlines → New…</li>
+<li>保留名称的默认值<code>pathlines-1</code>。</li>
+<li>选择<code>Particle Variables...</code>和<code>Time</code>。</li>
+<li>启用选项下的精度控制。</li>
+<li>将路径跳过值设置为<code>5</code>。</li>
+<li>从“从曲面释放”列表中选择三处入口区域。</li>
+<li>单击保存/显示并关闭路径线对话框。</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302032148873.png" alt="流场的路径线" style="zoom:33%;">
+<p><strong>通过流形几何创建等值面</strong></p>
+<ul>
+<li>打开Results → Surface → New → Iso-Surface…</li>
+<li>选择<code>Mesh... </code>和<code>X-Coordinate</code>的值。</li>
+<li>输入<code>surf-x-coordinate</code>作为名称。</li>
+<li>从列表中选择<code>fluid-region-1</code>。</li>
+<li>单击计算。</li>
+<li>使用滑块将等值面定位在几何图形的中间(大约380 mm)。</li>
+<li>单击“创建”并关闭“等值面”对话框。</li>
+</ul>
+<p><strong>沿着网格创建和定义整个流形的速度大小等值线</strong></p>
+<ul>
+<li>打开Results → Graphics → Contours → New…</li>
+<li>输入<code>contour-velocity</code>作为名称。</li>
+<li>选择<code>Velocity...</code>和<code>Velocity Magnitude</code>。</li>
+<li>从曲面列表中选择<code>surf-x-coordinate</code>。</li>
+<li>禁用选项下的<code>Node Values</code>（节点值）和<code>Global Range</code>（全局范围）</li>
+<li>单击保存/显示并关闭等值线对话框。</li>
+</ul>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302032154536.png" alt="速度云图" style="zoom: 33%;">
+<p><strong>创建一个包含网格和轮廓的场景</strong></p>
+<p>打开Results → Scene New…</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302032158567.png" alt="网格和轮廓的场景" style="zoom: 33%;"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://lidaiwei.top">David.Li</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://lidaiwei.top/2023/01/29/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E4%BB%BF%E7%9C%9F%E6%A1%88%E4%BE%8B%E6%89%A9%E5%B1%95/">https://lidaiwei.top/2023/01/29/Fluent流体仿真/Fluent仿真案例扩展/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://lidaiwei.top" target="_blank">戴威的Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a><a class="post-meta__tags" href="/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/">研究生知识积累</a></div><div class="post_share"><div class="social-share" data-image="/./img/20.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/02/05/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E5%89%8D%E5%A4%84%E7%90%86_SCDM/"><img class="prev-cover" src="/./img/20.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Fluent前处理_SCDM</div></div></a></div><div class="next-post pull-right"><a href="/2023/01/22/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%20Meshing%E4%B8%93%E9%A2%98/"><img class="next-cover" src="/./img/20.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Fluent Meshing专题</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/10/29/EDEM%E7%A6%BB%E6%95%A3%E5%85%83%E4%BB%BF%E7%9C%9F/EDEM%E7%A6%BB%E6%95%A3%E5%85%83%E4%BB%BF%E7%9C%9F%E8%BF%9B%E9%98%B6%E6%93%8D%E4%BD%9C/" title="《EDEM离散元仿真》学习笔记"><img class="cover" src="/./img/11.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">《EDEM离散元仿真》学习笔记</div></div></a></div><div><a href="/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%BD%AF%E4%BB%B6%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D/" title="Fluent软件总体介绍"><img class="cover" src="/./img/20.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-01</div><div class="title">Fluent软件总体介绍</div></div></a></div><div><a href="/2023/01/08/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%A7%86%E9%A2%91%E6%B1%87%E6%80%BB/" title="Fluent软件总体介绍"><img class="cover" src="/./img/20.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-08</div><div class="title">Fluent软件总体介绍</div></div></a></div><div><a href="/2022/10/29/%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E5%8C%97%E8%88%AA%E2%80%94%E8%88%AA%E5%A4%A9%E8%88%AA%E7%A9%BA%E6%A6%82%E8%AE%BA/" title="北航——《航天航空概论》学习笔记"><img class="cover" src="/./img/4.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">北航——《航天航空概论》学习笔记</div></div></a></div><div><a href="/2022/11/22/%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E5%8D%97%E8%88%AA%E2%80%94%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B%E5%89%8D%E7%AB%A0/" title="南航——飞行器总体设计与系统工程前章"><img class="cover" src="/./img/10.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-22</div><div class="title">南航——飞行器总体设计与系统工程前章</div></div></a></div><div><a href="/2022/10/29/%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E9%A1%BE%E8%AF%B5%E8%8A%AC%E2%80%94%E9%A3%9E%E6%9C%BA%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E4%B8%80%E8%87%B3%E5%85%AD%E7%AB%A0%EF%BC%89/" title="《飞机总体设计》学习笔记"><img class="cover" src="/./img/1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">《飞机总体设计》学习笔记</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.postimg.cc/yNgHD8Yp/k-L4co-QHVj-A.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">David.Li</div><div class="author-info__description">生命啊, 它璀璨如歌！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/119DavidLi"><i class="fab fa-github"></i><span>一起玩吧</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/119DavidLi" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/daiwei_li119@163.com" target="_blank" title="邮箱"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://119davidli.github.io/" target="_blank" title="博客"><i class="fa-solid fa-robot"></i></a><a class="social-icon" href="https://space.bilibili.com/504053268?spm_id_from=333.1007.0.0" target="_blank" title="Bilibili"><i class="fa-solid fa-desktop-arrow-down"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到David.Li的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Fluent仿真案例扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%B6%B2%E4%BD%93%E5%96%B7%E9%9B%BE"><span class="toc-text">1.液体喷雾</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">1.1问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-Fluent%E8%AE%BE%E7%BD%AE"><span class="toc-text">1.2 Fluent设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%9C"><span class="toc-text">1.3计算结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%86%8D%E5%85%A5%E8%88%B1%E9%AB%98%E8%B6%85%E5%A3%B0%E9%80%9F%E6%B5%81%E5%8A%A8"><span class="toc-text">2.再入舱高超声速流动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">2.1问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2%E8%AE%A1%E7%AE%97%E7%BD%91%E6%A0%BC%E7%94%9F%E6%88%90"><span class="toc-text">2.2计算网格生成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3%E6%B1%82%E8%A7%A3%E8%AE%BE%E7%BD%AE"><span class="toc-text">2.3求解设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%9C"><span class="toc-text">2.4计算结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%AB%8B%E6%9D%BF%E5%8D%95%E5%90%91%E6%B5%81%E5%9B%BA%E8%80%A6%E5%90%88"><span class="toc-text">3.立板单向流固耦合</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1%E6%A1%88%E4%BE%8B%E4%BB%8B%E7%BB%8D"><span class="toc-text">3.1案例介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2Fluent%E8%AE%BE%E7%BD%AE"><span class="toc-text">3.2Fluent设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3%E7%BB%93%E6%9E%9C%E5%90%8E%E5%A4%84%E7%90%86"><span class="toc-text">3.3结果后处理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%B1%BD%E8%BD%A6%E9%A3%8E%E9%98%BB%E8%AE%A1%E7%AE%97"><span class="toc-text">4.汽车风阻计算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1%E5%87%A0%E4%BD%95%E5%A4%84%E7%90%86"><span class="toc-text">4.1几何处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86"><span class="toc-text">4.2网格划分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3%E6%B1%82%E8%A7%A3%E8%AE%BE%E7%BD%AE"><span class="toc-text">5.3求解设置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E9%9D%9E%E9%9B%B6%E6%94%BB%E8%A7%92%E8%B7%A8%E9%9F%B3%E9%80%9F%E6%9C%BA%E7%BF%BC%E7%9A%84%E7%B4%8A%E6%B5%81%E8%AE%A1%E7%AE%97"><span class="toc-text">5.非零攻角跨音速机翼的紊流计算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">5.1问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86"><span class="toc-text">5.2网格划分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3%E6%B1%82%E8%A7%A3%E8%AE%BE%E7%BD%AE-2"><span class="toc-text">5.3求解设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4%E5%90%8E%E5%A4%84%E7%90%86"><span class="toc-text">5.4后处理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%B7%B7%E5%90%88%E5%BC%AF%E7%AE%A1%E4%B8%AD%E7%9A%84%E6%B5%81%E4%BD%93%E6%B5%81%E5%8A%A8%E5%92%8C%E4%BC%A0%E7%83%AD"><span class="toc-text">6.混合弯管中的流体流动和传热</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">6.1问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2%E6%9E%84%E5%BB%BA%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B"><span class="toc-text">6.2构建网格模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3%E6%B1%82%E8%A7%A3%E8%AE%BE%E7%BD%AE"><span class="toc-text">6.3求解设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-4%E6%B1%82%E8%A7%A3%E7%BB%93%E6%9E%9C%E4%B8%8E%E5%90%8E%E5%A4%84%E7%90%86"><span class="toc-text">6.4求解结果与后处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-5%E8%B0%83%E6%95%B4%E7%BD%91%E6%A0%BC"><span class="toc-text">6.5调整网格</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%8E%92%E6%B0%94%E7%B3%BB%E7%BB%9F-%E5%AE%B9%E9%94%99%E7%BD%91%E6%A0%BC"><span class="toc-text">7.排气系统:容错网格</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2%E6%B1%82%E8%A7%A3%E8%AE%BE%E7%BD%AE"><span class="toc-text">7.2求解设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-3%E6%B1%82%E8%A7%A3%E8%AE%BE%E7%BD%AE"><span class="toc-text">7.3求解设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-4%E6%B1%82%E8%A7%A3%E7%BB%93%E6%9E%9C%E5%90%8E%E5%A4%84%E7%90%86"><span class="toc-text">7.4求解结果后处理</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/02/05/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E5%89%8D%E5%A4%84%E7%90%86_SCDM/" title="Fluent前处理_SCDM"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent前处理_SCDM"/></a><div class="content"><a class="title" href="/2023/02/05/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E5%89%8D%E5%A4%84%E7%90%86_SCDM/" title="Fluent前处理_SCDM">Fluent前处理_SCDM</a><time datetime="2023-02-04T16:00:00.000Z" title="发表于 2023-02-05 00:00:00">2023-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/29/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E4%BB%BF%E7%9C%9F%E6%A1%88%E4%BE%8B%E6%89%A9%E5%B1%95/" title="Fluent 仿真案例扩展"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent 仿真案例扩展"/></a><div class="content"><a class="title" href="/2023/01/29/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E4%BB%BF%E7%9C%9F%E6%A1%88%E4%BE%8B%E6%89%A9%E5%B1%95/" title="Fluent 仿真案例扩展">Fluent 仿真案例扩展</a><time datetime="2023-01-28T16:00:00.000Z" title="发表于 2023-01-29 00:00:00">2023-01-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/22/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%20Meshing%E4%B8%93%E9%A2%98/" title="Fluent Meshing专题"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent Meshing专题"/></a><div class="content"><a class="title" href="/2023/01/22/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%20Meshing%E4%B8%93%E9%A2%98/" title="Fluent Meshing专题">Fluent Meshing专题</a><time datetime="2023-01-21T16:00:00.000Z" title="发表于 2023-01-22 00:00:00">2023-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/08/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%A7%86%E9%A2%91%E6%B1%87%E6%80%BB/" title="Fluent软件总体介绍"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent软件总体介绍"/></a><div class="content"><a class="title" href="/2023/01/08/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%A7%86%E9%A2%91%E6%B1%87%E6%80%BB/" title="Fluent软件总体介绍">Fluent软件总体介绍</a><time datetime="2023-01-07T16:00:00.000Z" title="发表于 2023-01-08 00:00:00">2023-01-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%BD%AF%E4%BB%B6%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D/" title="Fluent软件总体介绍"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent软件总体介绍"/></a><div class="content"><a class="title" href="/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%BD%AF%E4%BB%B6%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D/" title="Fluent软件总体介绍">Fluent软件总体介绍</a><time datetime="2022-12-31T16:00:00.000Z" title="发表于 2023-01-01 00:00:00">2023-01-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/./img/20.jpeg')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By David.Li</div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://119davidli.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><script src="https://unpkg.com/algoliasearch/dist/algoliasearch-lite.umd.js"></script><script src="https://unpkg.com/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://unpkg.com/katex/dist/katex.min.css"><script src="https://unpkg.com/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
   document.querySelectorAll('#article-container span.katex-display').forEach(item => {
     btf.wrap(item, 'div', { class: 'katex-wrap'})
   })
