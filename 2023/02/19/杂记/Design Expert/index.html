@@ -1,0 +1,306 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>戴威的Blog | 戴威的Blog</title><meta name="keywords" content="戴威, 博客"><meta name="author" content="David.Li"><meta name="copyright" content="David.Li"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、Design Expert与响应面优化 1.1总体介绍 Design Expert是什么： Design-Expert由 Stat-Ease 公司开发，是一款专用于执行实验设计（DOE）的软件。Design-Expert提供比较测试，筛选，表征，优化，稳健的参数设计，混合物设计和组合设计。使用简单易于操作，不需数理统计功底，就可以用设计出高效的试验方案，并对实验数据做专业的分析，给出全面、可视">
+<meta property="og:type" content="article">
+<meta property="og:title" content="戴威的Blog">
+<meta property="og:url" content="https://lidaiwei.top/2023/02/19/%E6%9D%82%E8%AE%B0/Design%20Expert/index.html">
+<meta property="og:site_name" content="戴威的Blog">
+<meta property="og:description" content="一、Design Expert与响应面优化 1.1总体介绍 Design Expert是什么： Design-Expert由 Stat-Ease 公司开发，是一款专用于执行实验设计（DOE）的软件。Design-Expert提供比较测试，筛选，表征，优化，稳健的参数设计，混合物设计和组合设计。使用简单易于操作，不需数理统计功底，就可以用设计出高效的试验方案，并对实验数据做专业的分析，给出全面、可视">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="hhttps://gitee.com/david-li119/PigGo_img/raw/master/images/202211201400766.jpg">
+<meta property="article:published_time" content="2023-02-19T09:58:25.408Z">
+<meta property="article:modified_time" content="2023-02-19T09:57:19.622Z">
+<meta property="article:author" content="David.Li">
+<meta property="article:tag" content="戴威, 博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="hhttps://gitee.com/david-li119/PigGo_img/raw/master/images/202211201400766.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lidaiwei.top/2023/02/19/%E6%9D%82%E8%AE%B0/Design%20Expert/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"S8VXMWI0SN","apiKey":"53f1a244da26e96e8249b78dbad4a7e7","indexName":"David","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: David.Li","link":"链接: ","source":"来源: 戴威的Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '戴威的Blog',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-19 17:57:19'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="referrer" content="no-referrer" /><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.postimg.cc/yNgHD8Yp/k-L4co-QHVj-A.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('hhttps://gitee.com/david-li119/PigGo_img/raw/master/images/202211201400766.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">戴威的Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-19T09:58:25.408Z" title="发表于 2023-02-19 17:58:25">2023-02-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-19T09:57:19.622Z" title="更新于 2023-02-19 17:57:19">2023-02-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="一、Design-Expert与响应面优化">一、Design Expert与响应面优化</h2>
+<h3 id="1-1总体介绍">1.1总体介绍</h3>
+<p><strong>Design Expert是什么：</strong></p>
+<p>Design-Expert由 Stat-Ease 公司开发，是一款专用于执行实验设计（DOE）的软件。Design-Expert提供比较测试，筛选，表征，优化，稳健的参数设计，混合物设计和组合设计。使用简单易于操作，不需数理统计功底，就可以用设计出高效的试验方案，并对实验数据做专业的分析，给出全面、可视化的模型以及优化结果。</p>
+<p><strong>响应面优化实验是什么：</strong></p>
+<p>在多因素数量处理试验的分析中，可以分析试验指标（因变量）与多个试验因素（自变量）间的回归关系，这种回归可能是曲线或曲面的关系，因而称为响应面分析。在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%93%8D%E5%BA%94%E9%9D%A2%E5%88%86%E6%9E%90?fromModule=lemma_inlink">响应面分析</a>中，首先要得到回归方程，然后通过对自变量的合理取值，求得最优值，这就是响应面分析的目的。</p>
+<p>响应面优化法，即响应曲面法。这是<u>一种实验条件寻优的方法</u>，适宜于解决非线性数据处理的相关问题。它囊括了试验设计、建模、检验模型的合适性、寻求最佳组合条件等众多试验和计技术；通过对过程的回归拟合和响应曲面、等高线的绘制、可方便地求出相应于各因素水平的响应值。在各因素水平的响应值的基础上，可以找出预测的响应最优值以及相应的实验条件。</p>
+<p>可以进行响应面分析的实验设计有多种，但最常用的是下面两种：Central Composite Design-响应面优化分析（CCD）、Box-Behnken Design-响应面优化分析（BBD）。CCD适用于多因素多水平实验，有连续变量存在；BBD适用于因素水平较少（因素一般少于5个，水平为3个）。同时，CCD比BBD实验能更好的拟合相应曲面。</p>
+<p><strong>响应面实验优点：</strong></p>
+<ul>
+<li>
+<p>计算简单，考虑随机误差：<br>
+响应面优化法，<u>考虑了试验随机误差</u>；同时，响应面法将复杂的未知的函数关系在小区域内用简单的一次或二次多项式模型来拟合，计算比较简便，是解决实际问题的有效手段。</p>
+</li>
+<li>
+<p>连续的预测模型：<br>
+所获得的预测模型是<u>连续</u>的，与正交实验相比，其优势是：在实验条件寻优过程中，可以连续的对实验的各个水平进行分析，而正交实验只能对一个个孤立的实验点进行分析。</p>
+</li>
+</ul>
+<p><strong>Design Expert与响应面分析：</strong></p>
+<p><a href="https://link.zhihu.com/?target=http%3A//www.datasoldier.net/archives/tag/design-expert">Design-Expert</a> 是一款专业的试验设计软件工具，在已经发表的有关响应面（RSM）优化试验的论文中，Design-Expert是使用最广泛的软件。</p>
+<h3 id="1-2实验方法与软件操作">1.2实验方法与软件操作</h3>
+<p>实验设置时需要在文章中说明：</p>
+<ol>
+<li>响应面试验的因素和水平</li>
+<li>CCD设计表及模拟结果</li>
+<li>回归方程的方差分析</li>
+<li>相关响应面图以及其他图</li>
+</ol>
+<p>初始界面<strong>New Design</strong>，创建新实验。</p>
+<ul>
+<li>BBD实验设置：</li>
+</ul>
+<p>进入软件<strong>Response Surface</strong>，选择响应面分析<strong>Box-Behnken Design</strong>，设置窗口如下</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302092036797.png" alt="Box-Behnken Design" style="zoom: 50%;">
+<p><code>注：其中Blocks表示设计实验的平行组数</code></p>
+<p>点击<strong>Next</strong>跳转至响应值设计</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302092042568.png" alt="响应值设计"></p>
+<ul>
+<li>生成实验组表格：</li>
+</ul>
+<p>点击<strong>Finish</strong>，跳转至设置出的实验表格</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302092044513.png" alt="响应曲面优化实验表" style="zoom:33%;">
+<p>通过实验获得结果后，进入左边工具栏<strong>Analysis</strong>中对应的响应值</p>
+<ul>
+<li>实验数据Model窗口：</li>
+</ul>
+<p>若回归方程的拟合效果不佳，可以在<strong>Model</strong>窗口中修改拟合模型（线性，2FI，二次，三次等）</p>
+<ul>
+<li>实验数据的ANOVA分析窗口：</li>
+</ul>
+<p>在<strong>ANOVA for Quadratic model</strong>窗口中，可以看到对于该响应值的方差分析结果。<br>
+<code>注：一般要求第一项Model“显著”，中间的单因素实验最好表现为&quot;显著&quot;，最后一项Lack ofFit“不显著”</code></p>
+<p>在<strong>Fit Statistics</strong>窗口的项：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">R^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>d</mi><mi>j</mi><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">AdjR^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>的值应当接近<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>d</mi><mi>j</mi><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">AdjR^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>与<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>r</mi><mi>e</mi><mi>d</mi><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">PredR^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">re</span><span class="mord mathnormal">d</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>的差值应当小于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.2</mn></mrow><annotation encoding="application/x-tex">0.2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.2</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi mathvariant="normal">.</mi><mi>V</mi><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">C.V\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord">%</span></span></span></span>应当小于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>d</mi><mi>e</mi><mi>g</mi><mi>P</mi><mi>r</mi><mi>e</mi><mi>c</mi><mi>i</mi><mi>s</mi><mi>i</mi><mi>o</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">Adeg Precisior</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">rec</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.02778em;">or</span></span></span></span>大于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span></p>
+<p>可以在<strong>Coded Equation</strong>中得到二次多项式回归方程</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302092055160.png" alt="方差分析" style="zoom:33%;">
+<ul>
+<li>实验数据的Diagnostics 窗口：</li>
+</ul>
+<p><strong>Diagnostics Tool</strong>用于诊断模型与实验设计有效性</p>
+<p>Normal Plot of Residuals（残差正态分布图），需要产生的数据点贴近直线<br>
+Residuals vs.Predicted（残差与预测），数据点应体现为紊乱、无规律<br>
+Predicted vs.Actual（预测与实际情况），数据点应当贴近直线</p>
+<ul>
+<li>实验数据的Model Graphs窗口：</li>
+</ul>
+<p>在<strong>Model Graphs</strong>窗口中可以进行曲线图、折线图、等高线图、响应面图等图形的绘制。<br>
+绘图的横纵坐标标注双击后可进行修改，视角可随拖动转变，不同因素之间的影响关系可以在<strong>Contour</strong>面板中进行调整</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302092101420.png" alt="image-20230209210149308" style="zoom:33%;">
+<p>软件中的图形也可以提取数据导入到Origin中进行绘制和调整。</p>
+<p><code>注：相应操作可以参考https://www.bilibili.com/video/BV1n34y1v7kP/spm_id_from=333.999.0.0&amp;vd_source=3d05655e912261bce2a9d4c7d27ab69d</code></p>
+<p><strong>Optimization窗口：</strong></p>
+<p>该窗口用于最佳工艺参数的获得，点击<strong>Optimization</strong>窗口下的<strong>Numercial</strong><br>
+切换到<strong>Solution</strong>界面，得到该指标下各因素的最优值。</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302092129078.png" alt="选择评价指标" style="zoom:33%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302092132308.png" alt="Solution界面" style="zoom: 25%;"></p>
+<h3 id="1-3文章中的应用">1.3文章中的应用</h3>
+<p><strong>《基于响应面分析的附壁脉冲射流喷嘴优化设计》，三因素四水平一评价指标，CCD（中心复合设计）</strong></p>
+<p>响应面法 (ＲSM)是综合了数学方法和统计方法的优化设计方法，通过对局部点进行试验，从而拟合全局得到回归方程，进而得到各因素的最优水平值。通过响应面分析，可以全面分析各关键结构参数对振荡效果的影响，进而进行整体优化，同时节约计算成本。</p>
+<p>设定了<u>响应面试验的因素和水平</u>与<u>CCD设计表及模拟结果</u>；得到了拟合的<u>回归方程</u>，<u>回归方程的方差分析</u>。通过等高线图判断因素对结果的影响大小，利用整体P值、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">R^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>、CV值判断模型拟合的精确度。</p>
+<p>检验模型适用性：模型的适应性较好时，残差的正态概率分布图中概率和残差应该在一条直线上，预测值与实际值分布图中模型的预测值和实际值应该尽量在一条直线上，残差与预测值分布图中模型的概率和预测值分布应该随机没有规律。</p>
+<p>通过，三位立体图及等高线图中可以看出因素对评价指标的影响。响应面三维图中通过图形的凹凸程度判断因素之间交互作用知否显著。等高线图中通过等高线上的数值和区域颜色判断因素对评价指标的影响方式（正向、反向）。</p>
+<p><strong>《基于响应面分析的碳纤维复合材料基激光除漆工艺优化》，三因素三水平三评价指标，BBD</strong></p>
+<p>作为一种操作次数少、试验周期短、结果精度高的工艺参数优化方法，响应面分析法以数理统计优化为基础，通过合理且次数有限的试验设计，构建各因子与响应值的多元二次回归方程，包含各显著因子的一次项、交叉项及二次项，快速、准确地实现参数优化、响应值预测及误差分析。</p>
+<p>设定了<u>响应面优化试验输入因子及水平设计</u>，给出<u>响应面优化试验设计矩阵及试验结果</u>。</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>−</mo><mi>v</mi><mi>a</mi><mi>l</mi><mi>u</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">P-value</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">u</span><span class="mord mathnormal">e</span></span></span></span>代表噪声造成误差的概率，认为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>−</mo><mi>v</mi><mi>a</mi><mi>l</mi><mi>u</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">P-value</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">u</span><span class="mord mathnormal">e</span></span></span></span>小于 0.05为模型显著。</p>
+<p>结果中罗列了<u>三个因素的拟合模型及方差分析表</u>，<u>三因素对某一评价指标影响的描点图</u>，<u>三因素成对对某一评价指标影响的等高线图和响应面图</u>以及最终的<u>工艺参数优化组合</u>。</p>
+<p><strong>《应用响应面分析法优化布氏菌活疫苗的冻干工艺参数》，三因素三水平一评价指标，BBD</strong></p>
+<p>响应面分析（RSA）法系采用多元二次回归方法作为函数估计的工具，将多因子试验中因素与指标的相互关系用多项式近拟，依此可对函数的响应面和等值线进行分析，研究因子与响应面之间、因子与因子之间的相互关系。</p>
+<p>本文先经过单因素实验确定了理想的水平范围，再展开三因素三水平BBD实验。</p>
+<p>将试验中一个因素固定于零水平,绘制响应曲面图和等高线图,评价另两个因素之间的交互作用,曲面越陡、等高线越密集和越接近椭圆形,则交互作用显著,而曲面越缓、等高线稀疏和越接近圆形,则交互作用不显著。</p>
+<h2 id="二、Minitab与混料设计">二、Minitab与混料设计</h2>
+<p>混料试验是一类特殊的响应曲面试验，其中所调查的产品由多种成分组成。设计这些试验很有用，因为工业环境下许多产品设计和开发活动都涉及配方或混料。在这些环境中，响应是混料中各种成分的比例的函数。</p>
+<p>在最简单的混料试验中，响应（基于某些标准的产品质量或性能）取决于这些分量（成分）的相对比例。分量的量（以重量、体积或某些其他单位来度量）相加后得出标准总量。相比较而言，因子设计中的响应则随每个因子的数量而变化。</p>
+<p>Minitab 提供三种设计（单纯形质心、单纯形格点和极端顶点）并使用以下这三类试验进行分析：</p>
+<ul>
+<li>
+<p>混料</p>
+<p>假定响应仅取决于混料中各分量的比例。例如，油漆的颜色只取决于所使用的颜料。</p>
+</li>
+<li>
+<p>混料过程变量</p>
+<p>假定响应取决于各分量的相对比例和过程变量，过程变量虽是试验中不属于混料部分的因子，但它可能会影响混料的混合属性。例如，蛋糕的口味取决于烹饪时间、烹饪温度以及蛋糕成分的比例。</p>
+</li>
+<li>
+<p>混料总量</p>
+<p>假定响应取决于各分量的比例和混料的数量。例如，农作物的产量取决于杀虫剂成分的比例以及杀虫剂的施用量。</p>
+</li>
+</ul>
+<h2 id="三、常见的试验优化设计方法">三、常见的试验优化设计方法</h2>
+<h3 id="3-1析因设计">3.1析因设计</h3>
+<p><strong>介绍：</strong></p>
+<p>析因设计是一种多因素多水平的交叉分组进行全面试验的设计方法。<br>
+它不仅可检验每个因素各水平间的差异，研究2个或2个以上因素的主效应，而且可检验各因素间的交互作用，通过比较各种组合，可以找出最佳组合。<br>
+它是一种全面的高统计效率的设计，当<u>因素数目和水平数都不太大</u>，且<u>效应与因素之间的关系比较复杂</u>时，常常采用该种设计。</p>
+<p><strong>数据分析：</strong></p>
+<p>析因设计可以提供三方面的重要信息：<u>各因素不同水平的效应大小</u>；<u>各因素间的交互作用</u>；<u>最佳组合</u>。</p>
+<p>可以求出主效应和交互效应，一般分为：正交互效应(协同作用)，两因素联合(共同)作用大于其单独作用之和；负交互作用(拮抗作用)，两因素联合作用小于其单独作用之和。</p>
+<p><strong>优点：</strong></p>
+<p>可以用来分析全部主效应(即各个单因素的作用)和因素之间的各级交互作用的效应(即任何两个因素之间的交互作用效应、任何三个因素之间的交互作用效应等)的大小。</p>
+<p><strong>缺点：</strong></p>
+<p>所需要的实验次数很多(因该设计的原名也叫做“有重复实验的全因子设计”) 。当考虑的因素增加时，不但计算复杂，而且给众多交互作用的解释带来困难。</p>
+<h3 id="3-2正交设计">3.2正交设计</h3>
+<p><strong>介绍：</strong></p>
+<p>正交试验设计是试验优化的一种常用技术。它是建立在概率论、数量统计和实践经验的基础上，运用标准化正交表安排试验方案，并对结果进行计算分析，从而快速找到最优试验方案的一种设计方法。</p>
+<p>它是根据正交性从全面试验中挑选出部分有代表性的点进行试验，这些点并不是随便找的点，而是一些具备“均匀分散、齐整可比”的点。然后我们通过对代表性点的试验进行结果分析，进而推广到整体试验，以实现工艺的优化。</p>
+<p><strong>优点：</strong></p>
+<p>其布点均衡，试验次数减少<br>
+它能保证主要因素的各种可能都不会漏掉<br>
+它能提供一种分析结果(包括交互作用)的方法，结果直观容易分析<br>
+每个试验水平都重复相同次数，可以消除部分试验误差的干扰<br>
+因其具有正交性，易于分析出各因素的主效应。</p>
+<p><strong>缺点：</strong></p>
+<p>它提供的数据分析方法所获得的优选值，只能是试验所用水平的某种组合，优选结果不会超越所取水平的范围;<br>
+另外，也不能给进一步的试验提供明确的指向性，使试验仍然带很强的摸索性色彩，不很精确。</p>
+<p>这样，正交试验法用在初步筛选时显得收敛速度缓慢，难于确定数据变化规律，增加试验次数。尤其在试验工作烦琐、费用昂贵的情况更显突出。</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202302132306023.png" alt="析因设计表以及正交设计表"></p>
+<h3 id="3-3均匀设计">3.3均匀设计</h3>
+<p><strong>介绍：</strong></p>
+<p>均匀设计法是一种建立在正交设计上的试验设计方法。均匀设计的数学原理是数论中的一致分布理论。均匀设计只考虑试验点在试验范围内均匀散布，挑选试验代表点的出发点是“均匀分散”，而不考虑“整齐可比”。</p>
+<p>它着重在试验范围内考虑试验点均匀散布以求通过最少的试验来获得最多的信息，因而其试验次数比正交设计明显的减少，使均匀设计特别适合于<u>多因素多水平的试验和系统模型完全未知的情况</u>。</p>
+<p><strong>均匀设计表：</strong></p>
+<p>每个均匀设计表有一个代号，其中 U表示均匀设计，n表示水平数亦表示试验次数，m表示该表最多可安排的因素数量。右上角加“* ”的 U表均匀性较好，应优先选用。</p>
+<p><strong>优点：</strong></p>
+<p>均匀设计使得试验次数大大减少，能够自动将各试验因素分为重要与次要，并将因素按重要性排序<br>
+时过程数字化，可通过电脑对结果与因素条件进行界定与预报(如天气预报)，进而控制各因素。</p>
+<p><strong>缺点：</strong></p>
+<p>均匀设计是非正交设计，所以它不可能估计出方差分析模型中的主效应和交互效应，但是它可以估出回归模型中因素的主效应和交互效应</p>
+<h3 id="3-4响应面设计">3.4响应面设计</h3>
+<p><strong>介绍：</strong></p>
+<p>响应面分析是一种优化工艺条件的有效、快速、精确的试验方法，系通过中心组合试验，采用多元线性回归方法为函数估计的工具，将多因素试验中的因素与水平的相互关系用多项式进行拟合，然后对函数的响应面等值线和用回归方程的分析来寻求最优工艺参数，可精确地描述因素与响应值之间的关系。</p>
+<p>响应面法(RSM)主要有三种常用的试验设计方案：<u>Box-Behnken设计(BBD)</u>、<u>均匀外壳设计(UniformShellDesign，USD)</u>和<u>中心组合设计(CentralCompositeDesign，CCD)</u>。前两种较少使用，中心组合设计是响应曲面中最常用的二阶设计。CCD设计是多因素5水平的实验设计，是在二水平析因设计的基础上加上极值点和中心点构成的</p>
+<p><strong>优点：</strong></p>
+<p>相比于正交设计和均匀设计，响应面设计法<u>得到的回归方程精度高</u>，能够<u>得到几种因素间交互作用</u>等优点<br>
+RSM能够将优化过程延伸到面的程度，呈现三维立体效果。<br>
+同时RSM能够减少最佳条件下效应的预测值和实测值偏差，具有突出的优越性。</p>
+<p><strong>缺点：</strong></p>
+<p>相对于因子分析，精度仍不够，它要求自变量必须是连续的而且能被试验者自由控制，如果先用 CCD找到最优区，再使用因子分析在较小的范围内应用效应面优化法则效果会更好。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://lidaiwei.top">David.Li</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://lidaiwei.top/2023/02/19/%E6%9D%82%E8%AE%B0/Design%20Expert/">https://lidaiwei.top/2023/02/19/杂记/Design Expert/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://lidaiwei.top" target="_blank">戴威的Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="hhttps://gitee.com/david-li119/PigGo_img/raw/master/images/202211201400766.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/02/05/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E5%89%8D%E5%A4%84%E7%90%86_SCDM/"><img class="next-cover" src="/./img/20.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Fluent前处理_SCDM</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.postimg.cc/yNgHD8Yp/k-L4co-QHVj-A.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">David.Li</div><div class="author-info__description">生命啊, 它璀璨如歌！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/119DavidLi"><i class="fab fa-github"></i><span>一起玩吧</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/119DavidLi" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/daiwei_li119@163.com" target="_blank" title="邮箱"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://119davidli.github.io/" target="_blank" title="博客"><i class="fa-solid fa-robot"></i></a><a class="social-icon" href="https://space.bilibili.com/504053268?spm_id_from=333.1007.0.0" target="_blank" title="Bilibili"><i class="fa-solid fa-desktop-arrow-down"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到David.Li的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Design-Expert%E4%B8%8E%E5%93%8D%E5%BA%94%E9%9D%A2%E4%BC%98%E5%8C%96"><span class="toc-text">一、Design Expert与响应面优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D"><span class="toc-text">1.1总体介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2%E5%AE%9E%E9%AA%8C%E6%96%B9%E6%B3%95%E4%B8%8E%E8%BD%AF%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-text">1.2实验方法与软件操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3%E6%96%87%E7%AB%A0%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-text">1.3文章中的应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Minitab%E4%B8%8E%E6%B7%B7%E6%96%99%E8%AE%BE%E8%AE%A1"><span class="toc-text">二、Minitab与混料设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%B8%B8%E8%A7%81%E7%9A%84%E8%AF%95%E9%AA%8C%E4%BC%98%E5%8C%96%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="toc-text">三、常见的试验优化设计方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1%E6%9E%90%E5%9B%A0%E8%AE%BE%E8%AE%A1"><span class="toc-text">3.1析因设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2%E6%AD%A3%E4%BA%A4%E8%AE%BE%E8%AE%A1"><span class="toc-text">3.2正交设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3%E5%9D%87%E5%8C%80%E8%AE%BE%E8%AE%A1"><span class="toc-text">3.3均匀设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4%E5%93%8D%E5%BA%94%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="toc-text">3.4响应面设计</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/02/19/%E6%9D%82%E8%AE%B0/Design%20Expert/" title="无题"><img src="hhttps://gitee.com/david-li119/PigGo_img/raw/master/images/202211201400766.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/02/19/%E6%9D%82%E8%AE%B0/Design%20Expert/" title="无题">无题</a><time datetime="2023-02-19T09:58:25.408Z" title="发表于 2023-02-19 17:58:25">2023-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/05/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E5%89%8D%E5%A4%84%E7%90%86_SCDM/" title="Fluent前处理_SCDM"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent前处理_SCDM"/></a><div class="content"><a class="title" href="/2023/02/05/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E5%89%8D%E5%A4%84%E7%90%86_SCDM/" title="Fluent前处理_SCDM">Fluent前处理_SCDM</a><time datetime="2023-02-04T16:00:00.000Z" title="发表于 2023-02-05 00:00:00">2023-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/29/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E4%BB%BF%E7%9C%9F%E6%A1%88%E4%BE%8B%E6%89%A9%E5%B1%95/" title="Fluent 仿真案例扩展"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent 仿真案例扩展"/></a><div class="content"><a class="title" href="/2023/01/29/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E4%BB%BF%E7%9C%9F%E6%A1%88%E4%BE%8B%E6%89%A9%E5%B1%95/" title="Fluent 仿真案例扩展">Fluent 仿真案例扩展</a><time datetime="2023-01-28T16:00:00.000Z" title="发表于 2023-01-29 00:00:00">2023-01-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/22/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%20Meshing%E4%B8%93%E9%A2%98/" title="Fluent Meshing专题"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent Meshing专题"/></a><div class="content"><a class="title" href="/2023/01/22/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%20Meshing%E4%B8%93%E9%A2%98/" title="Fluent Meshing专题">Fluent Meshing专题</a><time datetime="2023-01-21T16:00:00.000Z" title="发表于 2023-01-22 00:00:00">2023-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/08/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%A7%86%E9%A2%91%E6%B1%87%E6%80%BB/" title="Fluent软件总体介绍"><img src="/./img/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fluent软件总体介绍"/></a><div class="content"><a class="title" href="/2023/01/08/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%A7%86%E9%A2%91%E6%B1%87%E6%80%BB/" title="Fluent软件总体介绍">Fluent软件总体介绍</a><time datetime="2023-01-07T16:00:00.000Z" title="发表于 2023-01-08 00:00:00">2023-01-08</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('hhttps://gitee.com/david-li119/PigGo_img/raw/master/images/202211201400766.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By David.Li</div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://119davidli.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><script src="https://unpkg.com/algoliasearch/dist/algoliasearch-lite.umd.js"></script><script src="https://unpkg.com/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://unpkg.com/katex/dist/katex.min.css"><script src="https://unpkg.com/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
