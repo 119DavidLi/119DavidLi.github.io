@@ -1,0 +1,386 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Pointwise软件总体介绍 | 戴威的Blog</title><meta name="keywords" content="学习,研究生知识积累"><meta name="author" content="David.Li"><meta name="copyright" content="David.Li"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="PointWise是计算流体动力学 (CFD)网格划分的选择，涵盖从几何模型导入到流量求解器导出的预处理的所有方面。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pointwise软件总体介绍">
+<meta property="og:url" content="https://lidaiwei.top/2023/03/20/Pointwise%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86/%E8%BD%AF%E4%BB%B6%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="戴威的Blog">
+<meta property="og:description" content="PointWise是计算流体动力学 (CFD)网格划分的选择，涵盖从几何模型导入到流量求解器导出的预处理的所有方面。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lidaiwei.top/img/33.jpg">
+<meta property="article:published_time" content="2023-03-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-04-03T15:27:57.959Z">
+<meta property="article:author" content="David.Li">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="研究生知识积累">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lidaiwei.top/img/33.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lidaiwei.top/2023/03/20/Pointwise%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86/%E8%BD%AF%E4%BB%B6%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"S8VXMWI0SN","apiKey":"53f1a244da26e96e8249b78dbad4a7e7","indexName":"David","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: David.Li","link":"链接: ","source":"来源: 戴威的Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Pointwise软件总体介绍',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-03 23:27:57'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="referrer" content="no-referrer" /><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.postimg.cc/yNgHD8Yp/k-L4co-QHVj-A.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/33.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">戴威的Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Pointwise软件总体介绍</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-19T16:00:00.000Z" title="发表于 2023-03-20 00:00:00">2023-03-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-03T15:27:57.959Z" title="更新于 2023-04-03 23:27:57">2023-04-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0/">软件学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0/%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86%E8%BD%AF%E4%BB%B6/">网格划分软件</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0/%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86%E8%BD%AF%E4%BB%B6/Pointwise/">Pointwise</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Pointwise软件总体介绍"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>Point wise学习</h1>
+<h2 id="1-Pointwise基础界面介绍">1.Pointwise基础界面介绍</h2>
+<p><strong>“File”中的操作：</strong></p>
+<p>主要是软件的新建、打开、保存、导入外部数据、数据输出等操作</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303212121471.png" alt="Fild界面" style="zoom:67%;">
+<p>模型的导入支持网格（Grid）和几何模型（Database）文件。</p>
+<p>网格的输出支持（*.cgnd、 *.dat、 *stl等格式）</p>
+<p>CAE文件的输出会与下部求解器设定同步</p>
+<p>求解器设定：</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303212121501.png" alt="求解器设定界面"></p>
+<p>求解器的切换在上方工具栏“CAE”——“Select solver…”</p>
+<p><strong>“Edit“中的操作：</strong></p>
+<p>撤销、推进、剪切、复制、粘贴（平移、缩放、旋转等）</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303212133972.png" alt="image-20230321213339915" style="zoom:80%;">
+<p>变换：包括平移、缩放、镜像、旋转、调整点的分布、调整点数等。</p>
+<p>Project（投影）</p>
+<p>Split（打断），可以鼠标点选或输入坐标进行选择</p>
+<p>join（加入，连接），把打断或者分开线段连在一起。<br>
+<code>注：此时软件仍会记录打断的位置，可以在上方工具栏”Grid“——”Distribute…“勾选”Delete Break Points“进行去除</code></p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303212134254.png" alt="image-20230321213400219" style="zoom:80%;">
+<p>Trim By Surfaces.…（依据表面平整）；Irim By Curves…（依据曲线平整）</p>
+<p>Curves（画曲线）；Shape（画形体）</p>
+<p>Orient（方向）；Preferences（偏好设置）</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303212134029.png" style="zoom: 67%;">
+<p><strong>“View”界面中的操作：</strong></p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303240933094.png" alt="view界面" style="zoom:50%;">
+<p>界面中的操作包含：Show Hidden（显示\隐藏），Zoom（缩放），Manage Views（管理视图），Set Rotation Point（设置旋转点）以及显示各种图幅元素。</p>
+<p><strong>Examine界面中的操作：</strong></p>
+<p>主要针对三维，用以评估生成的网格质量</p>
+<p><strong>”Select“中的操作：</strong></p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303240940000.png" alt="Select" style="zoom:67%;">
+<p>Mask（面具）主要用于过滤选项（块、网格、连接线等）</p>
+<p><strong>”Create“中的操作：</strong></p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303240946036.png" alt="Create" style="zoom:67%;">
+<p>包含创造几何图案（点、直线段、曲线、圆弧、几何实体等）</p>
+<p>Assemble Special——Domain（生成网格，二维）——Block（生成网格，三维）</p>
+<p><strong>“Grid”中的操作：</strong></p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303240953312.png" alt="Grid"></p>
+<p>Set Type（选择生成网格的类型，结构\非结构）；Dimension（在线段上布点）；</p>
+<p>Distribute（设置线段上点的分布，疏\密）；</p>
+<p>Solve（设置几何模型的边界层）</p>
+<p><strong>&quot;CAE&quot;中的设置：</strong></p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303241015112.png" alt="CAE"></p>
+<p>设置求解器类型；Set Deminsion设置模型尺度（二维、三维）；Set Boundary Conditions，设置边界层；<br>
+Set Volume Conditions…<br>
+Set Solver Attributes…</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303241017557.png" alt="左侧工具栏" style="zoom:67%;">
+<p>记录了操作过程中导入\生成的模型吧</p>
+<p>上部工具栏罗列了一些功能，可以直接调用</p>
+<p><code>Ctrl+R实现模型自动居中</code></p>
+<h2 id="2-案例">2.案例</h2>
+<h3 id="2-1二维非结构网格绘制（NACA0012翼型）">2.1二维非结构网格绘制（NACA0012翼型）</h3>
+<p><strong>二维翼型的导入：</strong></p>
+<p>在软件中设置后续分析的CAE软件为Ansys Fluent</p>
+<p>二维翼型在Profili中进行生成与调整，导出为.TXT翼型数据，翼型数据需要进行粗处理</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303241948999.png" alt="翼型数据" style="zoom: 33%;">
+<p>导入Point wise软件，上方工具栏“File”——“Import”——“Database”——选中需要导入的文件</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303241950388.png" alt="文件类型选择" style="zoom: 50%;">
+<p>得到导入的翼型图案</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303241951689.png" alt="翼型图案" style="zoom:40%;">
+<p><strong>建立外部流场完成布点：</strong></p>
+<p>创建外部圆形流场，点击上部工具栏“Creat”——“Draw Curves”——选中“Circle”</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303241957435.png" alt="创建几何元素" style="zoom: 40%;">
+<p>转换导入翼型（Database）为Connectors，选中导入的翼型图案，点击上方图案工具栏中的“Connectors on Database Entities”</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303241959328.png" alt="Connectors on Database Entities"></p>
+<p>在几何体上进行布点，选中需要布点的几何体，选择布点的方式在上方“Dimension”选框中输入想要布置的点的数量</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303242003102.png" alt="网格形式与布点个数"></p>
+<p>完成模型构建与布点</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303242004698.png" alt="选项栏" style="zoom:60%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303242004287.png" alt="图形显示区域" style="zoom:30%;"></p>
+<p><strong>布点密度调整：</strong></p>
+<p>选中需要调整的几何，打开上方工具栏“Grid”——“Distribute”</p>
+<p>在“Spacing”中可以设置选中几何段的布点分布密度情况</p>
+<p>或在“Functions”中选择点的分布方式</p>
+<p>或在“Break Point”增加线段的间断点，加密各线段上的网格分布</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303242009938.png" alt="Spacing" style="zoom:80%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303242012271.png" alt="Function" style="zoom:50%;"></p>
+<p>完成布点调整</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303242016257.png" alt="控制点的分布" style="zoom:33%;">
+<p><strong>创建初始网格：</strong></p>
+<p>快速生成，选择上方图标工具栏中的“Assemble Domains”</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303242019065.png" alt="Assemble Domains"></p>
+<p>手动创建，点击上方工具栏“Create”——“Assemble Special”——“Domain.…”</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303242024208.png" alt="Assemble Domain" style="zoom: 50%;">
+<p>选中远场边界，点击“Save Edge”<br>
+再选中内部翼型几何，点击“Save Edge”<br>
+（两个几何的方向应该是相反的）（不要重复选择几何）</p>
+<p>完成选择后，点击“Apply“，完成网格创建</p>
+<p><strong>创建网格边界层：</strong></p>
+<p>点击上方工具栏”Grid“——”Solve“</p>
+<p>选择需要创建边界层的部位并给出第一层边界层的厚度</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303242036419.png" alt="Boundary Conditions" style="zoom:50%;">
+<p>设置边界层层数、增长率与边界层形状</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303242039498.png" alt="T-Rex" style="zoom: 60%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303242045763.png" alt="image-20230324204540720" style="zoom: 50%;"></p>
+<p>设置边界层推导方式，过渡平滑性，边界层网格样式等</p>
+<p>完成网格初步创建</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303242046788.png" alt="整体网格" style="zoom: 23%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303242047017.png" alt="边界层网格" style="zoom: 25%;"></p>
+<p><strong>定义边界与流体域：</strong></p>
+<p>点击”CAE“，设置求解器，并设置求解网格形式（二维、三维）</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303242050520.png" alt="CAE设定" style="zoom:67%;">
+<p>设置边界属性，点击”Set Boundary Conditions“</p>
+<p>设置翼面为”Wall“，设置外圆边界为”Pressure Far Field“</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303242052244.png" alt="Set Boundary Conditions" style="zoom: 67%;">
+<p>创建流体域，由于案例中没有涉及多个流体域，这里只需要设置一个</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303242054009.png" alt="Set Volume Conditions" style="zoom: 67%;">
+<p><strong>网格文件导出：</strong></p>
+<p>选中“Domain”，点击”File“——”Export“</p>
+<p>选择Grid将导出为网格文件（.cgns）<br>
+选择CAE将直接导出后处理软件的工程文件（.case）</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303242056934.png" alt="Export" style="zoom:67%;">
+<h3 id="2-2二维结构网格绘制（NACA0012翼型）">2.2二维结构网格绘制（NACA0012翼型）</h3>
+<p>导入模型，调整好CAE求解器设定，模型（2D/3D）设定，网格（结构/非结构）设定。</p>
+<p>准备绘制“C”型的结构网格。</p>
+<p><strong>创建基本“C”型几何：</strong></p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251457743.png" alt="创建基本计算几何" style="zoom: 33%;">
+<p><strong>布点：</strong></p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251502091.png" alt="image-20230325150209986" style="zoom: 33%;">
+<p>创建基本结构网格：</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251504058.png" alt="前半圆网格" style="zoom:28.5%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251513729.png" alt="全局" style="zoom: 50%;"></p>
+<p><strong>附面层网格生成与整体调整：</strong></p>
+<p>通过调整点线段上点的分布达成目的，先设置初始各点之间的间隔，再设置采用“Growth”并设置边界层数量和增长率。</p>
+<p>为翼型增加附面层</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251515208.png" alt="添加附面层" style="zoom: 25%;">
+<p>初步设置后发现网格间过渡很剧烈，差异很大。调整后缘点的分布（设置数值与边界层相近）。由于流体运动在前、后缘位置较为剧烈，此时可以同时调整翼面前、后缘的点的分布情况。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251530270.png" alt="网格尺寸过渡较大" style="zoom: 50%;">
+<p>经调整又发现，网格向一边倾斜，”正交性“较差。这是就需要同步更改半圆弧上点的分布（同样可以采用负面层生成时的数据），把网格拉正。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251531766.png" alt="网格正交性较差" style="zoom:50%;">
+<p>翼型后缘不同物面层之间的网格大小差异也比较明显。需要进行点的分布调整。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251536139.png" alt="不同物面层之间的网格尺寸差异" style="zoom:40%;">
+<p>左侧线段上复杂的网格分布可以采用”Copy From“界面中”Copy Scaled Distribution“功能直接复制到右侧的一条线段上。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251539488.png" alt="完成网格绘制与修型" style="zoom:30%;">
+<p><strong>网格检查：</strong></p>
+<p>选中生成的Domai点击上方工具栏”Examine“——”Length Ratio I…“</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251544946.png" alt="网格检查" style="zoom:33%;">
+<p><strong>定义边界属性与流体域：</strong></p>
+<p>设置边界属性，点击”Set Boundary Conditions“</p>
+<p>设置翼面为”Wall“，设置外边界为”Pressure Far Field“</p>
+<p>创建流体域，设置为”Fluid“</p>
+<h3 id="2-3三维非机构网格绘制（Finner导弹模型）">2.3三维非机构网格绘制（Finner导弹模型）</h3>
+<p><strong>导入模型与预处理：</strong></p>
+<p>导入几何模型，<br>
+平移模型位置，”Edit“——”Transform“——”Translate“</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251641780.png" alt="三维几何模型" style="zoom: 33%;">
+<p>生成几何外围特征线段，点击上方图标”Connectors on Database Entities“</p>
+<p>设置CAE求解器”Ansys Fluent“</p>
+<p>设置求解网格类型”3D“，”非结构网格“</p>
+<p><strong>生成几何的物面网格：</strong></p>
+<p>给围成曲面（平面）的线布点，适当调整点的分布，点击”Assemble Domains“生成物面网格。集合体的表面就会生成网格（紫色）</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251717551.png" alt="弹头钝圆屋面网格" style="zoom:33%;">
+<p>同理，生成弹头前部的网格，并格外注意物面交界位置的网格。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251724129.png" alt="弹头前部网格" style="zoom:25%;">
+<p>调整网格布点使网格大小均匀过渡。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251728292.png" alt="调整之后" style="zoom:33%;">
+<p>前后点过渡较快，后端网格不匹配。</p>
+<p>可以直接采取增加布点的方法或者调整点的分布”Function“中改变算法为”MRQS“，同时兼顾前后布点过渡。这一方法增加了表面布点的数量（表面网格数量）以达到均匀过渡的效果。</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251732103.png" alt="image-20230325173245981" style="zoom: 20%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251734093.png" alt="MRQS布点方法下的后端" style="zoom: 18%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251736743.png" alt="MRQS布点方法下的前端" style="zoom:22%;"></p>
+<p>同时，可以结合”Solve“——”Attributes“中的”Boundary Decay“功能，增加过渡的平滑性。</p>
+<p>同理，开始对导弹后面尾部区域进行划分与生成。</p>
+<p><code>PS:中途可以进行保存，以防数据丢失，保存为软件自带的.PW格式。</code></p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251749826.png" alt="组成面的边线选择" style="zoom:33%;">
+<p>生成全局的物面网格并进行网格质量调整。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303252045421.png" alt="全局网格" style="zoom: 30%;">
+<p><strong>创建外围流场：</strong></p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303252052123.png" alt="创建外围流场" style="zoom: 38%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303252054083.png" alt="Defaults" style="zoom:50%;"></p>
+<p>完成设定点击&quot;Apply&quot;，点击上部图标命令”Domains on Database Entities“，生成远场的网格。</p>
+<p>调整点数获得较为良好的远场边界。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303252058170.png" alt="远场边界" style="zoom: 40%;">
+<p><strong>创建Block：</strong></p>
+<p>点击”Create“——”Assmble Special“——”Block…“</p>
+<p>选中远场网格，点击”Save Face“；同理，选中内部几何网格，点击”Save Face“</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303252115523.png" alt="创建Block" style="zoom:44%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303252116331.png" alt="选中内外网格" style="zoom:33%;"></p>
+<p>全部选中后，点击”Apply“，创建Block。创建完成后可以在Blocks中看到。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303252119409.png" alt="Blocks" style="zoom:67%;">
+<p><strong>生成体网格与附面层：</strong></p>
+<p>选中刚创建的”Block“，点击”Grid“——”Solve“</p>
+<p>定义壁面（导弹模型外表面）与附面层高度</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303252123557.png" alt="image-20230325212341520" style="zoom:67%;">
+<p>设定边界层层数、增长率、形状等信息。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303252124327.png" alt="image-20230325212459286" style="zoom: 50%;">
+<p>调整边界衰减（Boundary Decay）为：0.9</p>
+<p>切换为”Solve“界面点击”Initialize“，完成体网格生成后==点击”Apply“然后再退出==</p>
+<p><strong>网格质量检查：</strong></p>
+<p>切换到”Examine“界面，选择合适的检验指标。</p>
+<p>也可以采用切面进行观察。</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303252142007.png" alt="网格检查" style="zoom: 27%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303252143706.png" alt="网格查看" style="zoom:25%;"></p>
+<p><strong>定义边界条件：</strong></p>
+<p>创建”Wall“和”Pressure Far Field“</p>
+<p><strong>输出文件：</strong></p>
+<p>输出Fluent的计算文件。</p>
+<h2 id="3-小知识点汇总">3.小知识点汇总</h2>
+<h3 id="3-1边界层网格间断过大">3.1边界层网格间断过大</h3>
+<p>遇到应为点相隔太远而造成边界层被破坏的情况</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251423963.png" alt="边界层被分割" style="zoom:33%;">
+<p>调整点的分布进行解决，</p>
+<p>调出&quot;Distribute&quot;对话框，选中需要调节的区域，在“Spacing”根据第一层边界层的高度修改布点的间距，</p>
+<p>进入“Function”，选择点分布的方式“Growth”，并对照边界层设置增长分布参数</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251430163.png" alt="设置点的分布" style="zoom: 33%;"><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251432848.png" alt="边界层连接优化" style="zoom: 33%;"></p>
+<p>边界层纵向位置布点的过大间距被修复，横向位置的网格尺寸也可以通过调整布点实现改善。</p>
+<p>与之相对称的界面可以利用&quot;Distribute&quot;中“Function”界面下的“Copy From”选项进行设置的复制</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251437835.png" alt="Copy From" style="zoom: 67%;">
+<h3 id="3-2面对有中间线的分隔小面">3.2面对有中间线的分隔小面</h3>
+<p>本来完成的一个平面中间被一根线段分开了。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251803000.png" alt="小平面分割" style="zoom: 40%;">
+<p>删去中间分割线段，选中两个平面被分开的小线条点击”Ctrl+J“</p>
+<p><code>Info: Joined 2 connectors into 1 connector. Info: Joined 2 connectors into 1 connector.</code></p>
+<p>完成合并的两个线段，还需要在”Distribute“功能的”Break Points“界面中消去原有的间断点。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251819534.png" alt="删除打断点" style="zoom:50%;">
+<p>两个小平面完成合并，可以直接进行网格划分，并且简化了后续点分布的调整步骤。</p>
+<p>直接生成的网格呈现”绿色“与原本物面网格的”紫色“不符合。<br>
+生成的面在两个几何上，所以无法自动投影。</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251822621.png" alt="绿色的网格" style="zoom:33%;">
+<p>点击上方图案选框工具”Project“</p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251824579.png" alt="Project"></p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303251828518.png" alt="Project设置" style="zoom: 50%;">
+<h3 id="3-3运行优化">3.3运行优化</h3>
+<p>打开grid/solve菜单，在edge attributes属性下选择boundary condition的type为floating</p>
+<p>在solve属性下的literations后面的文本框中输入l0</p>
+<p>Floating边界会让domain之间共用的线网格根据光顺性等的要求自动变化以提高网格质量</p>
+<h3 id="3-Layer-manager（层管理器）">3.Layer manager（层管理器）</h3>
+<p><strong>分层的创建与管理：</strong></p>
+<p>完成模型几何的导入后切换到菜单栏进去选项“Layers”</p>
+<p>分块地选择模型，然后将模型保存在特定的“Layer”（例如10、20、30等）中，并进行命名</p>
+<img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303301631465.png" alt="Layer设置" style="zoom:33%;">
+<p><strong>&quot;Group&quot;组的创建：</strong></p>
+<p>在&quot;list&quot;中选择想要分组的几何，点击“Create”——“Group”</p>
+<p>输入组的名称，点击&quot;Apply&quot;完场创建。</p>
+<p><strong>分层的显示修改：</strong></p>
+<p><img src="https://gitee.com/david-li119/PigGo_img/raw/master/images/202303301634315.png" alt="显示设置"></p>
+<p>第一个图标，是综合设置，包括后续几个图标的调整</p>
+<p>第二个图标，设置几何显示模式，包括“Wireframe（线框）； Flat（平面）； Shaded（阴影）； Hidden Line（隐藏线）”</p>
+<p>第三个图标，设置线型显示模型，包括“All Lines（所有线）； Boundaries（边界）； No Lines（无线条，光滑过渡）”</p>
+<p>第四个图标，设置布点显示模式，包括显示布点与不显示布点</p>
+<p>第五个图标，设置几何颜色显示，通过三原色更改表面颜色</p>
+<p>第六个图标，设置几何颜色显示，会给每一个被分隔面随机分配一个颜色</p>
+<p>第七个图标，设置几何显示模式，隐藏或显示几何</p>
+<p><strong>总结：</strong></p>
+<p>层是组织数据库的一种方式。它们对于具有许多实体的数据库特别有用，这些实体可能会导致屏幕混乱，并可能降低图形性能。</p>
+<p>层管理器用于在层之间移动实体和控制层的显示。很多时候，数据库已经包含了层信息，Pointwise将导入并使用这些信息。如果层分配还不存在，在使用复杂、详细的几何图形时，花一点时间用层管理器组织数据库可以大大简化和加快您的工作流程。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://lidaiwei.top">David.Li</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://lidaiwei.top/2023/03/20/Pointwise%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86/%E8%BD%AF%E4%BB%B6%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D/">https://lidaiwei.top/2023/03/20/Pointwise网格划分/软件总体介绍/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://lidaiwei.top" target="_blank">戴威的Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a><a class="post-meta__tags" href="/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/">研究生知识积累</a></div><div class="post_share"><div class="social-share" data-image="/./img/33.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/20/Pointwise%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86/Pointwise%20TutorialWorkbook/"><img class="prev-cover" src="/./img/34.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Pointwise软件总体介绍</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/12/%E6%9D%82%E8%AE%B0/Profili/"><img class="next-cover" src="/./img/23.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Profili软件学习</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/10/29/EDEM%E7%A6%BB%E6%95%A3%E5%85%83%E4%BB%BF%E7%9C%9F/EDEM%E7%A6%BB%E6%95%A3%E5%85%83%E4%BB%BF%E7%9C%9F%E8%BF%9B%E9%98%B6%E6%93%8D%E4%BD%9C/" title="《EDEM离散元仿真》学习进阶"><img class="cover" src="/./img/11.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">《EDEM离散元仿真》学习进阶</div></div></a></div><div><a href="/2022/12/25/%E5%8D%97%E8%88%AA%E2%80%94%E9%A3%9E%E8%A1%8C%E5%99%A8%E7%A9%BA%E6%B0%94%E5%8A%A8%E5%8A%9B%E5%AD%A6/" title="飞行器空气动力学"><img class="cover" src="/./img/20.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-25</div><div class="title">飞行器空气动力学</div></div></a></div><div><a href="/2023/01/22/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%20Meshing%E4%B8%93%E9%A2%98/" title="Fluent Meshing专题"><img class="cover" src="/./img/30.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-22</div><div class="title">Fluent Meshing专题</div></div></a></div><div><a href="/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E4%BB%BF%E7%9C%9F%E5%9F%BA%E7%A1%80%E6%A1%88%E4%BE%8B/" title="Fluent仿真基础案例练习"><img class="cover" src="/./img/20.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-01</div><div class="title">Fluent仿真基础案例练习</div></div></a></div><div><a href="/2023/02/05/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E5%89%8D%E5%A4%84%E7%90%86_SCDM/" title="Fluent前处理_SCDM"><img class="cover" src="/./img/28.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-05</div><div class="title">Fluent前处理_SCDM</div></div></a></div><div><a href="/2023/01/01/Fluent%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/Fluent%E8%BD%AF%E4%BB%B6%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D/" title="Fluent软件总体介绍"><img class="cover" src="/./img/31.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-01</div><div class="title">Fluent软件总体介绍</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.postimg.cc/yNgHD8Yp/k-L4co-QHVj-A.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">David.Li</div><div class="author-info__description">生命啊, 它璀璨如歌！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/119DavidLi"><i class="fab fa-github"></i><span>一起玩吧</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/119DavidLi" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/daiwei_li119@163.com" target="_blank" title="邮箱"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://119davidli.github.io/" target="_blank" title="博客"><i class="fa-solid fa-robot"></i></a><a class="social-icon" href="https://space.bilibili.com/504053268?spm_id_from=333.1007.0.0" target="_blank" title="Bilibili"><i class="fa-solid fa-desktop-arrow-down"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到David.Li的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Point wise学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Pointwise%E5%9F%BA%E7%A1%80%E7%95%8C%E9%9D%A2%E4%BB%8B%E7%BB%8D"><span class="toc-text">1.Pointwise基础界面介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%A1%88%E4%BE%8B"><span class="toc-text">2.案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1%E4%BA%8C%E7%BB%B4%E9%9D%9E%E7%BB%93%E6%9E%84%E7%BD%91%E6%A0%BC%E7%BB%98%E5%88%B6%EF%BC%88NACA0012%E7%BF%BC%E5%9E%8B%EF%BC%89"><span class="toc-text">2.1二维非结构网格绘制（NACA0012翼型）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2%E4%BA%8C%E7%BB%B4%E7%BB%93%E6%9E%84%E7%BD%91%E6%A0%BC%E7%BB%98%E5%88%B6%EF%BC%88NACA0012%E7%BF%BC%E5%9E%8B%EF%BC%89"><span class="toc-text">2.2二维结构网格绘制（NACA0012翼型）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3%E4%B8%89%E7%BB%B4%E9%9D%9E%E6%9C%BA%E6%9E%84%E7%BD%91%E6%A0%BC%E7%BB%98%E5%88%B6%EF%BC%88Finner%E5%AF%BC%E5%BC%B9%E6%A8%A1%E5%9E%8B%EF%BC%89"><span class="toc-text">2.3三维非机构网格绘制（Finner导弹模型）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB"><span class="toc-text">3.小知识点汇总</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1%E8%BE%B9%E7%95%8C%E5%B1%82%E7%BD%91%E6%A0%BC%E9%97%B4%E6%96%AD%E8%BF%87%E5%A4%A7"><span class="toc-text">3.1边界层网格间断过大</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2%E9%9D%A2%E5%AF%B9%E6%9C%89%E4%B8%AD%E9%97%B4%E7%BA%BF%E7%9A%84%E5%88%86%E9%9A%94%E5%B0%8F%E9%9D%A2"><span class="toc-text">3.2面对有中间线的分隔小面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3%E8%BF%90%E8%A1%8C%E4%BC%98%E5%8C%96"><span class="toc-text">3.3运行优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Layer-manager%EF%BC%88%E5%B1%82%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%89"><span class="toc-text">3.Layer manager（层管理器）</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/04/03/%E8%B6%85%E9%AB%98%E5%A3%B0%E9%80%9F%E9%A3%9E%E8%A1%8C%E5%99%A8/%E9%AB%98%E8%B6%85%E5%A3%B0%E9%80%9F%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%B0%94%E5%8A%A8%E7%83%AD%E5%8A%9B%E5%AD%A6%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98%E7%B2%BE%E9%80%89/" title="无题"><img src="hhttps://gitee.com/david-li119/PigGo_img/raw/master/images/202211201400766.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/04/03/%E8%B6%85%E9%AB%98%E5%A3%B0%E9%80%9F%E9%A3%9E%E8%A1%8C%E5%99%A8/%E9%AB%98%E8%B6%85%E5%A3%B0%E9%80%9F%E9%A3%9E%E8%A1%8C%E5%99%A8%E6%B0%94%E5%8A%A8%E7%83%AD%E5%8A%9B%E5%AD%A6%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98%E7%B2%BE%E9%80%89/" title="无题">无题</a><time datetime="2023-04-03T15:20:36.476Z" title="发表于 2023-04-03 23:20:36">2023-04-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/03/%E8%B6%85%E9%AB%98%E5%A3%B0%E9%80%9F%E9%A3%9E%E8%A1%8C%E5%99%A8/%E9%80%9A%E5%90%91%E9%A9%AC%E8%B5%AB%E6%95%B010%E4%B9%8B%E8%B7%AF%EF%BC%9AX%E4%B8%8043A%E9%A3%9E%E8%A1%8C%E7%A0%94%E7%A9%B6%E8%AE%A1%E5%88%92%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/" title="无题"><img src="hhttps://gitee.com/david-li119/PigGo_img/raw/master/images/202211201400766.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/04/03/%E8%B6%85%E9%AB%98%E5%A3%B0%E9%80%9F%E9%A3%9E%E8%A1%8C%E5%99%A8/%E9%80%9A%E5%90%91%E9%A9%AC%E8%B5%AB%E6%95%B010%E4%B9%8B%E8%B7%AF%EF%BC%9AX%E4%B8%8043A%E9%A3%9E%E8%A1%8C%E7%A0%94%E7%A9%B6%E8%AE%A1%E5%88%92%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/" title="无题">无题</a><time datetime="2023-04-03T15:20:36.471Z" title="发表于 2023-04-03 23:20:36">2023-04-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/03/%E8%B6%85%E9%AB%98%E5%A3%B0%E9%80%9F%E9%A3%9E%E8%A1%8C%E5%99%A8/%E4%B8%B4%E8%BF%91%E7%A9%BA%E9%97%B4%E8%B6%85%E5%A3%B0%E9%80%9F%E5%8F%91%E5%B1%95%E7%A0%94%E7%A9%B6/" title="无题"><img src="hhttps://gitee.com/david-li119/PigGo_img/raw/master/images/202211201400766.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/04/03/%E8%B6%85%E9%AB%98%E5%A3%B0%E9%80%9F%E9%A3%9E%E8%A1%8C%E5%99%A8/%E4%B8%B4%E8%BF%91%E7%A9%BA%E9%97%B4%E8%B6%85%E5%A3%B0%E9%80%9F%E5%8F%91%E5%B1%95%E7%A0%94%E7%A9%B6/" title="无题">无题</a><time datetime="2023-04-03T15:20:36.465Z" title="发表于 2023-04-03 23:20:36">2023-04-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/20/Pointwise%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86/" title="Pointwise软件总体介绍"><img src="/./img/33.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Pointwise软件总体介绍"/></a><div class="content"><a class="title" href="/2023/03/20/Pointwise%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86/" title="Pointwise软件总体介绍">Pointwise软件总体介绍</a><time datetime="2023-03-19T16:00:00.000Z" title="发表于 2023-03-20 00:00:00">2023-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/20/Pointwise%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86/Pointwise%20TutorialWorkbook/" title="Pointwise软件总体介绍"><img src="/./img/34.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Pointwise软件总体介绍"/></a><div class="content"><a class="title" href="/2023/03/20/Pointwise%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86/Pointwise%20TutorialWorkbook/" title="Pointwise软件总体介绍">Pointwise软件总体介绍</a><time datetime="2023-03-19T16:00:00.000Z" title="发表于 2023-03-20 00:00:00">2023-03-20</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/./img/33.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By David.Li</div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://119davidli.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><script src="https://unpkg.com/algoliasearch/dist/algoliasearch-lite.umd.js"></script><script src="https://unpkg.com/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://unpkg.com/katex/dist/katex.min.css"><script src="https://unpkg.com/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
